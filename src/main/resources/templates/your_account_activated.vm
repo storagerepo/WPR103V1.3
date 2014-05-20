@@ -1,0 +1,116 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<body>
+<table width=\ "650\" border=\ "0\" cellspacing=\ "0\" cellpadding=\
+	"0\" align=\ "center\" style="" "padding:10px; border:
+	rgb(241, 250, 252) 1pxsolid;\">
+	\r\n
+	<tr>
+		\r\n
+		<td align=\ "left\" valign=\ "top\" style="" "background-color:
+			rgb(19, 19, 19); padding:10px; border-bottom: rgb(153, 153, 153) 5pxsolid; \"><logo></td>\r\n
+	</tr>
+	\r\n
+	<tr valign=\"top\">
+		<td align=\ "left\" style="" "background-color:rgb(241, 250, 252); padding:20px;\"><h1
+				style="" "color:
+				rgb(68, 68, 68); font-size:20px; font-family:Arial, Helvetica, sans-serif, \'MyriadPro\', Calibri; margin:0; padding:0; font-weight:normal;\">Welcomes
+				You!</h1>\r\n
+			<p style="" "color:
+				rgb(126, 149, 1); font-size:18px; font-family:Arial, Helvetica, sans-serif, \'MyriadPro\', Calibri; margin:0; padding:0; font-weight:bold;\">Your
+				Account successfully Activated...</p>\r\n
+			<h5 style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(85, 85, 85); font-size:12px; margin:20px 0 5px 0; padding:0;\">
+				Hi
+				<username>,
+			</h5>\r\n
+			<p style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(85, 85, 85); font-size:12px; margin:0; padding:0;\">This
+				is to confirm that you account has been activated successfully.</p>\r\n
+		</td>
+	</tr>
+	\r\n
+	<tr>
+		<td align=\ "left\" valign=\ "top\" style="" "background-color:rgb(241, 250, 252); padding:5px 20px 15px 20px;\">\r\n
+			<table width=\ "500\" border=\ "0\" cellspacing=\ "0\" cellpadding=\
+				"0\" style="" "background-color:
+				rgb(255, 255, 255); margin:auto; border: rgb(214, 230, 234) 1pxsolid; padding:10px;\">
+				\r\n
+				<tr>
+					\r\n
+					<td style=""
+						"padding:10px; font-family:Arial, Helvetica, sans-serif, \'Myriad
+						Pro\', Calibri; font-size:12px; color:
+						rgb(85, 85, 85); font-weight:bold; border-bottom:
+						rgb(204, 204, 204) 1pxdotted;\">Your Account Details</td>\r\n
+				</tr>
+				\r\n
+				<tr>
+					\r\n
+					<td style=""
+						"padding:10px; font-family:Arial, Helvetica, sans-serif, \'Myriad
+						Pro\', Calibri; font-size:12px; color:rgb(85, 85, 85);\"><p
+							style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+							Pro\', Calibri; color:rgb(85, 85, 85); font-size:12px; margin:0; padding:0;\">
+							User Name : <span style=""
+								"font-family:Arial, Helvetica, sans-serif, \'MyriadPro\', Calibri; font-size:12px; font-weight:bold; color:rgb(11, 152, 198)\"><username></span>
+						</p></td>\r\n
+				</tr>
+				\r\n
+				<tr>
+					\r\n
+					<td style=""
+						"padding:10px; font-family:Arial, Helvetica, sans-serif, \'Myriad
+						Pro\', Calibri; font-size:12px; color:rgb(85, 85, 85);\"><p
+							style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+							Pro\', Calibri; color:rgb(85, 85, 85); font-size:12px; margin:0; padding:0;\">
+							Info : <span style=""
+								"font-family:Arial, Helvetica, sans-serif, \'MyriadPro\', Calibri; font-size:12px; font-weight:bold; color:rgb(11, 152, 198)\"><message></span>
+						</p></td>\r\n
+				</tr>
+				\r\n
+				<tr>
+					\r\n
+					<td style=""
+						"padding:10px; font-family:Arial, Helvetica, sans-serif, \'Myriad
+						Pro\', Calibri; font-size:12px; color:rgb(85, 85, 85);\"><p
+							style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+							Pro\', Calibri; color:rgb(85, 85, 85); font-size:12px; margin:0; padding:0;\">
+							<a href=\"<url>\" style=\"font-family:Arial, Helvetica,
+								sans-serif, \'Myriad Pro\', Calibri; font-size:12px; color:
+								rgb(228, 32, 33)\">Click Here</a> to login your account
+						</p></td>\r\n
+				</tr>
+				\r\n
+			</table>\r\n
+		</td>
+	</tr>
+	\r\n \r\n
+	<tr>
+		<td style="" "background-color:rgb(241, 250, 252); padding:5px 20px;\"><p
+				style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(85, 85, 85); font-size:12px; margin:0; padding:0; font-style:italic;\">Thanks
+				& Regards,</p>\r\n
+			<p style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(49, 148, 204); font-size:12px; margin:5px 0 10px 0; padding:0; font-style:italic; font-weight:bold;\">
+				Research App <span style="" "color:rgb(222, 72, 69);\">Team</span>
+			</p>\r\n</td>
+	</tr>
+	\r\n
+	<tr>
+		<td align=\ "center\" valign=\ "top\" style="""background-color:#555; padding:5px 20px;\"><p
+				style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(255, 255, 255); font-size:11px; margin:5px 0; padding:0;\">If
+				you have any queries, please feel free to contact us at
+				support@researchapp.com or</p>\r\n
+			<p style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(255, 255, 255); font-size:11px; margin:5px 0; padding:0;\">by
+				phone at (0452) xxxx - xx - xxxx.</p>\r\n
+			<p style="" "font-family:Arial, Helvetica, sans-serif, \'Myriad
+				Pro\', Calibri; color:rgb(255, 255, 255); font-size:11px; margin:0 0 5px 0; padding:0; text-align:center;\">©
+				Research App.Deemsys Inc 2012. All rights reserved.</p>\r\n</td>
+	</tr>
+	\r\n\r\n
+</table>
+</body>
+</html>

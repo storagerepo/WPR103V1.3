@@ -1,0 +1,32 @@
+/***************************************************************************
+
+ * Product Name				: AJ MATRIX DNA
+
+ * Version 				: V 3.1
+
+ * Release Date				: Saturday, October 31, 2009
+
+ * Copyright				: (C) 2009 AJ Square Inc
+
+ * Email				: info@ajsquare.com
+
+ * Company URL				: www.ajsquare.com
+
+ ***************************************************************************/
+
+/****************************************************************************
+* Licence Agreement: 
+
+ *     This program is a Commercial licensed software. You are not authorized to redistribute it and/or modify/and or sell it under any publication either user and enterprise versions of the License (or) any later version is applicable for the same. If you have received this software without a license, you must not use it, and you must destroy your copy of it immediately. If anybody illegally uses this software, please contact info@ajsquare.com.
+
+*****************************************************************************/
+
+// This list may be created by a server logic page PHP/ASP/ASPX/JSP in some backend system.
+// There flash movies will be displayed as a dropdown in all flash dialogs if the "flash_external_list_url"
+// option is defined in TinyMCE init.
+
+var tinyMCEFlashList = new Array(
+	// Name, URL
+	["Some Flash 1", "test1.swf"],
+	["Some Flash 2", "test2.swf"]
+);

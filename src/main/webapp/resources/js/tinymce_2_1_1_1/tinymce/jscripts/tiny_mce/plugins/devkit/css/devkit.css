@@ -1,0 +1,140 @@
+/***************************************************************************
+
+ * Product Name				: AJ MATRIX DNA
+
+ * Version 				: V 3.1
+
+ * Release Date				: Saturday, October 31, 2009
+
+ * Copyright				: (C) 2009 AJ Square Inc
+
+ * Email				: info@ajsquare.com
+
+ * Company URL				: www.ajsquare.com
+
+ ***************************************************************************/
+
+/****************************************************************************
+* Licence Agreement: 
+
+ *     This program is a Commercial licensed software. You are not authorized to redistribute it and/or modify/and or sell it under any publication either user and enterprise versions of the License (or) any later version is applicable for the same. If you have received this software without a license, you must not use it, and you must destroy your copy of it immediately. If anybody illegally uses this software, please contact info@ajsquare.com.
+
+*****************************************************************************/
+
+body {
+	overflow: hidden;
+}
+
+h1 {
+	font-size: 14px;
+	margin: 0 0 10px 0;
+}
+
+h2 {
+	font-size: 12px;
+	margin: 3px 0 3px 0;
+}
+
+h3 {
+	font-size: 11px;
+	margin: 3px 0 3px 0;
+}
+
+#log {
+	font-family: Verdana;
+	border: 1px solid gray;
+	width: 100%; height: 240px;
+	overflow: scroll;
+	white-space: nowrap;
+}
+
+#log span {
+	display: block;
+}
+
+#log span.msg {
+	float: left;
+}
+
+#log span.time {
+	float: left;
+}
+
+#log br {
+	clear: both;
+}
+
+#logfilter {
+	width: 350px;
+}
+
+#logenabled {
+	border: 0;
+}
+
+#settings_panel span, #info_panel span, #content_panel span, #command_states_panel span, #undo_redo_panel span {
+	display: block;
+	margin: 5px 0 5px 0;
+}
+
+div.data {
+	width: 100%; height: 240px;
+	overflow: scroll;
+	border: 1px solid gray;
+}
+
+#misc_panel div.data {
+	height: 270px;
+}
+
+.data input {
+	width: 265px;
+	border: 0;
+}
+
+.data h2 {
+	margin-left: 5px;
+}
+
+.data h3 {
+	margin-left: 7px;
+}
+
+.data div {
+	margin-left: 7px;
+}
+
+.data table {
+	margin: 0 0 15px 15px;
+}
+
+.data p {
+	margin: 0; padding: 0;
+	margin-top: 5px;
+	margin-left: 5px;
+}
+
+table, td {
+	border: 1px solid gray;
+	border-collapse: collapse;
+}
+
+#flip {
+	position: absolute;
+	left: 295; top: 384px;
+}
+
+.bspec {
+	color: gray;
+}
+
+.dep {
+	color: #880000;
+}
+
+.col1 {
+	width: 265px;
+}
+
+div.undodata {
+}

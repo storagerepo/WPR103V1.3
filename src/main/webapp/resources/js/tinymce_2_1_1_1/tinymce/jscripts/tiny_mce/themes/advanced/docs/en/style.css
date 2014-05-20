@@ -1,0 +1,51 @@
+/***************************************************************************
+
+ * Product Name				: AJ MATRIX DNA
+
+ * Version 				: V 3.1
+
+ * Release Date				: Saturday, October 31, 2009
+
+ * Copyright				: (C) 2009 AJ Square Inc
+
+ * Email				: info@ajsquare.com
+
+ * Company URL				: www.ajsquare.com
+
+ ***************************************************************************/
+
+/****************************************************************************
+* Licence Agreement: 
+
+ *     This program is a Commercial licensed software. You are not authorized to redistribute it and/or modify/and or sell it under any publication either user and enterprise versions of the License (or) any later version is applicable for the same. If you have received this software without a license, you must not use it, and you must destroy your copy of it immediately. If anybody illegally uses this software, please contact info@ajsquare.com.
+
+*****************************************************************************/
+
+body { background-color: #FFFFFF; }
+body, td, .content { font-family: Verdana, Arial, helvetica, sans-serif; font-size: 12px; }
+.title { font-family: Verdana, Arial, helvetica, sans-serif; font-size: 16px; font-weight: bold; }
+.subtitle { font-size: 12px; font-weight: bold; }
+
+.toc_ul, .toc_li { margin-left: 8px; line-height: 16px; }
+.step_ol, .step_li { margin-left: 11px; line-height: 16px; }
+img { border: #000000 solid 1px; }
+
+a:visited { color: #666666; text-decoration: underline; }
+a:active { color: #666666; text-decoration: underline; }
+a:hover { color: #666666; text-decoration: underline; }
+a { color: #666666; text-decoration: underline; }
+
+.pageheader { border: #E0E0E0 solid 1px; }
+.pagefooter { border: #E0E0E0 solid 1px; }
+.sample { background-color: #FFFFFF; border: #000000 solid 1px; }
+.samplecontent { font-size: 10px; }
+
+.code { background-color: #FFFFFF; border: #000000 solid 1px; }
+.codecontent { font-size: 10px; }
+.codecontent a:visited { color: #666666; text-decoration: none; font-weight: bold }
+.codecontent a:active { color: #666666; text-decoration: none; font-weight: bold  }
+.codecontent a:hover { color: #666666; text-decoration: none; font-weight: bold  }
+.codecontent a { color: #666666; text-decoration: none; font-weight: bold  }
+
+hr { height: 1px; }
+

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<body>
+<table border=\ "0\" cellspacing=\ "0\" cellpadding=\ "0\" width=\
+	"650\" align=\ "center\" style="""padding: 10px; border: 1pxsolid #f1fafc\">
+	<tbody>
+		<tr>
+			<td align=\ "left\" valign=\ "top\" style="""background-color: #131313; padding: 10px; border-bottom: 5pxsolid #999999\">&nbsp;</td>
+		</tr>
+		<tr valign=\"top\">
+			<td align=\ "left\" style="""background-color: #f1fafc; padding: 20px\"><h1
+					style="" "color: #444444; font-size: 20px; font-family:
+					Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; margin: 0pt; padding: 0pt; font-weight:normal\">Welcomes
+					You!</h1>
+				<p style="" "color: #7e9501; font-size: 18px; font-family:
+					Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; margin: 0pt; padding: 0pt; font-weight:bold\">Your
+					Account Has Been Deleted...</p>
+				<h5 style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #555555; font-size: 12px; margin: 20px 0pt 5px; padding: 0pt\">Hi
+					,</h5>
+				<p style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #555555; font-size: 12px; margin: 0pt; padding: 0pt\">Your
+					Account Has Been Deleted.</p></td>
+		</tr>
+		<tr>
+			<td align=\ "left\" valign=\ "top\" style="""background-color: #f1fafc; padding: 5px 20px 15px\">
+				<table border=\ "0\" cellspacing=\ "0\" cellpadding=\ "0\" width=\
+					"500\" style="" "background-color: #ffffff; margin:auto; border: 1pxsolid #d6e6ea; padding: 10px\">
+					<tbody>
+						<tr>
+							<td style="" "padding: 10px; font-family:
+								Arial,Helvetica,sans-serif,\'Myriad
+								Pro\',Calibri; font-size: 12px; color: #555555; font-weight:bold; border-bottom: 1pxdotted #cccccc\">Your
+								Account Details</td>
+						</tr>
+						<tr>
+							<td style="" "padding: 10px; font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; font-size: 12px; color: #555555\"><p
+									style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #555555; font-size: 12px; margin: 0pt; padding: 0pt\">User
+									Name :</p></td>
+						</tr>
+						<tr>
+							<td style="" "padding: 10px; font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; font-size: 12px; color: #555555\"><p
+									style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #555555; font-size: 12px; margin: 0pt; padding: 0pt\">Info
+									:</p></td>
+						</tr>
+						<tr>
+							<td style="" "padding: 10px; font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; font-size: 12px; color: #555555\"><p
+									style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #555555; font-size: 12px; margin: 0pt; padding: 0pt\">
+									<a style="" "font-family: Arial,Helvetica,sans-serif,\'Myriad
+										Pro\',Calibri; font-size: 12px; color: #e42021\" href=\"%3Curl%3E\">Click
+										Here</a> to login your account
+								</p></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td style="""background-color: #f1fafc; padding: 5px 20px\"><p
+					style="" "font-family: Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #555555; font-size: 12px; margin: 0pt; padding: 0pt; font-style:italic\">Thanks
+					&amp; Regards,</p>
+				<p style="" "font-family: Arial,Helvetica,sans-serif,\'Myriad
+					Pro\',Calibri; color: #3194cc; font-size: 12px; margin: 5px 0pt 10px; padding: 0pt; font-style:italic; font-weight:bold\">
+					Research App <span style="""color: #de4845\">Team</span>
+				</p></td>
+		</tr>
+		<tr>
+			<td align=\ "center\" valign=\ "top\" style="""background-color: #555555; padding: 5px 20px\"><p
+					style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #ffffff; font-size: 11px; margin: 5px 0pt; padding: 0pt\">If
+					you have any queries, please feel free to contact us at
+					support@researchapp.com or</p>
+				<p style="" "font-family:Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #ffffff; font-size: 11px; margin: 5px 0pt; padding: 0pt\">by
+					phone at (0452) xxxx - xx - xxxx.</p>
+				<p style="" "font-family: Arial,Helvetica,sans-serif,\'MyriadPro\',Calibri; color: #ffffff; font-size: 11px; margin: 0pt 0pt 5px; padding: 0pt; text-align:center\">�
+					Research App. Deemsys Inc 2012. All rights reserved.</p></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

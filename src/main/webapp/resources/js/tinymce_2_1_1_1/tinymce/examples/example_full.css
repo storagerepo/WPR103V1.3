@@ -1,0 +1,74 @@
+/***************************************************************************
+
+ * Product Name				: AJ MATRIX DNA
+
+ * Version 				: V 3.1
+
+ * Release Date				: Saturday, October 31, 2009
+
+ * Copyright				: (C) 2009 AJ Square Inc
+
+ * Email				: info@ajsquare.com
+
+ * Company URL				: www.ajsquare.com
+
+ ***************************************************************************/
+
+/****************************************************************************
+* Licence Agreement: 
+
+ *     This program is a Commercial licensed software. You are not authorized to redistribute it and/or modify/and or sell it under any publication either user and enterprise versions of the License (or) any later version is applicable for the same. If you have received this software without a license, you must not use it, and you must destroy your copy of it immediately. If anybody illegally uses this software, please contact info@ajsquare.com.
+
+*****************************************************************************/
+
+body {
+	background-color: #FFFFFF;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	scrollbar-3dlight-color: #F0F0EE;
+	scrollbar-arrow-color: #676662;
+	scrollbar-base-color: #F0F0EE;
+	scrollbar-darkshadow-color: #DDDDDD;
+	scrollbar-face-color: #E0E0DD;
+	scrollbar-highlight-color: #F0F0EE;
+	scrollbar-shadow-color: #F0F0EE;
+	scrollbar-track-color: #F5F5F5;
+}
+
+td {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+pre {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+}
+
+.example1 {
+	font-weight: bold;
+	font-size: 14px
+}
+
+.example2 {
+	font-weight: bold;
+	font-size: 12px;
+	color: #FF0000
+}
+
+.tablerow1 {
+	background-color: #BBBBBB;
+}
+
+thead {
+	background-color: #FFBBBB;
+}
+
+tfoot {
+	background-color: #BBBBFF;
+}
+
+th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}

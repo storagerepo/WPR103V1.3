@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<body>
+<table border=\ "\\&quot;0\\&quot;\" cellspacing=\
+	"\\&quot;0\\&quot;\" cellpadding=\ "\\&quot;0\\&quot;\" width=\
+	"\\&quot;650\\&quot;\" align=\"\\&quot;center\\&quot;\">
+	<tbody>
+		<tr>
+			<td align=\ "\\&quot;left\\&quot;\" valign=\"\\&quot;top\\&quot;\">&nbsp;</td>
+		</tr>
+		<tr valign=\"\\&quot;top\\&quot;\">
+			<td align=\"\\&quot;left\\&quot;\"><h1>Welcomes You!</h1>
+				<p>Your Account successfully registered...</p>
+				<h5>Hi ,</h5>
+				<p>This is to confirm that you have successfully register.</p></td>
+		</tr>
+		<tr>
+			<td align=\ "\\&quot;left\\&quot;\" valign=\"\\&quot;top\\&quot;\">
+				<table border=\ "\\&quot;0\\&quot;\" cellspacing=\
+					"\\&quot;0\\&quot;\" cellpadding=\ "\\&quot;0\\&quot;\" width=\"\\&quot;500\\&quot;\">
+					<tbody>
+						<tr>
+							<td>Your Account Details</td>
+						</tr>
+						<tr>
+							<td><p>User Name :</p></td>
+						</tr>
+						<tr>
+							<td><p>Password :</p></td>
+						</tr>
+						<tr>
+							<td><p>
+									<a href=\"%5C%22%3Curl%3E%5C%22\">Click Here</a> to active your
+									account
+								</p></td>
+						</tr>
+					</tbody>
+				</table>
+			</td>
+		</tr>
+		<tr>
+			<td><p>Thanks &amp; Regards,</p>
+				<p>
+					Research App <span>Team</span>
+				</p></td>
+		</tr>
+		<tr>
+			<td align=\ "\\&quot;center\\&quot;\" valign=\"\\&quot;top\\&quot;\"><p>If
+					you have any queries, please feel free to contact us at
+					support@researchapp.com or</p>
+				<p>by phone at (0452) xxxx - xx - xxxx.</p>
+				<p>� Research App. Deemsys Inc 2012. All rights reserved.</p></td>
+		</tr>
+	</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,58 @@
+/***************************************************************************
+
+ * Product Name				: AJ MATRIX DNA
+
+ * Version 				: V 3.1
+
+ * Release Date				: Saturday, October 31, 2009
+
+ * Copyright				: (C) 2009 AJ Square Inc
+
+ * Email				: info@ajsquare.com
+
+ * Company URL				: www.ajsquare.com
+
+ ***************************************************************************/
+
+/****************************************************************************
+* Licence Agreement: 
+
+ *     This program is a Commercial licensed software. You are not authorized to redistribute it and/or modify/and or sell it under any publication either user and enterprise versions of the License (or) any later version is applicable for the same. If you have received this software without a license, you must not use it, and you must destroy your copy of it immediately. If anybody illegally uses this software, please contact info@ajsquare.com.
+
+*****************************************************************************/
+
+/* CSS file for advimage plugin popup */
+
+.mceLinkList, .mceAnchorList, #targetlist {
+	width: 280px;
+}
+
+.mceActionPanel {
+	margin-top: 7px;
+}
+
+.panel_wrapper div.current {
+	height: 320px;
+}
+
+#classlist, #title, #href {
+	width: 280px;
+}
+
+#popupurl, #popupname {
+	width: 200px;
+}
+
+#popupwidth, #popupheight, #popupleft, #popuptop {
+	width: 30px;
+	vertical-align: middle;
+	text-align: center;
+}
+
+#id, #style, #classes, #target, #dir, #hreflang, #lang, #charset, #type, #rel, #rev, #tabindex, #accesskey {
+	width: 200px;
+}
+
+#events_panel input {
+	width: 200px;
+}

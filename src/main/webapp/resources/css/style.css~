@@ -1,0 +1,721 @@
+/*-------------------------------------------------------------------------------------- 
+ * ! Admin template main css file
+ * @author			Vinith.G
+ * PIN              
+ * Base Product      
+ * Domain name      
+ * @company         AJ Square Inc (www.ajsquare.com)
+ * See copyright notices and details.
+ --------------------------------------------------------------------------------------*/
+* {
+	margin:0;
+	padding:0;
+	font-family:Arial, Helvetica, sans-serif, "Myriad Pro", Calibri;
+	font-size:12px;
+}
+.clear {
+	clear:both;
+	height:0;
+	width:0;
+	overflow:hidden;
+}
+a, img {
+	border:0;
+	outline:none;
+	text-decoration:none;
+}
+ul, li {
+	list-style:none;
+}
+#login_div {
+	width:385px;
+	margin:100px auto auto auto;
+}
+.login-top {
+	background:url(../images/max-properties.gif) no-repeat;
+	width:385px;
+	height:63px;
+	display:block;
+}
+.login-center {
+	background:#000 url(../images/login-c.gif) repeat-x;
+	width:345px;
+	padding:20px;
+	color:#fff;
+}
+ul.login-list {
+}
+ul.login-list li {
+	font-size:12px;
+	text-align:left;
+	color:#fff;
+	padding-bottom:10px;
+}
+ul.login-list li p {
+	font-size:12px;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+}
+.inputbx {
+	font-size:12px;
+	text-align:left;
+	color:#333;
+	background:url(../images/input-bg.gif) no-repeat;
+	width:262px;
+	display:block;
+	border:0;
+	outline:none;
+	padding:20px;
+	text-align:left;
+	margin-left:40px;
+}
+.submit-btn {
+	background:url(../images/submit-btn.gif) no-repeat;
+	width:260px;
+	height:56px;
+	display:block;
+	cursor:pointer;
+	display:block;
+	border:0;
+	outline:none;
+	margin:0 0 0 40px;
+}
+.submit-btn:hover {
+	background:url(../images/submit-btn-hov.gif) no-repeat;
+}
+.forgot-password {
+	background:url(../images/forgot-password.gif) no-repeat;
+	width:140px;
+	height:22px;
+	display:block;
+	cursor:pointer;
+	border:0;
+	outline:none;
+	margin-left:100px;
+}
+.forgot-password:hover {
+	background:url(../images/forgot-password-hov.gif) no-repeat;
+}
+.login-bottom {
+	background:url(../images/login-btm.gif) no-repeat;
+	width:385px;
+	height:61px;
+	display:block;
+}
+.error_div {
+	color:#ff0000;
+	font-size:12px;
+	text-align:center;
+}
+.error_div img {
+	vertical-align:middle;
+	margin-right:5px;
+}
+.sucess_div {
+	color:#0F6;
+	font-size:12px;
+	text-align:center;
+}
+.sucess_div img {
+	vertical-align:middle;
+	margin-right:5px;
+}
+/*main start here*/
+
+#main {
+/*	width:1000px;*/
+	margin:auto;
+}
+#header {
+	height:120px;
+}
+/* New CSS */ bg
+#right_content {
+	float:left;
+	width:100%;
+}
+.margin_table {
+	margin-bottom:10px;
+	margin:auto;
+}
+.headings {
+	padding: 0 20px;
+	border: 1px solid #CACACA;
+	text-shadow: 1px 1px 1px #fff;
+	background: #EAEAEA url(../images/bg_heading.png) repeat-x top;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	-moz-border-radius-topright: 10px;
+	-moz-border-radius-topleft: 10px;
+	letter-spacing: -1px;
+	height: 45px;
+}
+.headings h2 {
+	padding-top: 10px;
+	font-size: 20px;
+}
+.contentbox {
+	overflow: auto;
+	border: 1px solid #fff;
+	padding: 15px;
+	background: #fff url(../images/bg_fade_med.png) repeat-x top;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+}
+.nopad {
+	padding: 0;
+}
+.contentbox p {
+	padding-bottom: 15px;
+}
+.contentbox a, #notificationsbox a {
+	color: #666;
+}
+.contentbox a:hover, #notificationsbox a:hover {
+	color: #333;
+}
+.title td {
+	background:url(../images/bg_heading.png) left top repeat-x;
+	padding:0px 10px;
+	color:#333;
+	font-weight:bold;
+	font-size:14px;
+	line-height:40px;
+}
+.row1 td {
+	background:#fff;
+	padding:5px 10px;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:1px solid #e5e5e5;
+	font-size:12px;
+}
+.row2 td {
+	background:#f5f5f5;
+	padding:5px 10px;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:1px solid #e5e5e5;
+	font-size:12px;
+}
+.row1 td a, .row2 td a, .row_hover td a {
+	color:#1175c9;
+	font-size:12px;
+	
+}
+.row1 td a:hover, .row2 td a:hover, .row_hover td a:hover, .bullet2 a:hover {
+	color:#000;
+	text-decoration:none;
+}
+.row_hover td {
+	padding:3px 10px;
+	line-height:16px;
+	font-size:12px;
+	background:#fdfac7;
+	border-bottom:#bed8e5 solid 1px;
+}
+.extrabottom {
+	padding: 15px;
+	height: 40px;
+	background: url(../images/bg_fade_sml.png) repeat-x top;
+	border-radius:10px;
+	-moz-border-radius:10px;
+	margin-top:10px;
+}
+.extrabottom ul {
+	float: left;
+}
+.extrabottom li {
+	float: left;
+	padding-right: 25px;
+}
+.extrabottom li img {
+	float: left;
+	padding: 0 5px 0 0;
+}
+.bulkactions {
+	float: left;
+}
+ul.pagination {
+	float: right;
+	font-size: 11px;
+	clear: both; padding-top:10px;
+}
+ul.pagination li {
+	float: left;
+	padding-right: 5px;
+}
+ul.pagination li a {
+	padding: 3px 7px;
+	border: 1px solid #ccc;
+	text-decoration: none;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	display: block;
+	background: #fff url(../images/bg_fade_up.png) repeat-x bottom;
+}
+ul.pagination li.page a {
+	color: #fff;
+	font-weight: 700;
+}
+ul.pagination li.page a:hover {
+	color: #fff;
+}
+ul.pagination li.text a {
+	border: none;
+	text-decoration: underline;
+	padding: 0 5px 0 0;
+}
+ul.pagination li.text {
+	line-height: 2em;
+}
+ul.pagination li.page a {
+	background: #00789F url(../images/bg_buttons.png) repeat-x top;
+	border: 1px solid #0D87AE;
+}
+ul.pagination li.page a:hover {
+	background: #00789F url(../images/bg_buttons.png) 0 -50px;
+	border: 1px solid #005977;
+}
+.btn, .btnalt {
+	background: url(../images/bg_buttons.png) repeat-x top;
+	border: 1px solid #0D87AE!important;
+	color: #fff;
+	font-size: 11px;
+	padding: 7px 10px;
+	boirder-radius: 7px;
+	-moz-border-radius: 7px;
+	font-weight: 700;
+	border: none;
+}
+.btn:hover {
+	background: url(../images/bg_buttons.png) 0 -50px;
+	border: 1px solid #005977;
+	cursor: pointer;
+}
+.select_bttn {
+	padding: 7px 10px;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	-moz-border-radius: 5px; cursor:pointer;
+}
+/* New CSS */
+/* ------------------- Header Portion --------------------------- */
+ 
+.logo {
+	float:left;
+	padding:0 10px;
+}
+.top_link {
+	float:right;
+	padding:10px 10px 0 0;
+	color:#fff;
+}
+.date {
+	margin:5px 5px 0 0;
+	text-align:right;
+	line-height:18px;
+	color:#fff;
+}
+.cart {
+	float:left;
+	width:400px;
+}
+.cart_img {
+	margin:0 0 0 3px;
+	padding:0;
+	background:url(../images/cart-seperator.gif) 100% 0 repeat-y;
+	display:inline-block;
+	line-height:22px;
+	border:1px solid #fff;
+	width:46px; height:46px;
+	text-align:center;
+}
+.cart_txt {
+	margin:0 5px;
+	display:inline-block;
+	float:right;
+	line-height:22px;
+	color:#FFF;
+	font-size:14px;
+	font-weight:bold;
+}
+.cart_txt a {
+	color:#FFF;
+}
+.cart_txt a:hover {
+	text-decoration:underline;
+	color:#FFF;
+}
+/* ----------------------------- Menu Portion ----------------------- */
+.menu {
+	margin:16px 0 0 10px;
+	height:33px;
+	overflow:hidden;
+}
+.menu li {
+	float:left;
+	margin-right:8px;
+	text-transform:uppercase;
+}
+.select, .unselect:hover, .login:hover {
+	background:url(../images/menu-sel-left.gif) 0 0 no-repeat;
+	display:block;
+}
+.select span, .unselect:hover span, .login:hover span {
+	background:url(../images/menu-sel-right.gif) 100% 0 no-repeat;
+	color:#fff;
+	display:block;
+	line-height:30px;
+	padding:0 10px;
+	font-weight:bold;
+}
+.unselect {
+	background:url(../images/menu-unsel-left.gif) 0 0 no-repeat;
+	display:block;
+}
+.unselect span {
+	background:url(../images/menu-unsel-right.gif) 100% 0 no-repeat;
+	color:#fff;
+	display:block;
+	line-height:30px;
+	padding:0 10px;
+	font-weight:bold;
+}
+.login {
+	background:url(../images/login-sel-left.gif) 0 0 no-repeat;
+	display:block;
+}
+.login span {
+	background:url(../images/login-sel-right.gif) 100% 0 no-repeat;
+	color:#fff;
+	display:block;
+	line-height:30px;
+	padding:0 10px;
+	font-weight:bold;
+}
+/* ----------------------------- Menu Portion Ends ----------------------- */
+#footer {
+	font-size: 11px;
+	padding: 15px 10px;
+	clear: both;
+	background: url(../images/bg_footer.png) repeat-x bottom;
+	margin-bottom: 20px;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	-moz-border-radius-bottomright: 10px;
+	-moz-border-radius-bottomleft: 10px;
+	text-shadow: 1px 1px 1px #fff;
+}
+.info_div {
+	background:#FEFDE2;
+	border:1px solid #E5E181;
+	padding:5px;
+	text-align:right;
+}
+.info_div img {
+	vertical-align:middle;
+}
+.info_div label {
+	display:inline-block;
+	margin-left:10px;
+	font-size:11px;
+}
+.input_txtbx {
+	width:300px;
+	height:17px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+.input_cmbbx {
+	width:300px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+.input_cmbbx_cal1 { 	width:50px;	padding:3px;	background:#f8fbfd;	border:1px solid #9fb7cd;}
+.input_cmbbx_cal2 { 	width:100px;	padding:3px;	background:#f8fbfd;	border:1px solid #9fb7cd;}
+.input_txtarea {
+	width:300px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+.submit_btn {
+	background:url(../images/login_btn.png) 0 0 no-repeat;
+	width:78px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#fff;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
+	display:block;
+	border:0;
+	outline:none;
+	text-shadow:1px 1px 1px #555;
+}
+.submit_btn1 {
+	background:url(../images/login_btn1.png) 0 0 no-repeat;
+	width:125px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#d8ebff;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
+	display:block;
+	border:0;
+	outline:none;
+}
+.submit_btn2 {
+	background:url(../images/login_btn2.png) 0 0 no-repeat;
+	width:175px;
+	height:30px;
+	line-height:30px;
+	text-align:center;
+	color:#d8ebff;
+	font-weight:bold;
+	font-size:14px;
+	cursor:pointer;
+	display:block;
+	border:0;
+	outline:none;
+}
+.input_txt .chk_bx {
+	vertical-align:middle;
+}
+.tool_tip {
+	background:url(../images/tooltip.png) 0 0 no-repeat;
+	width:160px;
+	height:50px;
+	padding:15px 20px;
+	line-height:20px;
+}
+.status {
+	padding: 8px 10px 5px 10px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	text-shadow: 1px 1px 1px #fff;
+	overflow: auto;
+	margin-bottom: 20px;
+	clear: both;
+}
+.status img {
+	float: left;
+	padding-right: 5px;
+}
+.status p {
+	padding: 0;
+	margin: 0;
+}
+.status p span {
+	font-weight: 700;
+}
+.status .closestatus {
+	float: right;
+	color: #fff;
+	text-align: center;
+	margin-left: 10px;
+}
+.status .closestatus a {
+	position: relative;
+	color: #fff;
+	text-decoration: none;
+	padding: 5px;
+	width: 10px;
+	height: 10px;
+	display: block;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	line-height: .6em;
+	top: -2px;
+	text-shadow: none;
+}
+.warning {
+	border: 3px solid #BF9900;
+	background: #FEEB9C url(../images/bg_fade_yellow_med.png) repeat-x top;
+}
+.warning span {
+	color: #BF9900;
+}
+.warning .closestatus a {
+	background: #BF9900;
+}
+.warning .closestatus a:hover {
+	background: #9B7C00;
+}
+.success {
+	border: 3px solid #8EA534;
+	background: #CBDA8F url(../images/bg_fade_green_med.png) repeat-x top;
+}
+.success span {
+	color: #8EA534;
+}
+.success .closestatus a {
+	background: #8EA534;
+}
+.success .closestatus a:hover {
+	background: #829829;
+}
+.error {
+	border: 3px solid #990000;
+	background: #F5D0CD url(../images/bg_fade_red_med.png) repeat-x top;
+}
+.error span {
+	color: #990000;
+}
+.error .closestatus a {
+	background: #990000;
+}
+.error .closestatus a:hover {
+	background: #730D0D;
+}
+.info {
+	border: 3px solid #2FADD7;
+	background: #92D6ED url(../images/bg_fade_blue_med.png) repeat-x top;
+}
+.info span {
+	color: #0E7A9F;
+}
+.info .closestatus a {
+	background: #2FADD7;
+}
+.info .closestatus a:hover {
+	background: #228DB0;
+}
+
+.view_more { padding-top:10px;}
+.view_more a{ color:#666;}
+.view_more a:hover{ color:#333;  text-decoration:underline;}
+
+/*add user admin start here*/
+ul.prev{padding: 0 0 10px 0;}
+ul.prev li{margin-right:50px; float:left; margin-bottom:20px;}
+
+.row3 td {
+	background:#f5f5f5;
+	padding: 10px 5px 10px;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:none;
+	font-size:12px;
+}
+/*add user admin end here*/
+/*add participants start here*/
+/*.quck-txt{font-size:18px; padding:20px 0; font-weight:normal; font-style:italic}*/
+.quck-txt {
+    color: #0A86AF;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 20px 0;
+}
+.input_txtbx1 {
+	width:220px;
+	height:17px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+.input_cmbbx1 {
+	width:177px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+.input_txtarea1 {
+	width:220px;
+	padding:3px;
+	background:#f8fbfd;
+	border:1px solid #9fb7cd;
+}
+.combo_box2 {
+    color: #333333;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 12px;
+    width: 200px;
+	background: none repeat scroll 0 0 #F8FBFD;
+    border: 1px solid #9FB7CD;
+}
+
+.err {
+font-size:11px; font-style:italic; color:#ff0000;
+}
+
+
+.input_txtbx1 {
+    background: none repeat scroll 0 0 #F8FBFD;
+    border: 1px solid #9FB7CD;
+    height: 17px;
+    padding: 3px;
+    width: 170px;
+}
+
+.input_cmbbx2 {
+    background: none repeat scroll 0 0 #F8FBFD;
+    border: 1px solid #9FB7CD;
+    padding: 3px;
+    width: 185px;
+}
+
+
+.row12 td {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 0px solid #E5E5E5;
+    font-size: 12px;
+    line-height: 16px;
+    padding: 5px 10px;
+}
+.menu li img{vertical-align:top}
+
+/*add Participant Groups start here*/
+.row4 td {
+	background:#f5f5f5;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:none;
+	font-size:12px;
+}
+
+.row5 td {
+	background:#fff;
+	padding:5px 13px 1px 7px;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:none;
+	font-size:12px;
+	
+}
+.row6 td {
+	background:#fff;
+	font-size:11px;
+	line-height:16px;
+	border-bottom:none;
+	font-size:12px;
+}
+/*add participants Groups end here*/
+/*Delete button start here*/
+
+.icon1{background:url(../images/icons/remove.png) left top no-repeat; height:15px; width:72px;display:block;outline:none; border:0;}
+
+.del_div {
+	
+	padding:5px;
+	text-align:right;
+}
+.del_div img {
+	vertical-align:middle;
+}
+.del_div label {
+	display:inline-block;
+	margin-left:10px;
+	font-size:11px;
+}
+
+/*Delete button end here*/
