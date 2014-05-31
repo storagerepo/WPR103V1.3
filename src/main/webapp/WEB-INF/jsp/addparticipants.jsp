@@ -29,6 +29,9 @@
 												$("#datepicker").datepicker({minDate: 0});
 											});
 											
+											$(function() {
+												$("#datepicker_weekly_survey").datepicker({minDate: 0});
+											});
 											</script>	
  <script type="text/javascript">
 
@@ -454,11 +457,10 @@ var $in = $zipcode;
 												</td>
 											</tr>
 
-	<tr class="row1">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span> StartDate:</td>
-												<td valign="top" align="left" class="input_txt">
-											
+													class="err"></span>Message Sending Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
 										
 												<input type="text" name="startdate"
 										id="datepicker" class="input_txtbx1" value=""> </br> <font
@@ -466,7 +468,41 @@ var $in = $zipcode;
 													
 													 </font></td>
 											</tr>
-											
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Weekly Survey Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="weekly_survey_start_date"
+										id="datepicker_weekly_survey" class="input_txtbx1" value=""> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Primary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_primary_email"
+										id="id_provider_primary_email" class="input_txtbx1" value=""> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_primary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Secondary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_secondary_email"
+										id="id_provider_secondary_email" class="input_txtbx1" value=""> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_secondary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
 											<tr>
 												<td><p class="quck-txt">Group</p></td>
 											</tr>
@@ -698,7 +734,43 @@ var $in = $zipcode;
 												<td valign="top" align="left" class="input_txt" >
 												<input type="text" name="startdate" id="datepicker" value="${addparticipants.startdate}" class="input_txtbx1">
 												</td>
-											</tr>				
+											</tr>	
+											
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Weekly Survey Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="weekly_survey_start_date"
+										id="datepicker_weekly_survey" class="input_txtbx1" value="${addparticipants.weekly_survey_start_date}"> </br> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font></td>
+											</tr>
+														<tr class="row1">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Primary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_primary_email"
+										id="id_provider_primary_email" class="input_txtbx1" value="${addparticipants.provider_primary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_primary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Secondary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_secondary_email"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${addparticipants.provider_secondary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_secondary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
                 
                 <tr><td><input type="hidden" id="Provider_name" name="Provider_name" value="<sec:authentication property="principal.username" />"></tr>
 
@@ -736,8 +808,7 @@ var $in = $zipcode;
 									<td valign="top" align="left"><input type="submit" onclick="return validate('this')"
 										name="insert" class="submit_btn2" value="Add Participant">
 										<span id="spnsub"> </span></td>			
-										
-										 <td valign="middle" style="padding-left:10px;" ><a href="showaddparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Reset</a></td>
+											 <td valign="middle" style="padding-left:10px;" ><a href="showaddparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Reset</a></td>
 										 <td valign="middle" style="padding-left:10px;" ><a href="viewparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Cancel</a>
 										
 								</tr>

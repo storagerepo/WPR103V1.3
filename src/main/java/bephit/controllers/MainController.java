@@ -3,9 +3,16 @@ package bephit.controllers;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.security.Principal;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
+import org.joda.time.DateTime;
+import org.joda.time.DateTimeZone;
+import org.joda.time.format.DateTimeFormat;
+import org.joda.time.format.DateTimeFormatter;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -87,13 +94,7 @@ public class MainController {
 	public ModelAndView printWelcome(HttpServletRequest request,ModelMap model, Principal principal ) {
 		
        int role=mainDAO.getrole();	
-        
-    
-       
-       
-       
-       
-       	ParticipantsDetailsForm participantsDetailsForm1 = new ParticipantsDetailsForm();
+        ParticipantsDetailsForm participantsDetailsForm1 = new ParticipantsDetailsForm();
 		participantsDetailsForm1.setParticipantsDetails(mainDAO.getParticipants());         
         ParticipantsDetailsForm participantsDetailsForm = new ParticipantsDetailsForm();
 		participantsDetailsForm.setParticipantsDetails(mainDAO.getlimitedParticipants(1));
@@ -428,8 +429,8 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 	
 	@RequestMapping(value="/addparticipants", method=RequestMethod.POST)
 	public String showAddParticipants(HttpSession session,HttpServletRequest request,@ModelAttribute("participant") @Valid ParticipantsDetails participant,
-			BindingResult result,ModelMap model,Principal principal,String admin_id,String Desc) {		
-		
+			BindingResult result,ModelMap model,Principal principal,String admin_id,String Desc) throws ParseException {		
+	
 		session.setAttribute("addparticipants", participant);
 		
 		model.addAttribute("groupnames",participant.getGroup_name());
@@ -480,9 +481,6 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 	        model.addAttribute("adminuserform",adminuserform);
 			model.addAttribute("participantGroupForm",participantGroupForm);*/
 	        model.addAttribute("menu","participants");
-	        
-			
-		
 	        return "addparticipants";
 		}
 		else
@@ -534,7 +532,9 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 		model.addAttribute("participantsDetailsForm", participant);
 		/*ParticipantsGroupForm participantGroupForm = new ParticipantsGroupForm();
 		participantGroupForm.setParticipantGroups(partDAO.getGroups());
-        model.addAttribute("participantGroupForm", participantGroupForm);			
+        model.addAttribute("participantGroupForm", participantGroupForm);	
+        
+        		
 	*/	int a=mainDAO.setParticipants(participant,principal.getName(),groups,1);
 	/*if(a==1)
 	{
@@ -544,8 +544,9 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 	String participantid=mainDAO.getmaxparticipantid();	
 		 
 		 messagelogdao.getMessageLog(participantid);		
-	       
-	       mainDAO.insertWeeklylog();
+	     
+		 
+	     //  mainDAO.insertWeeklylog();
 	       
 	      		model.put("success","true");
 				
@@ -687,7 +688,7 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 		
 		 messagelogdao.getMessageLog(participantid);
 		 
-		 mainDAO.insertWeeklylog();
+		// mainDAO.insertWeeklylog();
 		//System.out.println("a"+a);
 
 				model.put("success","true");

@@ -21,8 +21,11 @@
 <script src="/bcresearchapp/resources/js/jquery.js"></script> -->
 <script type="text/javascript">
 $(function() {
-$("#datepicker").datepicker();
+$("#datepicker").datepicker({minDate: 0});
 });	
+$(function() {
+	$("#datepicker_weekly_survey").datepicker({minDate: 0});
+	});	
 </script>
 <script type="text/javascript">
 $(window).load(function(){
@@ -429,8 +432,52 @@ $("#city").keyup(function() {
 											</tr>
 											
 											
-											
-											
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Weekly Survey Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
+										<c:choose>
+										<c:when test="${not empty participantsDetails.weekly_survey_start_date}">
+										<input type="hidden" name="weekly_survey_start_date" 	
+										 class="input_txtbx1" value="${participantsDetails.weekly_survey_start_date}">
+										 <label>${participantsDetails.weekly_survey_start_date}</label>
+										</c:when>
+										<c:otherwise>
+										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
+										 class="input_txtbx1" value="${participantsDetails.weekly_survey_start_date}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font>
+													 </c:otherwise>
+											</c:choose>		 
+													 
+													 
+													 </td>
+											</tr>
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Primary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_primary_email"
+										id="id_provider_primary_email" class="input_txtbx1" value="${participantsDetails.provider_primary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_primary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Secondary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_secondary_email"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${participantsDetails.provider_secondary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_secondary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
 				<tr>
 				
 				<td><p class="quck-txt">Group</p></td></tr>

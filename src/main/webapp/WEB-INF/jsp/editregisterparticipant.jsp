@@ -9,11 +9,19 @@
 	rel="stylesheet" type="text/css" />
 
 <div id="right_content">
-	<link rel="stylesheet" url="resources/js/jquery.js" />
-	<script src="/bcresearchapp/resources/js/jquery.js"></script>
+	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+
+<link rel="stylesheet" href="resources/css/jquery-ui.css" />
+<script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="resources/js/jquery-ui.js" type="text/javascript"></script>
+<link rel="stylesheet" url="resources/js/jquery.js" />
 	
 	 <script type="text/javascript">
-
+	 $(function() {
+		 $("#datepicker_weekly_survey").datepicker({minDate: 0});
+		 });
+	 
+	 
  $(document).ready(function () {
         	
             $("#fname").bind('keypress', function (event) {
@@ -538,7 +546,7 @@ else
 				   <option value="07" <c:if test="${participantsDetails.time3=='07'}"><c:out value="selected"/></c:if>>7</option>
 				   <option value="08"  <c:if test="${participantsDetails.time3=='08'}"><c:out value="selected"/></c:if>>8</option>
 					<option value="09" <c:if test="${participantsDetails.time3=='09'}"><c:out value="selected"/></c:if>>9</option>
-				 <option value="10" <c:if test="${participantsDetails.time3=='10'}"><c:out value="selected"/></c:if>>10</option>
+					 <option value="10" <c:if test="${participantsDetails.time3=='10'}"><c:out value="selected"/></c:if>>10</option>
 					<option value="11"  <c:if test="${participantsDetails.time3=='11'}"><c:out value="selected"/></c:if>>11</option>
 					<option value="12" <c:if test="${participantsDetails.time3=='12'}"><c:out value="selected"/></c:if>>12</option>					
 															
@@ -549,8 +557,56 @@ else
 											<option value="PM" <c:if test="${participantsDetails.time3_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 				</select><br /></td>
 											</tr>
-
- <input 	type="hidden" class="input_txtbx1" id="username"  name="startdate"
+<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Weekly Survey Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
+										<c:choose>
+										<c:when test="${not empty participantsDetails.weekly_survey_start_date}">
+										<input type="hidden" name="weekly_survey_start_date" 	
+										 class="input_txtbx1" value="${participantsDetails.weekly_survey_start_date}">
+										 <label>${participantsDetails.weekly_survey_start_date}</label>
+										</c:when>
+										<c:otherwise>
+										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
+										 class="input_txtbx1" value="${participantsDetails.weekly_survey_start_date}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font>
+													 </c:otherwise>
+											</c:choose>		 
+													 
+													 
+													 </td>
+											</tr>
+											
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Primary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_primary_email"
+										id="id_provider_primary_email" class="input_txtbx1" value="${participantsDetails.provider_primary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_primary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Secondary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_secondary_email"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${participantsDetails.provider_secondary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"><form:errors
+																path="participant.provider_secondary_email"></form:errors></span>
+													
+													 </font></td>
+											</tr>
+											
+											
+										 <input type="hidden" class="input_txtbx1" id="username"  name="startdate"
 													 value="${participantsDetails.startdate}" />
 											<tr>
 												<td><p class="quck-txt">Provider & Groups</p></td>

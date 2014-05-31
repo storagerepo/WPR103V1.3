@@ -51,7 +51,7 @@ public class SchedulerService {
 				System.out.println("Start sending..!!");
 			//messageSender.sendSMS("6315896007","Test Message");
 				List<MessageList> message_details=new ArrayList<MessageList>();
-				message_details=messagescheduleDAO.Tosend_message();
+				//message_details=messagescheduleDAO.Tosend_message();
 				int group_num=0;			 
                 for(int j=0;j<message_details.size();j++)
                 {

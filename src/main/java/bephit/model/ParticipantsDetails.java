@@ -82,6 +82,34 @@ public class ParticipantsDetails {
 	
 	private String created_by;
 	private String message;
+	
+	private String weekly_survey_start_date;
+	
+	@Email
+	private String provider_primary_email;
+	
+	@Email
+	private String provider_secondary_email;
+	
+	
+	public String getProvider_primary_email() {
+		return provider_primary_email;
+	}
+	public void setProvider_primary_email(String provider_primary_email) {
+		this.provider_primary_email = provider_primary_email;
+	}
+	public String getProvider_secondary_email() {
+		return provider_secondary_email;
+	}
+	public void setProvider_secondary_email(String provider_secondary_email) {
+		this.provider_secondary_email = provider_secondary_email;
+	}
+	public String getWeekly_survey_start_date() {
+		return weekly_survey_start_date;
+	}
+	public void setWeekly_survey_start_date(String weekly_survey_start_date) {
+		this.weekly_survey_start_date = weekly_survey_start_date;
+	}
 	public ParticipantsDetails() {
 		super();
 	}
@@ -89,7 +117,8 @@ public class ParticipantsDetails {
 			String username, String password, String mobile_num, String gender,
 			String city, String education, String medical_details,
 			String time1, String time1_am_pm, String time2, String time2_am_pm,
-			String time3, String time3_am_pm, String startdate,
+			String time3, String time3_am_pm, String startdate,String weekly_survey_start_date,
+			String provider_primary_email,String provider_secondary_email,
 			String provider_name, String group_name, String age,
 			String date_of_join, String email_id, String created_by,
 			String message) {
@@ -111,6 +140,9 @@ public class ParticipantsDetails {
 		this.time3 = time3;
 		this.time3_am_pm = time3_am_pm;
 		this.startdate = startdate;
+		this.weekly_survey_start_date=weekly_survey_start_date;
+		this.provider_primary_email=provider_primary_email;
+		this.provider_secondary_email=provider_secondary_email;
 		Provider_name = provider_name;
 		this.group_name = group_name;
 		this.age = age;

@@ -9,9 +9,24 @@
             response.setHeader("Pragma", "no-cache");
 %>
 <title>:: Medical SMS::</title>
-<link rel="stylesheet" url="resources/js/jquery.js" />
-<script src="/bcresearchapp/resources/js/jquery.js"></script>
+
+<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
+<link rel="stylesheet" href="resources/css/jquery-ui.css" />
+<script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
+<script src="resources/js/jquery-ui.js" type="text/javascript"></script>
+
+<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
+	type="text/css" />
+<link href="<c:url value="/resources/css/inner-clr.css" />"
+	rel="stylesheet" type="text/css" />
+<script type="text/javascript">
+$(function() {
+	$("#datepicker_weekly_survey").datepicker({minDate: 0});
+});
+</script>
 <script>
+
+	 
 function regex()
 {
 var regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
@@ -289,16 +304,11 @@ function empty()
 		
 	}
 </Script>
-
-<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js">
+<!-- 
+<script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.10.2.min.js"> -->
 </head>
 <body>
 
-<script type="text/javascript" src="<c:url value="/resources/js/jquery.js" />"></script>
-<link href="<c:url value="/resources/css/style.css" />" rel="stylesheet"
-	type="text/css" />
-<link href="<c:url value="/resources/css/inner-clr.css" />"
-	rel="stylesheet" type="text/css" />
 
 <div class="logo">
 				<a href="#"><img src="<c:url value="/resources/images/logo_pink.png" />" alt="Company Logo" /></a>
@@ -581,6 +591,44 @@ function empty()
 																path="participant.time3"></form:errors> </span></font></td>
 											</tr>
 											
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Weekly Survey Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
+										 class="input_txtbx1" value=""> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font>
+													 
+													 </td>
+											</tr>
+											
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Primary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_primary_email"
+										id="id_provider_primary_email" class="input_txtbx1" value=""> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Secondary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_secondary_email"
+										id="id_provider_secondary_email" class="input_txtbx1" value=""> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font></td>
+											</tr>
+											
+											
 											<tr>
 												<td><p class="quck-txt">Provider & Groups</p></td>
 											</tr>
@@ -735,7 +783,7 @@ function empty()
 													class="err"></span> Education :</td>
 												<td valign="top" align="left" class="input_txt"><select
 													name="education" class="input_cmbbx1">
-			<option <c:if test="${participants.education==''}"><c:out value="selected"/></c:if>>--Select--</option>
+			<option value="" <c:if test="${participants.education==''}"><c:out value="selected"/></c:if>>--Select--</option>
 			<option value="Did not complete High School" <c:if test="${participants.education=='Did not complete High School'}"><c:out value="selected"/></c:if>>Did not complete High School</option>
 			<option value="High School or GED" <c:if test="${participants.education=='High School or GED'}"><c:out value="selected"/></c:if>>High School or GED</option>
 			<option value="Some College" <c:if test="${participants.education=='Some College'}"><c:out value="selected"/></c:if> >Some College</option>
@@ -862,6 +910,42 @@ function empty()
 								   </select>
 					<br/>
 												</td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Weekly Survey Start Date :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
+										 class="input_txtbx1" value="${participants.weekly_survey_start_date}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font>
+													 
+													 </td>
+											</tr>
+											
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Primary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_primary_email"
+										id="id_provider_primary_email" class="input_txtbx1" value="${participants.provider_primary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font></td>
+											</tr>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>Provider Secondary Email :</td>
+												<td valign="top" align="left" class="input_txt">									
+										
+												<input type="text" name="provider_secondary_email"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${participants.provider_secondary_email}"> <br/> <font
+													color="Red" size="+1"><span id="spnlname"></span>
+													
+													 </font></td>
 											</tr>
 											
 											<tr>
