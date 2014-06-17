@@ -5,7 +5,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="header.jsp"></jsp:include>
 <script type="text/javascript" src="js/jquery-1.3.2.js"></script>
-
+<script type="text/javascript" src="resources/js/jquery-2.0.3.js"></script>
+<script type="text/javascript" src="resources/js/phone-number-validation.js"></script>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" />
 <script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="resources/js/jquery-ui.js" type="text/javascript"></script>
@@ -34,6 +35,101 @@
 											});
 											</script>	
  <script type="text/javascript">
+ function validateEmail(sEmail) {
+	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if (filter.test(sEmail)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	    
+
+	}
+ 
+ function validateEmail(hmail) {
+	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if (filter.test(hmail)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	    
+
+	}
+ function validateEmail(pemail) {
+	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if (filter.test(pemail)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+	    
+
+	}
+$(document).ready(function() {
+	   $('#register').click(function() {
+	  
+			document.getElementById("spneid").innerHTML="";
+	   		document.getElementById("pemailerr").innerHTML="";
+	   		document.getElementById("ppemailerr").innerHTML="";
+		    var sEmail = document.getElementById('eid').value;		   
+	        var hmail=document.getElementById('id_provider_secondary_email').value;
+	       var pemail=document.getElementById('id_provider_primary_email').value; 
+	        if ($.trim(sEmail).length == 0) {
+	        	document.getElementById("spneid").innerHTML="Required Field Should not be empty";
+	        }
+	       
+	        if(sEmail!='')
+	        	{
+	        if (validateEmail(sEmail)) {	        
+	        	                
+	        }
+
+	        else{
+	        	document.getElementById("spneid").innerHTML="Invalid EmailId";	          
+	            return false;
+	            e.preventDefault();
+	        }
+	        	}
+	     
+	        if(hmail!='')
+	        	{
+	        
+	        	if (validateEmail(hmail)) {	        
+	                
+		        }
+	        	else
+	        		{
+	        	
+	        	document.getElementById("pemailerr").innerHTML="Invalid EmailId";	        	
+	            return false;
+	         
+	        		}
+	        	}
+	        if(pemail!='')
+        	{
+        
+        	if (validateEmail(pemail)) {	        
+                
+	        }
+        	else
+        		{
+        	
+        	document.getElementById("ppemailerr").innerHTML="Invalid EmailId";	        	
+            return false;
+         
+        		}
+        	}
+
+
+	    });
+
+	});
+
+ 
 
  $(document).ready(function () {
         	
@@ -137,7 +233,262 @@ $("#city").keyup(function() {
 
 
 <script>
+function checkdate()
+{
+	document.getElementById("surveyerr").innerHTML="";	
+	document.getElementById("startdateerr").innerHTML="";	
+	var datefield=document.getElementById("datepicker_weekly_survey").value;
+	var startdate=document.getElementById("datepicker").value;
+	//alert(datefield.substring(6,datefield.length)+""+datefield.substring(0,2)+""+datefield.substring(3,5));
+	var year1=datefield.substring(6,datefield.length);
+	var month1=datefield.substring(0,2);
+	var day1=datefield.substring(3,5);
+	var year2=startdate.substring(6,startdate.length);
+	var month2=startdate.substring(0,2);
+	var day2=startdate.substring(3,5);
+	var currentDate = new Date()
+    var day = currentDate.getDate()
+	var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()	 
+
+    		if(startdate!='')
+		{
+    if(year2==year)
+		{		
+		if(month2<month)
+			{			
+			document.getElementById("startdateerr").innerHTML="Invalid Date";			
+			}
+		else 
+		{
+		//alert("sdsdf");
+	if(month2<month)
+			{	
+		if(day2<day)
+			{
+			document.getElementById("startdateerr").innerHTML="Invalid Date";
+			
+			}
+		
+		
+			}
+	if(day2<day)
+	{
+		document.getElementById("startdateerr").innerHTML="Invalid Date";
+	
+	}
+
+		}
+		
+		}
+	
+	
+	
+	 if(year2<year)
+		{
+		 document.getElementById("startdateerr").innerHTML="Invalid Date";
+		}
+		}
+
+    
+    if(datefield!='')
+		{
+    if(year1==year)
+		{		
+		if(month1<month)
+			{			
+			document.getElementById("surveyerr").innerHTML="Invalid Date";			
+			}
+		else 
+		{
+		//alert("sdsdf");
+	if(month1<month)
+			{	
+		if(day1<day)
+			{
+			document.getElementById("surveyerr").innerHTML="Invalid Date";
+			
+			}
+		
+		
+			}
+	if(day1<day)
+	{
+		document.getElementById("surveyerr").innerHTML="Invalid Date";
+	
+	}
+
+		}
+		
+		}
+	
+	
+	
+	 if(year1<year)
+		{
+		 document.getElementById("surveyerr").innerHTML="Invalid Date";
+		}
+		}
+	 // alert(day + "/" + month + "/" + year)
+var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+
+
+if (document.getElementById("datepicker_weekly_survey").value !="") {
+  if (re.test(document.getElementById("datepicker_weekly_survey").value) == false) {
+	// alert("fsdfsd");
+	  document.getElementById("surveyerr").innerHTML="Invalid Date Format.";
+	  return false;
+  }
+}
+}
+
+
+
+
    function validate(){
+	   document.getElementById("surveyerr").innerHTML="";	
+		document.getElementById("startdateerr").innerHTML="";	
+		var datefield=document.getElementById("datepicker_weekly_survey").value;
+		var startdate=document.getElementById("datepicker").value;
+		//alert(datefield.substring(6,datefield.length)+""+datefield.substring(0,2)+""+datefield.substring(3,5));
+		var year1=datefield.substring(6,datefield.length);
+		var month1=datefield.substring(0,2);
+		var day1=datefield.substring(3,5);
+		var year2=startdate.substring(6,startdate.length);
+		var month2=startdate.substring(0,2);
+		var day2=startdate.substring(3,5);
+		var currentDate = new Date()
+	    var day = currentDate.getDate()
+		var month = currentDate.getMonth() + 1
+	    var year = currentDate.getFullYear()	 
+
+	    		if(startdate!='')
+			{
+	    if(year2==year)
+			{		
+			if(month2<month)
+				{			
+				document.getElementById("startdateerr").innerHTML="Invalid Date Format";			
+		return false;
+				}
+			else 
+			{
+			//alert("sdsdf");
+		if(month2<month)
+				{	
+			if(day2<day)
+				{
+				document.getElementById("startdateerr").innerHTML="Invalid Date Format";
+				return false;
+				}
+			
+			
+				}
+		if(day2<day)
+		{
+			document.getElementById("startdateerr").innerHTML="Invalid Date Format";
+			return false;
+		}
+
+			}
+			
+			}
+		
+		
+		
+		 if(year2<year)
+			{
+			 document.getElementById("startdateerr").innerHTML="Invalid Date Format";
+			 return false;
+			}
+			}
+
+	    
+	    if(datefield!='')
+			{
+	    if(year1==year)
+			{		
+			if(month1<month)
+				{			
+				document.getElementById("surveyerr").innerHTML="Invalid Date Format";		
+				return false;
+				}
+			else 
+			{
+			//alert("sdsdf");
+		if(month1<month)
+				{	
+			if(day1<day)
+				{
+				document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+				return false;
+				
+				}
+			
+			
+				}
+		if(day1<day)
+		{
+			document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+			return false;
+		
+		}
+
+			}
+			
+			}
+		
+		
+		
+		 if(year1<year)
+			{
+			 document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+			 return false;
+			}
+			}
+		 // alert(day + "/" + month + "/" + year)
+	var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+
+
+	if (document.getElementById("datepicker_weekly_survey").value !="") {
+	  if (re.test(document.getElementById("datepicker_weekly_survey").value) == false) {
+		// alert("fsdfsd");
+		  document.getElementById("surveyerr").innerHTML="Invalid Date Format.";
+		  return false;
+	  }
+	}
+	if (document.getElementById("datepicker").value !="") {
+		  if (re.test(document.getElementById("datepicker").value) == false) {
+			// alert("fsdfsd");
+			  document.getElementById("startdateerr").innerHTML="Invalid Date Format.";
+			  return false;
+		  }
+		}
+		var numbers = $('#mno').val();
+		if(numbers!='')
+		{
+		var result1 = validPhone(numbers);
+		if (result1.valid === false) {
+			
+			document.getElementById("spnmno").innerHTML="invalid phone number";				
+		return false;
+		}
+		}
+	
+		var $zipcode=document.getElementById("city").value;
+		var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
+		if($regex.test($zipcode)||$zipcode=='') 
+			{
+		var $in = $zipcode;		 
+			}
+			
+			else if($zipcode!='')
+				{										
+				$("#spncity").html('Not a valid Zipcode!!');
+				return false;
+				}
+	
+	   
 var fld = document.getElementById('group_name');
 var values = [];
 for (var i = 0; i < fld.options.length; i++) {
@@ -399,7 +750,7 @@ var $in = $zipcode;
 											<option value="11">11&nbsp;</option>
 											<option value="12">12&nbsp;</option>
 											</select>
-									<select name="time1_am_pm" class="input_cmbbx1" style="width:50px;">
+									<select name="time1_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM">AM&nbsp;</option>
 											<option value="PM">PM&nbsp;</option>
 								   </select><br/>
@@ -424,7 +775,7 @@ var $in = $zipcode;
 											<option value="11">11&nbsp;</option>
 											<option value="12">12&nbsp;</option>
 											</select>
-									<select name="time2_am_pm" class="input_cmbbx1" style="width:50px;">
+									<select name="time2_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM">AM&nbsp;</option>
 											<option value="PM">PM&nbsp;</option>
 								   </select>
@@ -450,7 +801,7 @@ var $in = $zipcode;
 											<option value="11">11&nbsp;</option>
 											<option value="12">12&nbsp;</option>
 											</select>
-									<select name="time3_am_pm" class="input_cmbbx1" style="width:50px;">
+									<select name="time3_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM">AM&nbsp;</option>
 											<option value="PM">PM&nbsp;</option>
 								   </select><br/>
@@ -459,12 +810,12 @@ var $in = $zipcode;
 
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span>Message Sending Start Date :</td>
+													class="err"></span>Start Date :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
 												<input type="text" name="startdate"
-										id="datepicker" class="input_txtbx1" value=""> </br> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+										id="datepicker" class="input_txtbx1" maxlength="10" value="" onblur="checkdate()"> </br> <font
+													color="Red" size="+1"><span id="startdateerr"></span>
 													
 													 </font></td>
 											</tr>
@@ -474,20 +825,20 @@ var $in = $zipcode;
 												<td valign="top" align="left" class="input_txt">									
 										
 												<input type="text" name="weekly_survey_start_date"
-										id="datepicker_weekly_survey" class="input_txtbx1" value=""> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+										id="datepicker_weekly_survey" maxlength="10" class="input_txtbx1" value="" onblur="checkdate()"> <br/> <font
+													color="Red" size="+1"><span id="surveyerr"></span>
 													
 													 </font></td>
 											</tr>
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span>Provider Primary Email :</td>
+													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_primary_email"
+												<input type="text" name="provider_email1"
 										id="id_provider_primary_email" class="input_txtbx1" value=""> <br/> <font
-													color="Red" size="+1"><span id="spnlname"><form:errors
-																path="participant.provider_primary_email"></form:errors></span>
+													color="Red" size="+1"><span id="ppemailerr"><form:errors
+																path="participant.provider_email1"></form:errors></span>
 													
 													 </font></td>
 											</tr>
@@ -496,10 +847,10 @@ var $in = $zipcode;
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_secondary_email"
+												<input type="text" name="provider_email2"
 										id="id_provider_secondary_email" class="input_txtbx1" value=""> <br/> <font
-													color="Red" size="+1"><span id="spnlname"><form:errors
-																path="participant.provider_secondary_email"></form:errors></span>
+													color="Red" size="+1"><span id="pemailerr"><form:errors
+																path="provider_email2"></form:errors></span>
 													
 													 </font></td>
 											</tr>
@@ -542,7 +893,7 @@ var $in = $zipcode;
 								<table align="right" border="0" cellspacing="0" cellpadding="0">
 								<tr >
 									<td valign="top" align="left" border="0"><input type="submit" onclick="return validate('this')"
-										name="insert" class="submit_btn2" value="Add Participant">
+									id="register"	name="insert" class="submit_btn2" value="Add Participant">
 										<span id="spnsub"> </span></td>
 										<td valign="middle" style="padding-left:10px;" ><input type="reset" class="submit_btn" value="Reset"></td>
 										 <td valign="middle" style="padding-left:10px;" ><a href="viewparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Cancel</a>
@@ -564,12 +915,12 @@ var $in = $zipcode;
                 
                   <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_id"  value="${addparticipants.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
                 </tr>
-                        <tr class="row2">
+                        <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name / Initials:</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.fname }" name="fname" /></br><span class="err"><form:errors path="participant.fname"></form:errors></span></td>
                 </tr>
 
-		 <tr class="row1">
+		 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> User Name :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.username }" name="username"/></br><font color="Red" size="+1"><span class="err"><c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Username already exists </font>	<br/></c:if><form:errors path="participant.username"></form:errors></font></td>
                 </tr> 
@@ -579,11 +930,21 @@ var $in = $zipcode;
                 </tr>
 		<tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Mobile No :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="10" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number already exists </font>	<br/></c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><font color="Red" size="+1"><span id="spnmno"><form:errors path="participant.mobile_num"></form:errors></span> </font></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="10" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
+                  Mobile Number already exists</span> </font>	<br/></c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><font color="Red" size="+1"><span id="spnmno"><form:errors path="participant.mobile_num"></form:errors></span> </font></td>
                 </tr> 
 		<tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Email-Id :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.email_id}" name="email_id" /></br><font color="Red" size="+1"><span class="err"><c:if test="${email_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font>	<br/></c:if><form:errors path="participant.email_id"></form:errors></span> </font></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="eid" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.email_id}" name="email_id" /></br><font color="Red" size="+1"><span id="spneid">
+                  <c:if test="${email_exists ==true}"> 
+                  <c:choose>
+                  <c:when test="${empty addparticipants.email_id}">
+                  
+                  </c:when>
+                  <c:otherwise><font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font></c:otherwise>
+                  </c:choose>
+                  	<br/>
+                  </c:if><form:errors path="participant.email_id"></form:errors></span> </font></td>
                 </tr> 
 
 		<tr class="row2">
@@ -665,7 +1026,7 @@ var $in = $zipcode;
 															
 												</select>
 												
-												<select name="time1_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time1_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${addparticipants.time1_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${addparticipants.time1_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>				
@@ -694,7 +1055,7 @@ var $in = $zipcode;
 															
 												</select>
 												
-												<select name="time2_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time2_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${addparticipants.time2_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${addparticipants.time2_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select><br/>
@@ -721,7 +1082,7 @@ var $in = $zipcode;
 															
 												</select>
 												
-												<select name="time3_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time3_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${addparticipants.time3_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${addparticipants.time3_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>
@@ -732,7 +1093,11 @@ var $in = $zipcode;
 												<td valign="middle" align="left" class="input_txt">
 													 Start Date :</td>
 												<td valign="top" align="left" class="input_txt" >
-												<input type="text" name="startdate" id="datepicker" value="${addparticipants.startdate}" class="input_txtbx1">
+												<input type="text" name="startdate" id="datepicker" value="${addparticipants.startdate}" class="input_txtbx1" onblur="checkdate()">
+												</br> <font
+													color="Red" size="+1"><span id="startdateerr"></span>
+													
+													 </font>
 												</td>
 											</tr>	
 											
@@ -742,20 +1107,20 @@ var $in = $zipcode;
 												<td valign="top" align="left" class="input_txt">									
 										
 												<input type="text" name="weekly_survey_start_date"
-										id="datepicker_weekly_survey" class="input_txtbx1" value="${addparticipants.weekly_survey_start_date}"> </br> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+										id="datepicker_weekly_survey" class="input_txtbx1" value="${addparticipants.weekly_survey_start_date}" onblur="checkdate()" > </br> <font
+													color="Red" size="+1"><span id="surveyerr"></span>
 													
 													 </font></td>
 											</tr>
 														<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span>Provider Primary Email :</td>
+													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_primary_email"
-										id="id_provider_primary_email" class="input_txtbx1" value="${addparticipants.provider_primary_email}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"><form:errors
-																path="participant.provider_primary_email"></form:errors></span>
+												<input type="text" name="provider_email1"
+										id="id_provider_primary_email" class="input_txtbx1" value="${addparticipants.provider_email1}"> <br/> <font
+													color="Red" size="+1"><span id="ppemailerr"><form:errors
+																path="participant.provider_email1"></form:errors></span>
 													
 													 </font></td>
 											</tr>
@@ -764,10 +1129,10 @@ var $in = $zipcode;
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_secondary_email"
-										id="id_provider_secondary_email" class="input_txtbx1" value="${addparticipants.provider_secondary_email}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"><form:errors
-																path="participant.provider_secondary_email"></form:errors></span>
+												<input type="text" name="provider_email2"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${addparticipants.provider_email2}"> <br/> <font
+													color="Red" size="+1"><span id="pemailerr"><form:errors
+																path="participant.provider_email2"></form:errors></span>
 													
 													 </font></td>
 											</tr>
@@ -780,7 +1145,7 @@ var $in = $zipcode;
 
 
     <tr class="row2">
-                  <td valign="top" align="left" class="input_txt">Select Group :</td>
+                  <td valign="top" align="left" class="input_txt"><span class="err">*</span>Select Group :</td>
                   <td valign="top" align="left" class="input_txt">
                   <select name="group_name" multiple="multiple" class="input_cmbbx1" id="group_name">
                   <c:forEach items="${participantGroupForm.participantGroups}" var="participantGroups" varStatus="status">
@@ -806,7 +1171,7 @@ var $in = $zipcode;
 								<tr >
 									<td valign="top" align="center">&nbsp;</td>
 									<td valign="top" align="left"><input type="submit" onclick="return validate('this')"
-										name="insert" class="submit_btn2" value="Add Participant">
+									id="register"	name="insert" class="submit_btn2" value="Add Participant">
 										<span id="spnsub"> </span></td>			
 											 <td valign="middle" style="padding-left:10px;" ><a href="showaddparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Reset</a></td>
 										 <td valign="middle" style="padding-left:10px;" ><a href="viewparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Cancel</a>

@@ -27,32 +27,42 @@
       
       </table> 
   
-							<table cellpadding="0" cellspacing="0" border="0" width="100%">
+							<table cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed; width="90%">
 				
 								<tr class="title">
+									<td valign="top" align="left" width="2%">SystemID</td>
+								    <td valign="top" align="left" width="10%">ID</td>
 									<td valign="top" align="left" width="10%">First&nbsp;Name</td>
-									<td valign="top" align="left" width="15%">Mobile Number</td>
-									<td valign="top" align="left" width="15%">Provider Name</td>
-									<td valign="top" align="left" width="10%">Age</td>
-									<td valign="top" align="left" width="10%">Time1</td>
-									<td valign="top" align="left" width="10%">Time2</td>
-									<td valign="top" align="left" width="10%">Time3</td>
+									<td valign="top" align="left" width="10%">User&nbsp;Name</td>
+									<td valign="top" align="left" width="10%">Password</td>
+									<td valign="top" align="left" width="15%">Mobile&nbsp;Number</td>
+									<td valign="top" align="left" width="30%">Preferred&nbsp;Time</td>
+									<td valign="top" align="left" width="10%">Email</td>
+									<td valign="top" align="left" width="10%">Start&nbsp;Date</td>									
+									<td valign="top" align="left" >Provider&nbsp;Primary&nbsp;Email</td>
+									<td valign="top" align="left" width="10%">Provider&nbsp;Secondary&nbsp;Email</td>								
 									
 									<!-- <td valign="top" align="left" width="15%">Education</td> -->
-									<td valign="top" align="left" width="10%">Date Of Join</td>
+									<td valign="top" align="left" width="10%">Join&nbsp;Date</td>
 								</tr>
 								<% int i=1; %>
 
 								<!-- Display Admin Userd here  Suresh--> 
 									<c:forEach items="${participantsDetailsForm.participantsDetails}" var="participantsDetails" varStatus="status">
 							       		<tr class="row<%=i %>" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
+								         <td valign="top" align="left" width="15%">${participantsDetails.participants_id}</td>
+								         <td valign="top" align="left" width="15%">${participantsDetails.id}</td>
 								          <td valign="top" align="left"  width="10%"> <a href="participantdetails?id=${participantsDetails.participants_id}&back=dashboard">${participantsDetails.fname}</a></td>
-											<td valign="top" align="left" width="15%">${participantsDetails.mobile_num}</td>
-											<td valign="top" align="left" width="15%">${participantsDetails.provider_name}</td>
-											<td valign="top" align="left" width="10%"><c:if test="${participantsDetails.age ne 'null'}"><c:out value="${participantsDetails.age}"></c:out></c:if></td>
-											<td valign="top" align="left" width="8%"><c:if test="${participantsDetails.time1 ne 'null'}">${participantsDetails.time1}<c:out value="${participantsDetails.time1_am_pm }"></c:out></c:if></td>
-											<td valign="top" align="left" width="8%"><c:if test="${participantsDetails.time2 ne 'null'}">${participantsDetails.time2}<c:out value="${participantsDetails.time2_am_pm }"></c:out></c:if></td>
-											<td valign="top" align="left" width="8%"> <c:if test="${participantsDetails.time3 ne 'null'}">${participantsDetails.time3}<c:out value="${participantsDetails.time3_am_pm }"></c:out></c:if></td>		<%-- 	<td valign="top" align="left" width="15%">${participantsDetails.education}</td> --%>
+										<td valign="top" align="left" width="15%">${participantsDetails.username}</td>
+										<td valign="top" align="left" width="15%">${participantsDetails.password}</td>
+											<td valign="top" align="left" width="15%">${participantsDetails.mobile_num}</td>									
+										<td valign="top" align="left" width="8%"><c:if test="${participantsDetails.time1 ne 'null'}">${participantsDetails.time1}<c:out value="${participantsDetails.time1_am_pm }"></c:out></c:if>
+											<c:if test="${participantsDetails.time2 ne 'null'}">${participantsDetails.time2}<c:out value="${participantsDetails.time2_am_pm }"></c:out></c:if>
+											 <c:if test="${participantsDetails.time3 ne 'null'}">${participantsDetails.time3}<c:out value="${participantsDetails.time3_am_pm }"></c:out></c:if></td>		<%-- 	<td valign="top" align="left" width="15%">${participantsDetails.education}</td> --%>
+											<td valign="top" align="left" width="10%" style="overflow:hidden" title="${participantsDetails.email_id}">${participantsDetails.email_id}</td>
+											<td valign="top" align="left" width="10%">${participantsDetails.weekly_survey_start_date}</td>
+											<td valign="top" align="left" width="10%">${participantsDetails.provider_email1}</td>
+											<td valign="top" align="left" width="10%">${participantsDetails.provider_email2}</td>
 											<td valign="top" align="left" width="10%">${participantsDetails.date_of_join}</td>
 										</tr>
 										<%if(i==1)
@@ -61,7 +71,7 @@
 											i=1;%>
 							    	</c:forEach>
 						    	
-<tr><td colspan="8">  <div class="extrabottom">
+<tr><td colspan="11" >  <div class="extrabottom">
               <ul class="pagination">
          <%--      <% int i=1;int j=0;%> 
               

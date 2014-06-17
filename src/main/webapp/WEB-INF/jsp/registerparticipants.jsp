@@ -9,7 +9,8 @@
             response.setHeader("Pragma", "no-cache");
 %>
 <title>:: Medical SMS::</title>
-
+ <script type="text/javascript" src="resources/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="resources/js/phone-number-validation.js"></script>
 <script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" />
 <script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
@@ -25,6 +26,100 @@ $(function() {
 });
 </script>
 <script>
+function validateEmail(sEmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(sEmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    
+
+}
+
+function validateEmail(hmail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(hmail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    
+
+}
+function validateEmail(pemail) {
+    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    if (filter.test(pemail)) {
+        return true;
+    }
+    else {
+        return false;
+    }
+    
+
+}
+$(document).ready(function() {
+   $('#register').click(function() {
+
+		document.getElementById("spneid").innerHTML="";
+   		document.getElementById("pemailerr").innerHTML="";
+   		document.getElementById("ppemailerr").innerHTML="";
+	    var sEmail = document.getElementById('eid').value;		   
+        var hmail=document.getElementById('id_provider_secondary_email').value;
+       var pemail=document.getElementById('id_provider_primary_email').value; 
+      
+        if ($.trim(sEmail).length == 0) {
+        	document.getElementById("spneid").innerHTML="Required Field Should not be empty";
+        }
+       
+        if(sEmail!='')
+        	{
+        if (validateEmail(sEmail)) {	        
+        	                
+        }
+
+        else{
+        	document.getElementById("spneid").innerHTML="Invalid EmailId";	          
+            return false;
+            e.preventDefault();
+        }
+        	}
+     
+        if(hmail!='')
+        	{
+        
+        	if (validateEmail(hmail)) {	        
+                
+	        }
+        	else
+        		{
+        	
+        	document.getElementById("pemailerr").innerHTML="Invalid EmailId";	        	
+            return false;
+         
+        		}
+        	}
+        if(pemail!='')
+    	{
+    
+    	if (validateEmail(pemail)) {	        
+            
+        }
+    	else
+    		{
+    	
+    	document.getElementById("ppemailerr").innerHTML="Invalid EmailId";	        	
+        return false;
+     
+    		}
+    	}
+
+
+    });
+
+});
 
 	 
 function regex()
@@ -179,9 +274,170 @@ function doAjaxPost() {
 
 
 <script>
+function phonenumber(inputtxt)  
+{
+	
+  var phoneno = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;  
+  var mobile=document.getElementById("mno").value;
+ 
+  if(mobile.match(/^(\+\d{1,3}[- ]?)?\d{10}$/) && ! (mobile.match(/0{5,}/)))  
+     {  
+       return true;    
+     }  
+   else  
+     {  
+       alert("Not a valid Phone Number");  
+       return false;  
+     }  
+}  
+function checkdate()
+{
+	document.getElementById("surveyerr").innerHTML="";	
+	var datefield=document.getElementById("datepicker_weekly_survey").value;
+	//alert(datefield.substring(6,datefield.length)+""+datefield.substring(0,2)+""+datefield.substring(3,5));
+	var year1=datefield.substring(6,datefield.length);
+	var month1=datefield.substring(0,2);
+	var day1=datefield.substring(3,5);
+	var currentDate = new Date()
+    var day = currentDate.getDate()
+   // alert("day1"+day1+"day"+day);
+	var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()	 
+	if(datefield!='')
+		{
+    if(year1==year)
+		{		
+		if(month1<month)
+			{			
+			document.getElementById("surveyerr").innerHTML="Invalid Date";			
+			}
+		else 
+		{
+		//alert("sdsdf");
+	if(month1<month)
+			{	
+		if(day1<day)
+			{
+			document.getElementById("surveyerr").innerHTML="Invalid Date";
+			
+			}
+		
+		
+			}
+	if(day1<day)
+	{
+		document.getElementById("surveyerr").innerHTML="Invalid Date";
+	
+	}
+
+		}
+		
+		}
+	
+	
+	
+	 if(year1<year)
+		{
+		 document.getElementById("surveyerr").innerHTML="Invalid Date";
+		}
+		}
+	 // alert(day + "/" + month + "/" + year)
+var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+
+
+if (document.getElementById("datepicker_weekly_survey").value !="") {
+  if (re.test(document.getElementById("datepicker_weekly_survey").value) == false) {
+	// alert("fsdfsd");
+	  document.getElementById("surveyerr").innerHTML="Invalid Date Format.";
+	  return false;
+  }
+}
+}
+
+
 function validate(){
-	//alert("yes");
+	var datefield=document.getElementById("datepicker_weekly_survey").value;
+	//alert(datefield.substring(6,datefield.length)+""+datefield.substring(0,2)+""+datefield.substring(3,5));
+	var year1=datefield.substring(6,datefield.length);
+	var month1=datefield.substring(0,2);
+	var day1=datefield.substring(3,5);
+	var currentDate = new Date()
+    var day = currentDate.getDate()
+   // alert("day1"+day1+"day"+day);
+	var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()	 
+	if(datefield!='')
+		{
+    if(year1==year)
+		{			
+		if(month1<month)
+			{			
+			document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+			return false;
+			}
+		else 
+		{		
+	if(month1<month)
+			{	
+		if(day1<day)
+			{
+			document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+			return false;
+			}}
+	if(day1<day)
+	{
+		document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+		return false;
+	}}}
+ if(year1<year)
+		{
+		 document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+		return false;
+		}
+		}	
+
+var numbers = $('#mno').val();
+if(numbers!='')
+{
+var result1 = validPhone(numbers);
+if (result1.valid === false) {
+	
+	document.getElementById("spnmno").innerHTML="invalid phone number";
+	
+return false;
+}
+}
+var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+
+
+if (document.getElementById("datepicker_weekly_survey").value !="") {
+  if (re.test(document.getElementById("datepicker_weekly_survey").value) == false) {
+	// alert("fsdfsd");
+	  document.getElementById("surveyerr").innerHTML="Invalid Date Format";
+	  return false;
+  }
+}
+//document.getElementById("pro").innerHTML='';
 document.getElementById("spngrp").innerHTML='';
+var $zipcode=document.getElementById("city").value;
+//alert("sdasd"+$zipcode);	
+
+var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
+
+
+if($regex.test($zipcode)||$zipcode=='') 
+{
+
+	var $in = $zipcode;		 
+}
+
+else if($zipcode!='')
+	{
+	//	alert($zipcode);	
+	$("#spncity").html('Not a valid Zipcode!!');
+	return false;
+	}
+
 /* var $firstname=document.getElementById("fname").value;
 alert($firstname);
 var $fregex = "^[^<>'\"/;`%]*$";
@@ -230,7 +486,7 @@ alert("You can select only 4 groups");
 		{
 				
 		$("#spncity").html('Not a valid Zipcode!!');
-		
+		return false;
 		}
 		if(document.getElementsByName("group_name").value=='')
 		{
@@ -260,6 +516,7 @@ if($regex.test($zipcode)||$zipcode=='')
 		/* alert("no"); */
 		
 		$("#spncity").html('Not a valid Zipcode!!');
+		return false;
 /* alert(document.getElementById("Provider_name").value); */
 if(document.getElementById("Provider_name").value!='null')
 {
@@ -354,7 +611,19 @@ function empty()
 									<td align="left" valign="top" width="50%" style="padding-right: 25px;">
 										<h2 class="quck-txt">Quick Info</h2>
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
-											<tr class="row2">
+										<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>ID:</td>
+												<td valign="top" align="left" class="input_txt"><input
+													type="text" class="input_txtbx1" id="id" name="id" /><br />
+													<font color="Red" size="+1"> <span id="spnfname">
+														
+													</span></font></td>
+
+											</tr>
+										
+										
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name :</td>
 												<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="fname" /><br />
@@ -365,7 +634,7 @@ function empty()
 											</tr>
 
 											
-											<tr class="row1">
+											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span><span
 													class="err"></span> User Name :</td>
@@ -381,14 +650,14 @@ function empty()
 											</tr>
 											
 											
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Mobile No :</td>
 												<td valign="top" align="left" class="input_txt"><input min="10" maxlength="10"
 													type="text" class="input_txtbx1" id="mno"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');"
-													value="${mobile_num}" name="mobile_num"/></br> 
+													value="${mobile_num}" name="mobile_num" /></br> 
 												<c:if test="${mobile_exists ==true}">
 													<font
 													color="Red" size="+1"><span id="spnmno"></span>Mobile name already exists </font>
@@ -398,13 +667,15 @@ function empty()
 													color="Red" size="+1"><span id="spnmno"><form:errors
 																path="participant.mobile_num"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row1">
+											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Email-Id :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="eid"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="email_id" /></br>
+												
+												
 												<c:if test="${email_exists ==true}">
 													<font
 													color="Red" size="+1"><span id="spnlname"></span>Email id already exists </font>
@@ -412,7 +683,7 @@ function empty()
 													<font color="Red" size="+1"><span id="spneid"><form:errors
 																path="participant.email_id"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Gender :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -420,7 +691,7 @@ function empty()
 													checked="true">Male&nbsp;&nbsp;&nbsp;<input
 													type="radio" name="gender" value="1" class="input_txt">Female&nbsp;&nbsp;&nbsp;</td>
 											</tr>
-											<tr class="row1">
+											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> <%--  Age :<c:forEach begin="1" end="100" var="i">
                                  <option value="${i}" <c:if test ="${participantsDetails.age == i}">select</c:if>>${i}</option>
@@ -446,7 +717,7 @@ function empty()
 														</font></td>
 											</tr>
 
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Zipcode :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -459,7 +730,7 @@ function empty()
 													
 													<form:errors path="participant.city"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row1">
+											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Education :</td>
 												<td valign="top" align="left" class="input_txt"><select
@@ -476,7 +747,7 @@ function empty()
 																path="participant.education"></form:errors> </span></font></td>
 
 											</tr>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="top" align="left" class="input_txt"><span
 													class="err"></span> Medical
 													Details :</td>
@@ -522,7 +793,7 @@ function empty()
 											<option value="11">11&nbsp;</option>
 											<option value="12">12&nbsp;</option>
 											</select>
-									<select name="time1_am_pm" class="input_cmbbx1" style="width:50px;">
+									<select name="time1_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM">AM&nbsp;</option>
 											<option value="PM">PM&nbsp;</option>
 								   </select><br/>
@@ -550,7 +821,7 @@ function empty()
 											<option value="11">11&nbsp;</option>
 											<option value="12">12&nbsp;</option>
 											</select>
-									<select name="time2_am_pm" class="input_cmbbx1" style="width:50px;">
+									<select name="time2_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM">AM&nbsp;</option>
 											<option value="PM">PM&nbsp;</option>
 								   </select>
@@ -582,7 +853,7 @@ function empty()
 											<option value="11">11&nbsp;</option>
 											<option value="12">12&nbsp;</option>
 											</select>
-									<select name="time3_am_pm" class="input_cmbbx1" style="width:50px;">
+									<select name="time3_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM">AM&nbsp;</option>
 											<option value="PM">PM&nbsp;</option>
 								   </select><br/>																					
@@ -597,8 +868,8 @@ function empty()
 												<td valign="top" align="left" class="input_txt">									
 										
 										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
-										 class="input_txtbx1" value=""> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+										 class="input_txtbx1" value="" onblur="checkdate()"> <br/> <font
+													color="Red" size="+1"><span id="surveyerr"></span>
 													
 													 </font>
 													 
@@ -607,12 +878,12 @@ function empty()
 											
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span>Provider Primary Email :</td>
+													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_primary_email"
+												<input type="text" name="provider_email1"
 										id="id_provider_primary_email" class="input_txtbx1" value=""> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+													color="Red" size="+1"><span id="ppemailerr"></span>
 													
 													 </font></td>
 											</tr>
@@ -621,9 +892,9 @@ function empty()
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_secondary_email"
+												<input type="text" name="provider_email2"
 										id="id_provider_secondary_email" class="input_txtbx1" value=""> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+													color="Red" size="+1"><span id="pemailerr"></span>
 													
 													 </font></td>
 											</tr>
@@ -694,7 +965,18 @@ function empty()
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
 						
 							<table cellpadding="0" cellspacing="0" border="0" width="100%" >
-											<tr class="row2">
+										<tr class="row2">
+												<td valign="middle" align="left" class="input_txt"><span
+													class="err"></span>ID:</td>
+												<td valign="top" align="left" class="input_txt"><input
+													type="text" class="input_txtbx1" id="id" name="id" value="${participants.id}"/><br />
+													<font color="Red" size="+1"> <span id="spnfname">
+														
+													</span></font></td>
+
+											</tr>
+										
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> First Name :</td>
 													<input type="hidden" class="input_txtbx1" id="inp_id" value="${participants.participants_id }" name="participants_id" />
@@ -705,7 +987,7 @@ function empty()
 													</span></font></td>
 
 											</tr>											
-												<tr class="row1">
+												<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span><span
 													class="err"></span> User Name :</td>
@@ -716,7 +998,7 @@ function empty()
 															path="participant.username"></form:errors></font></td>
 											</tr>
 											<input type="hidden" name="password" value="sa"/>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Mobile No :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -727,15 +1009,23 @@ function empty()
 													color="Red" size="+1"><span id="spnmno"><c:if test="${mobile_exists ==true}">Mobile number already exists</c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><form:errors
 																path="participant.mobile_num"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row1">
+											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Email-Id :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="eid"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="email_id" value="${participants.email_id}" /></br>
-													 <font color="Red" size="+1"><span id="spnlname"><c:if test="${email_exists ==true}">Email-id already exists</c:if></span><form:errors
-															path="participant.email_id"></form:errors></font></td>
+													 <font color="Red" size="+1"><span id="spneid">
+													 <c:if test="${email_exists ==true}">
+				  <c:choose>
+                  <c:when test="${empty participants.email_id}">
+                  
+                  </c:when>
+                  <c:otherwise><font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font></c:otherwise>
+                  </c:choose>											 
+			    </c:if><form:errors
+															path="participant.email_id"></form:errors></span></font></td>
 											</tr>
 											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span class="err"></span> Gender :</td>
@@ -842,7 +1132,7 @@ function empty()
 															
 												</select>
 												
-												<select name="time1_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time1_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${participants.time1_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${participants.time1_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>				
@@ -876,7 +1166,7 @@ function empty()
 															
 												</select>
 												
-												<select name="time2_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time2_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${participants.time2_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${participants.time2_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>
@@ -904,7 +1194,7 @@ function empty()
 															
 												</select>
 												
-												<select name="time3_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time3_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${participants.time3_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${participants.time3_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>
@@ -917,8 +1207,8 @@ function empty()
 												<td valign="top" align="left" class="input_txt">									
 										
 										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
-										 class="input_txtbx1" value="${participants.weekly_survey_start_date}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+										 class="input_txtbx1" value="${participants.weekly_survey_start_date}" onblur="checkdate()"> <br/> <font
+													color="Red" size="+1"><span id="surveyerr"></span>
 													
 													 </font>
 													 
@@ -927,23 +1217,22 @@ function empty()
 											
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span>Provider Primary Email :</td>
+													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_primary_email"
-										id="id_provider_primary_email" class="input_txtbx1" value="${participants.provider_primary_email}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
-													
-													 </font></td>
+												<input type="text" name="provider_email1" id="id_provider_primary_email" class="input_txtbx1" value="${participants.provider_email1}"> <br/> <font
+													color="Red" size="+1"><span id="ppemailerr">
+													<form:errors path="participant.provider_email1"></form:errors>
+													 </font></span></td>
 											</tr>
 											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_secondary_email"
-										id="id_provider_secondary_email" class="input_txtbx1" value="${participants.provider_secondary_email}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"></span>
+												<input type="text" name="provider_email2"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${participants.provider_email2}"> <br/> <font
+													color="Red" size="+1"><span id="pemailerr"></span>
 													
 													 </font></td>
 											</tr>
@@ -964,9 +1253,12 @@ function empty()
 														</c:forEach>
 
 												</select>
-												</br> <font color="Red" size="+1"><span id="">
+												</br> <font color="Red" size="+1">
+												<script>
+												document.getElementId("pro").innerHTML="";
+												</script>
 												<c:if test="${provider=='null'}">												
-												<form:errors path="participant.group_name"></form:errors>			
+											<span id="pro">	<form:errors path="participant.group_name"></form:errors>			
 												</c:if> </span></font>
 												 </td>
 											</tr>
@@ -1016,10 +1308,12 @@ function empty()
 						
 						
 						
-							<table align="right"><tr><td valign="middle"  style="padding-left:500px;"><input type="submit" class="submit_btn" value="Register" onclick="return validate('this')"></td>
+							<table align="right"><tr><td valign="middle"  style="padding-left:500px;"><input type="submit" class="submit_btn" value="Register" id="register" onclick="return validate('this')"></td>
 							<td valign="middle" style="padding-left:10px;"><a href="showRegisterParticipant" class="submit_btn" style="color:white">Reset</a></td>
 							<td valign="middle" style="padding-left:10px;" ><a href="login" class="submit_btn" style="color:white" text-decoration: none;>Cancel</a></td></tr></table>
 					</table>
+					
+					
 			
 
 <jsp:include page="footer.jsp"></jsp:include>

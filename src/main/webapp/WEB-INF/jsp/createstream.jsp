@@ -33,9 +33,19 @@ $.ajax({type : "POST", url: "/bcresearchapp/streammaxID",
    $('#current_stream').html(response);
    $('#streamId').val(response);
 }});
-$("#textingcontacts").keyup(function() {
+/* $("#textingcontacts").keyup(function() {
 	$("#tc").html('');
 	var intRegex = /^\d+$/;
+	var tc=document.getElementById("textingcontacts").value;
+	
+	if(tc!='')
+		{
+	if(tc>1000)
+	 {
+	 document.getElementById("tc").innerHTML="Length is too long";
+	 return false;
+	 }
+		}
 	if(intRegex.test($(this).val())||$(this).val()=='') 
 	{
 		var $in = $(this).val();
@@ -46,8 +56,8 @@ $("#textingcontacts").keyup(function() {
 			for($i=1;$i<=$in;$i++)
 				{
 				
-			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%">Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols="" ></textarea></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
-			 
+			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols=""></textarea><br><font color="Red" size="+1"><span id="msgerr'+$i+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
+			// alert("newdiv"+newdiv);
 			
 				}
 			
@@ -62,8 +72,51 @@ $("#textingcontacts").keyup(function() {
 		}
 }).keydown(function() {
     oldValue = $(this).val();
-})
+}) */
 });
+$(document).ready(function(){
+	  $("#textingcontacts").blur(function(){
+	
+	var intRegex = /^\d+$/;
+	var tc=document.getElementById("textingcontacts").value;
+	
+	if(tc!='')
+		{
+	if(tc>1000)
+	 {
+	 document.getElementById("tc").innerHTML="Length is too long";
+	 return false;
+	 }
+		}
+	if(intRegex.test($(this).val())||$(this).val()=='') 
+	{
+		var $in = $(this).val();
+		var $newdiv="";
+	  var $i=0;
+			
+		var newdiv="";
+			for($i=1;$i<=$in;$i++)
+				{
+				
+			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols=""></textarea><br><font color="Red" size="+1"><span id="msgerr'+$i+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
+			// alert("newdiv"+newdiv);
+			
+				}
+			
+			$("#result").html(newdiv);
+			$("#tc").html('');
+	  
+	}
+	else if($(this).val()!='')
+		{
+		
+		$("#tc").html('<br/> Kindly give numbers only!!');
+		}
+
+	
+});
+  });
+
 </script>
 
 <!-- <a javascript:void(0);" onclick="removechoice('+$im+')" style="text-decoration:none;"><input type="submit" class="submit_btn" value="CANCEL"  /></a> -->
@@ -99,14 +152,14 @@ $("#textingcontacts").keyup(function() {
                 <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>No of Messages:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">   
-<input id="textingcontacts" name="textingcontacts" class="input_txtbx" width="70%" type="text"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> 
+<input id="textingcontacts" name="textingcontacts" maxlength="4" class="input_txtbx" width="70%" type="text" onblur="message()"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> 
 <br>
 	<span id="tc"  style="color:red;font-size: 12px" class="err"><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></td>
                 </tr>
                  <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Description :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea name="description" class="input_txtarea"  rows="5" cols="" id="description"/></textarea></br>	<font
-													color="Red" size="+1"><span id="des" style="color:red;font-size: 12px" class="err"><form:errors path="streamDetails.description"></form:errors></span></font></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea name="description" class="input_txtarea"  rows="5" cols="" id="description"/></textarea></br>	
+                  <font color="Red" size="+1"><span id="des" style="color:red;font-size: 12px" class="err"><form:errors path="streamDetails.description"></form:errors></span></font></td>
                 </tr>
                 <tr class="row1">
                   <!-- <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Message 1 :</td>
@@ -133,7 +186,7 @@ $("#textingcontacts").keyup(function() {
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>No of Messages:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">   
-<input id="textingcontacts" name="textingcontacts" class="input_txtbx" width="70%" type="text" value="${messagestreamdetails.textingcontacts}"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> <span id="tc" class="err"><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></td>
+<input id="textingcontacts" maxlength="4" name="textingcontacts" class="input_txtbx" width="70%" type="text" value="${messagestreamdetails.textingcontacts}"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> <span id="tc" class="err"><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Description :</td>
@@ -143,9 +196,10 @@ $("#textingcontacts").keyup(function() {
                  <c:forEach items="${messages}" var="message" varStatus="status">
                   <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Message <%=i%> :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtarea" name="message[]" rows="5" cols="" id="inp_id5" />${message}</textarea>
+                  <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtarea" name="message[]" rows="5" cols="" id="message" />${message}</textarea>
+                </br><font color="Red" size="+1"><span id="msgerr<%=i%>" class="err"></span></font>
                   <% i=i+1; %>             
-                   </br><span class="err"></span></td>
+                 </td>
                 </tr> 
                 </c:forEach> 
                 <td valign="middle" align="right" colspan="2" class="input_txt">
@@ -181,11 +235,12 @@ function addMultichoice(divName)
 {
 var xx=document.getElementsByName('message[]').length;
 var $in = xx+1;
-
+//alert("in"+$in);
 	
 	var newdiv = document.createElement('div');
 
-	newdiv.innerHTML = '<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%">Message '+$in+' :</td><td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtarea" name="message[]" rows="5" cols="" id="inp_id5" ></textarea></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
+	newdiv.innerHTML = '<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%">Message '+$in+' :</td><td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtarea" name="message[]" rows="5" cols="" id="message'+$in+'" ></textarea><br><font color="Red" size="+1"><span id="msgerr'+$in+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
+	//alert(newdiv);
 	document.getElementById(divName).appendChild(newdiv);
 	$im++;
 	flagm++;
@@ -202,20 +257,80 @@ var $in = xx+1;
 	}
 	function validate()
 	{
+		var str=document.getElementById("streamName").value;
+		var tc=document.getElementById("textingcontacts").value;
+		
+		var des=document.getElementById("description").value;
+		
 		document.getElementById("sn").innerHTML="";
 		 document.getElementById("tc").innerHTML="";
 		 document.getElementById("des").innerHTML="";
 	
-	var str=document.getElementById("streamName").value;
-	var tc=document.getElementById("textingcontacts").value;
-	var des=document.getElementById("description").value;
-	if(str=='' && tc=="" && des=="")
-		{
-		 document.getElementById("sn").innerHTML="Required Field Should Not be empty";
-		 document.getElementById("tc").innerHTML="Required Field Should Not be empty";
-		 document.getElementById("des").innerHTML="Required Field Should Not be empty";
-		 return false;
-		}
+		if(tc!='')
+			{
+		 if(tc==0)
+			{
+			document.getElementById("tc").innerHTML="Kindly give No Of Messages greater than 0";
+			return false;
+			}
+		 if(tc>1000)
+			 {
+			 document.getElementById("tc").innerHTML="Length is too long";
+				return false;
+			 }
+			}
+		 if(str=='' && tc=='' && des=='')
+			{
+			document.getElementById("sn").innerHTML="Required Field Should Not be empty";
+			document.getElementById("tc").innerHTML="Required Field Should Not be empty";
+			document.getElementById("des").innerHTML="Required Field Should Not be empty";
+			return false;
+			}
+		if(str=='')
+			{
+			 document.getElementById("sn").innerHTML="Required Field Should Not be empty";
+			
+			 return false;
+			}
+		if(tc=='')
+			{
+			document.getElementById("tc").innerHTML="Required Field Should Not be empty";
+			return false;
+			}
+		if(des=='')
+			{
+			document.getElementById("des").innerHTML="Required Field Should Not be empty";
+			return false;
+			}
+		
+		var xx=document.getElementsByName('message[]').length;
+		var $in = xx+1;
+		
+		if(xx>0)
+			{
+		
+		for(var $m=1;$m<=xx;$m++)
+				{
+				//alert("m value"+$m);
+				var mtest="message"+$m;
+				var msgerror="msgerr"+$m;
+				document.getElementById(msgerror).innerHTML="";				
+			//	alert("mtestvalue"+document.getElementById(mtest).value);
+			if(document.getElementById(mtest).value=='')
+				{
+				//alert("sdfsd");				
+				document.getElementById(msgerror).innerHTML="Required Field Should Not be empty";
+				return false;
+				}
+			}
+			}
+			
+	//	alert("value"+xx+document.getElementsByName('message[1]').value);
+		
+		
+	
+	
+	
 	if(str=='' && tc=="")
 		{
 			 document.getElementById("sn").innerHTML="Required Field Should Not be empty";

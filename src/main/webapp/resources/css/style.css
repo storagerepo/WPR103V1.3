@@ -187,7 +187,18 @@ ul.login-list li p {
 }
 .title td {
 	background:url(../images/bg_heading.png) left top repeat-x;
-	padding:0px 10px;
+	padding:0px 7px;
+	
+	color:#333;
+	font-weight:bold;
+	font-size:14px;
+	line-height:40px;
+}
+.title1 td {
+	background:url(../images/bg_heading.png) left top repeat-x;
+	padding:0px 2px;
+	
+	height:10px;
 	color:#333;
 	font-weight:bold;
 	font-size:14px;

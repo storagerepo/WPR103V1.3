@@ -127,6 +127,7 @@
 				            		<span><img src="<c:url value="/resources/images/icon_03.png" />" alt="" style="padding:5px 5px 0 0;" />Profile</span>
 				            	</a>
 				            </li>
+				           
 				                <li>
 				            	<a href="#" class="<c:choose>
 								<c:when test="${menu=='settings'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>" rel="ddsubmenu7">
@@ -169,6 +170,12 @@
 				            	<a href="#" class="<c:choose>
 								<c:when test="${menu=='groups'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>" rel="ddsubmenu5">
 				            		<span><img src="<c:url value="/resources/images/User-Group-icon.png" />" alt="" style="padding:5px 5px 0 0;" />Groups</span>
+				            	</a>
+				            </li>
+				              <li>
+				            	<a href="viewweeklysurveylist" class="<c:choose>
+								<c:when test="${menu=='survey'}">select</c:when><c:otherwise>unselect</c:otherwise></c:choose>" >
+				            		<span><img src="" alt="" style="padding:5px 5px 0 0;" />Weekly Survey</span>
 				            	</a>
 				            </li>
 				           <c:if test="${role==1}">

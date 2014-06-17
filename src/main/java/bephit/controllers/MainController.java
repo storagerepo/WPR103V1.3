@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
 
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeZone;
@@ -47,7 +48,7 @@ public class MainController {
 	
 
 	
-	@Autowired  
+	@Autowired 
 	MainDAO mainDAO; 
 	
     @Autowired
@@ -578,7 +579,7 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 		session.setAttribute("group_select", participant.getGroup_name());		
 		session.setAttribute("participants",participant);
 		model.addAttribute("provider",participant.getProvider_name());
-		//session.setAttribute("provider",participant.getProvider_name());
+		session.setAttribute("provider",participant.getProvider_name());
 		model.addAttribute("email_exist","false");
 		model.addAttribute("mobile_exists","false");
 		int user_count=mainDAO.checkuser(participant.getUsername());
@@ -993,6 +994,12 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
 	
 	if(result.hasErrors())
 	{
+		TextMsgSettingsForm form = new TextMsgSettingsForm();
+		form.setTextMsgSettings(mailTemplateDAO.getMsgSettings());
+		map.addAttribute("form", form);
+		map.addAttribute("menu","settings");
+		logger.info("textmessage");
+        map.addAttribute("success","false");
 		return "textmsg";
 	}
 	else
@@ -1081,6 +1088,7 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
 			BindingResult result,ModelMap model,Principal principal)
 	{		
 		//System.out.println("grou");
+		model.addAttribute("menu","participants");
 		session.setAttribute("addparticipants", participant);
 		int email_count=mainDAO.checkemail(participant.getEmail_id(),1,participant.getUsername());
 		int mobile_count=mainDAO.checkmobile(participant.getMobile_num(),1,participant.getParticipants_id());
@@ -1628,9 +1636,10 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
 	public String viewResponse(HttpServletRequest request,@RequestParam("id") String participants_id,ModelMap model,ParticipantsDetails participant)
 	{
 		
-		
+		System.out.println("pid"+participants_id);
 		ResponseForm resposeForm=new ResponseForm();
 		resposeForm.setResponse(responseDAO.getResponse(participants_id));
+		model.addAttribute("participantid", participants_id);
 		model.addAttribute("responseForm", resposeForm);
 		model.addAttribute("currentuser",request.getSession().getAttribute("currentuser"));
 		/*ParticipantsGroupForm participantGroupForm = new ParticipantsGroupForm();
@@ -1646,6 +1655,94 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
         return "viewresponse";
 	}
 	
+	
+/*	@RequestMapping(value = "/downloadsurveycsv", method = RequestMethod.GET)
+	public ModelAndView generateAudit_Reportcsv(HttpServletResponse response1,HttpServletRequest request,ModelMap model) {
+		
+	
+	String csvFileName = "books.csv";
+	 
+    response1.setContentType("text/csv");
+
+    // creates mock data
+    String headerKey = "Content-Disposition";
+    String headerValue = String.format("attachment; filename=\"%s\"",
+            csvFileName);
+    response1.setHeader(headerKey, headerValue);
+    String[] fields={"participant_id","q1","q2","q3","q4Audio","q4Text","qm","qs","startDate","weekNumber","modified","appmodified"};	
+	String title = "Weekly_Survey_Report";
+	java.util.List<Response> response=new ArrayList<Response>();
+	response=responseDAO.getResponse();
+	ModelAndView modelAndView=new ModelAndView("responseDAO","response",response);
+	modelAndView.addObject("fields",fields);
+	modelAndView.addObject("title",title);
+	 
+	return modelAndView ;
+}*/
+	
+	@RequestMapping(value = "/downloadsurvey", method = RequestMethod.GET)
+	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model) {
+		
+	
+		String[] fields={"participant_id","q1","q2","q3","q4Audio","q4Text","qm","qs","startDate","weekNumber","modified","appmodified"};	
+		String title = "Weekly_Survey_Report";
+		java.util.List<Response> response=new ArrayList<Response>();
+		response=responseDAO.getResponse();
+		ModelAndView modelAndView=new ModelAndView("responseDAO","response",response);
+		modelAndView.addObject("fields",fields);
+		modelAndView.addObject("title",title);
+		 
+		return modelAndView ;
+	}
+	@RequestMapping(value = "/downloadparticipantsurvey", method = RequestMethod.GET)
+	public ModelAndView generateparticipantAudit_Report(@RequestParam("participantid") String participantid,HttpServletRequest request,ModelMap model) {
+		
+	String[] fields={"participant_id","q1","q2","q3","q4Audio","q4Text","qm","qs","startDate","weekNumber","modified","appmodified"};	
+		String title = "Weekly_Survey_Report";
+		java.util.List<Response> response=new ArrayList<Response>();
+		response=responseDAO.getResponse(participantid);
+		ModelAndView modelAndView=new ModelAndView("responseDAO","response",response);
+		modelAndView.addObject("fields",fields);
+		modelAndView.addObject("title",title);
+		 
+		return modelAndView ;
+	}
+	
+	@RequestMapping(value="/viewweeklysurveylist", method=RequestMethod.GET)
+	public String viewweeklysurveylist(HttpServletRequest request,ModelMap model,ParticipantsDetails participant)
+	{	
+		
+		ResponseForm resposeForm=new ResponseForm();
+		resposeForm.setResponse(responseDAO.getResponse());
+		model.addAttribute("responseForm", resposeForm);
+		model.addAttribute("currentuser",request.getSession().getAttribute("currentuser"));
+		
+		model.addAttribute("menu","survey");
+        return "weeklysurvey";
+	}
+	
+	@RequestMapping(value="/viewsurveylist", method=RequestMethod.GET)
+	public String viewsurveylist(HttpServletRequest request,ModelMap model,ParticipantsDetails participant)
+	{
+		
+		
+		ResponseForm resposeForm=new ResponseForm();
+		resposeForm.setResponse(responseDAO.getResponse());
+		model.addAttribute("responseForm", resposeForm);
+		model.addAttribute("currentuser",request.getSession().getAttribute("currentuser"));
+		/*ParticipantsGroupForm participantGroupForm = new ParticipantsGroupForm();
+		participantGroupForm.setParticipantGroups(partDAO.getGroups());
+        model.addAttribute("participantGroupForm", participantGroupForm);	*/      
+    
+		/*if(back.equals("dashboard"))
+		{ model.addAttribute("menu","dashboard");		
+		}
+		else if(back.equals("viewparticipant"))
+		{ model.addAttribute("menu","participants");			
+		}*/
+		model.addAttribute("menu","survey");
+        return "viewresponse";
+	}
 	@RequestMapping(value="/viewanswers", method=RequestMethod.GET)
 	public String viewAnswer(HttpServletRequest request,@RequestParam("id") String response_id,ModelMap model,ParticipantsDetails participant)
 	{

@@ -4,6 +4,8 @@
 <html>
 <head>
 </head>
+<script type="text/javascript" src="resources/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="resources/js/phone-number-validation.js"></script>
 <script src="/bcresearchapp/resources/js/jquery.js"></script>
 <script type="text/javascript">
 $(window).load(function(){
@@ -53,8 +55,71 @@ else {
 }
 </script>
  <script>
+ 
+ function validateEmail(sEmail) {
+	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if (filter.test(sEmail)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+
+	}
+ function validateEmail(hmail) {
+	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+	    if (filter.test(hmail)) {
+	        return true;
+	    }
+	    else {
+	        return false;
+	    }
+
+	}
+ $(document).ready(function() {
+	   $('#register').click(function() {
+			document.getElementById("padminerr").innerHTML="";
+	   		document.getElementById("sadminerr").innerHTML="";
+		    var sEmail = $('#admin_email').val();
+	        var hmail=$('#secondary_email').val();
+	        if ($.trim(sEmail).length == 0) {
+	        	document.getElementById("padminerr").innerHTML="Required Field Should not be empty";
+	        }
+	       
+	        if(sEmail!='')
+	        	{
+	        if (validateEmail(sEmail)) {	        
+	        	                
+	        }
+ 
+	        else{
+	        	document.getElementById("padminerr").innerHTML="Invalid EmailId";	          
+	            return false;
+	            e.preventDefault();
+	        }
+	        	}
+	        if(hmail!='')
+	        	{
+	        	if (validateEmail(hmail)) {	        
+	                
+		        }
+	        	else
+	        		{
+	        	document.getElementById("sadminerr").innerHTML="Invalid EmailId";	          
+	            return false;
+	            e.preventDefault();
+	        		}
+	        	}
+
+	    });
+
+	});
+
+ 
               function checkmail()
-              {                         	  
+              {  
+            	  
+            	  
               var p=document.getElementById("admin_email").value; 
               var s=document.getElementById("secondary_email").value; 
                      	
@@ -66,6 +131,19 @@ else {
             		return false;
             		}
               } 
+            	var numbers = $('#admin_mobile').val();
+            	if(numbers!='')
+            	{
+            	var result1 = validPhone(numbers);
+            	if (result1.valid === false) {
+            		
+            		document.getElementById("adminmobileerr").innerHTML="invalid phone number";
+            		
+            	return false;
+            	}
+            	}	
+            	
+            	
               }      </script>
                  
 
@@ -130,22 +208,22 @@ else {
                 </tr> --%>
 		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx" maxlength="10"  id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"></span><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx" maxlength="10"  id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="adminmobileerr" class="err"></span><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Primary E-mail id :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_email"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="padminerr" ><form:errors path="adminuser.admin_email"></form:errors></span></font></td>
                 </tr>
                    <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" value="" /><br><span class="err"><c:if test="${semail_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.secondary_email"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" value="" /><br></br><font color="Red" size="+1"><span id="sadminerr"><c:if test="${semail_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.secondary_email"></form:errors></span></font></td>
                 </tr> 
 		
 </td>
                 </tr>
                  
                  <tr class="row1">
-                 <table align="left"><tr><td valign="middle"  style="padding-left:400px;"><input type="submit" class="submit_btn" onclick="return checkmail('this.value')" value="Register"></td>
+                 <table align="left"><tr><td valign="middle"  style="padding-left:400px;"><input type="submit" class="submit_btn" onclick="return checkmail('this.value')" value="Register" id="register"></td>
 							<td valign="middle" style="padding-left:10px;"><input type="reset" value="Reset" class="submit_btn"></td>
 							<td valign="middle" style="padding-left:10px;"><a href="viewadminuser" class="submit_btn" style="color:white">Cancel</a></td></tr></table>
 					
@@ -182,15 +260,24 @@ else {
                 </tr> --%>
 		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"  maxlength="10"  class="input_txtbx" id="inp_id" value="${admin.admin_mobile}" /><br><span class="err"><font color="Red" size="+1"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"  maxlength="10"  class="input_txtbx" id="admin_mobile" value="${admin.admin_mobile}" /><br><font color="Red" size="+1"><span id="adminmobileerr" class="err"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Primary E-mail id :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" value="${admin.admin_email}" /><br><span class="err"><font color="Red" size="+1"><c:if test="${email_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.admin_email"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" value="${admin.admin_email}" />
+                   <br><font color="Red" size="+1"><span id="padminerr">
+                   <c:choose><c:when test="${empty admin.admin_email}"></c:when><c:otherwise>
+                  <c:if test="${email_exist==true}"><c:out value="Email Id  already exist"/></c:if>
+                  </c:otherwise>  </c:choose>                  
+              <form:errors path="adminuser.admin_email"></form:errors></span></td>
                 </tr>
 		   <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" value="${admin.secondary_email}" /><br><span class="err"><font color="Red" size="+1"><c:if test="${semail_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.secondary_email"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" value="${admin.secondary_email}" /><br><font color="Red" size="+1"><span id="sadminerr">
+                   <c:choose><c:when test="${empty admin.secondary_email}"></c:when><c:otherwise>
+                  <c:if test="${semail_exist==true}"><c:out value="Email Id  already exist"/></c:if>
+                  </c:otherwise>  </c:choose>                  
+                 <form:errors path="adminuser.secondary_email"></form:errors></span></td>
                 </tr> 
 </td>
                 </tr>
@@ -198,7 +285,7 @@ else {
                  <tr class="row1">
                 
                  
-                 <table align="left"><tr><td valign="middle" style="padding-left:410px;" ><input type="submit" class="submit_btn" value="Register" onclick="return checkmail('this.value')"></td>
+                 <table align="left"><tr><td valign="middle" style="padding-left:410px;" ><input type="submit" class="submit_btn" id="register"  value="Register" onclick="return checkmail('this.value')"></td>
 							<td valign="middle" style="padding-left:10px;"><a href="showaddadminuser" class="submit_btn" style="color:white">Reset</a></td>
 							<td valign="middle" style="padding-left:10px;"><a href="viewadminuser" class="submit_btn" style="color:white">Cancel</a></td></tr></table>
 					

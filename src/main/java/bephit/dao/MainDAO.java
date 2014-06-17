@@ -229,7 +229,7 @@ public class MainDAO {
 			resultSet = statement.executeQuery(cmd_emaillist);
 			resultSet.next();
 			int count = Integer.parseInt(resultSet.getString("counting"));
-			// System.out.println("emailcount"+count);
+			System.out.println("semailcount"+count);
 			if (count > 0) {
 				return 0;
 			} else {
@@ -412,9 +412,9 @@ public class MainDAO {
 			Date date = new Date();
 			// System.out.println("providername"+participant.getProvider_name());
 			// System.out.println(dateFormat.format(date));
-			String cmd = "INSERT INTO `participants_table` (id,`fname`,`username`,password,`mobile_num`,`gender`,`city`,`education`,`medical_details`,`time1`,`time1_am_pm`,`time2`,`time2_am_pm`,`time3`,`time3_am_pm`,startdate,weekly_survey_start_date,provider_primary_email,provider_secondary_email,`Provider_name`,`group_name`,`age`,`date_of_join`,`email_id`,`created_by`) VALUES ('"
-
-					+ "" + "','"
+			String cmd = "INSERT INTO `participants_table` (id,`fname`,`username`,password,`mobile_num`,`gender`,`city`,`education`,`medical_details`,`time1`,`time1_am_pm`,`time2`,`time2_am_pm`,`time3`,`time3_am_pm`,startdate,weekly_survey_start_date,provider_email1,provider_email2,`Provider_name`,`group_name`,`age`,`date_of_join`,`email_id`,`created_by`) VALUES ('"
+					+ participant.getId()
+					+ "','"
 					+ participant.getFname()
 					+ "','"
 					+ participant.getUsername()
@@ -445,9 +445,9 @@ public class MainDAO {
 					+ "','','"
 					+ participant.getWeekly_survey_start_date()
 					+ "','"
-					+ participant.getProvider_primary_email()
+					+ participant.getProvider_email1()
 					+ "','"
-					+ participant.getProvider_secondary_email()
+					+ participant.getProvider_email2()
 					+ "','"
 					+ providername
 					+ "','"
@@ -684,7 +684,7 @@ public class MainDAO {
 			Date date = new Date();
 			// System.out.println("providername"+participant.getProvider_name());
 			// System.out.println(dateFormat.format(date));
-			String cmd = "INSERT INTO `participants_table` (id,`fname`,`username`,password,`mobile_num`,`gender`,`city`,`education`,`medical_details`,`time1`,`time1_am_pm`,`time2`,`time2_am_pm`,`time3`,`time3_am_pm`,startdate,weekly_survey_start_date,provider_primary_email,provider_secondary_email,`Provider_name`,`group_name`,`age`,`date_of_join`,`email_id`,`created_by`) VALUES ('"
+			String cmd = "INSERT INTO `participants_table` (id,`fname`,`username`,password,`mobile_num`,`gender`,`city`,`education`,`medical_details`,`time1`,`time1_am_pm`,`time2`,`time2_am_pm`,`time3`,`time3_am_pm`,startdate,weekly_survey_start_date,provider_email1,provider_email2,`Provider_name`,`group_name`,`age`,`date_of_join`,`email_id`,`created_by`) VALUES ('"
 					+ participant.getId()
 					+ "','"
 					+ participant.getFname()
@@ -719,9 +719,9 @@ public class MainDAO {
 					+ "','"
 					+ participant.getWeekly_survey_start_date()
 					+ "','"
-					+ participant.getProvider_primary_email()
+					+ participant.getProvider_email1()
 					+ "','"
-					+ participant.getProvider_secondary_email()
+					+ participant.getProvider_email2()
 					+ "','"
 					+ providername
 					+ "','"
@@ -1123,7 +1123,8 @@ public class MainDAO {
 					+ Desc
 					+ "','"
 					+ Providername + "')";
-			String cmd = "UPDATE participants_table SET fname ='"
+			String cmd = "UPDATE participants_table SET id='"
+					+ participant.getId()+ "',fname ='"
 					+ participant.getFname() + "',username ='"
 					+ participant.getUsername() + "',mobile_num ='"
 					+ participant.getMobile_num() + "',gender ='"
@@ -1137,12 +1138,14 @@ public class MainDAO {
 					+ participant.getTime2_am_pm() + "',time3='"
 					+ participant.getTime3() + "',time3_am_pm='"
 					+ participant.getTime3_am_pm()
+					+ "',startdate='"
+					+ participant.getStartdate()
 					+ "',weekly_survey_start_date='"
 					+ participant.getWeekly_survey_start_date()
-					+ "',provider_primary_email='"
-					+ participant.getProvider_primary_email()
-					+ "',provider_secondary_email='"
-					+ participant.getProvider_secondary_email()
+					+ "',provider_email1='"
+					+ participant.getProvider_email1()
+					+ "',provider_email2='"
+					+ participant.getProvider_email2()
 					+ "',Provider_name ='" + Providername + "',group_name = '"
 					+ participant.getGroup_name() + "',age = '"
 					+ participant.getAge() + "',date_of_join = '"
@@ -1329,10 +1332,10 @@ public class MainDAO {
 					+ participant.getStartdate()
 					+ "',weekly_survey_start_date='"
 					+ participant.getWeekly_survey_start_date()
-					+ "',provider_primary_email='"
-					+ participant.getProvider_primary_email()
-					+ "',provider_secondary_email='"
-					+ participant.getProvider_secondary_email()
+					+ "',provider_email1='"
+					+ participant.getProvider_email1()
+					+ "',provider_email2='"
+					+ participant.getProvider_email2()
 					+ "',Provider_name ='" + Providername + "',group_name = '"
 					+ participant.getGroup_name() + "',age = '"
 					+ participant.getAge() + "',date_of_join = '"
@@ -1506,8 +1509,8 @@ public class MainDAO {
 								.getString("time3_am_pm"), resultSet
 								.getString("startdate"), resultSet
 								.getString("weekly_survey_start_date"),
-						resultSet.getString("provider_primary_email"),
-						resultSet.getString("provider_secondary_email"),
+						resultSet.getString("provider_email1"),
+						resultSet.getString("provider_email2"),
 						resultSet.getString("Provider_name"), resultSet
 								.getString("group_name"), resultSet
 								.getString("age"), resultSet
@@ -1644,8 +1647,8 @@ public class MainDAO {
 								.getString("time3_am_pm"), resultSet
 								.getString("startdate"), resultSet
 								.getString("weekly_survey_start_date"),
-						resultSet.getString("provider_primary_email"),
-						resultSet.getString("provider_secondary_email"),
+						resultSet.getString("provider_email1"),
+						resultSet.getString("provider_email2"),
 						resultSet.getString("Provider_name"),
 
 						resultSet.getString("group_name"), resultSet
@@ -1991,8 +1994,8 @@ public class MainDAO {
 								.getString("time3_am_pm"), resultSet
 								.getString("startdate"), resultSet
 								.getString("weekly_survey_start_date"),
-						resultSet.getString("provider_primary_email"),
-						resultSet.getString("provider_secondary_email"),
+						resultSet.getString("provider_email1"),
+						resultSet.getString("provider_email2"),
 						resultSet.getString("Provider_name"), resultSet
 								.getString("group_name"), resultSet
 								.getString("age"), resultSet
@@ -2050,8 +2053,8 @@ public class MainDAO {
 								.getString("time3_am_pm"), resultSet
 								.getString("startdate"), resultSet
 								.getString("weekly_survey_start_date"),
-						resultSet.getString("provider_primary_email"),
-						resultSet.getString("provider_secondary_email"),
+						resultSet.getString("provider_email1"),
+						resultSet.getString("provider_email2"),
 						resultSet.getString("Provider_name"), resultSet
 								.getString("group_name"), resultSet
 								.getString("age"), resultSet
@@ -2146,8 +2149,8 @@ public class MainDAO {
 						resultSet.getString("time3_am_pm"),
 						resultSet.getString("startdate"),
 						resultSet.getString("weekly_survey_start_date"),
-						resultSet.getString("provider_primary_email"),
-						resultSet.getString("provider_secondary_email"),
+						resultSet.getString("provider_email1"),
+						resultSet.getString("provider_email2"),
 						resultSet.getString("Provider_name"),
 						resultSet.getString("group_name"),
 						resultSet.getString("age"),
@@ -2214,8 +2217,8 @@ public class MainDAO {
 						resultSet.getString("time3_am_pm"),
 						resultSet.getString("startdate"),
 						resultSet.getString("weekly_survey_start_date"),
-						resultSet.getString("provider_primary_email"),
-						resultSet.getString("provider_secondary_email"),
+						resultSet.getString("provider_email1"),
+						resultSet.getString("provider_email2"),
 						resultSet.getString("Provider_name"),
 						resultSet.getString("group_name"),
 						resultSet.getString("age"),

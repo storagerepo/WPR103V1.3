@@ -10,15 +10,114 @@
 
 <div id="right_content">
 	<script type="text/javascript" src="js/jquery-1.3.2.js"></script>
-
+ <script type="text/javascript" src="resources/js/jquery-2.0.3.js"></script>
+    <script type="text/javascript" src="resources/js/phone-number-validation.js"></script>
 <link rel="stylesheet" href="resources/css/jquery-ui.css" />
 <script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
 <script src="resources/js/jquery-ui.js" type="text/javascript"></script>
 <link rel="stylesheet" url="resources/js/jquery.js" />
 	
 	 <script type="text/javascript">
+	 function validateEmail(sEmail) {
+		    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		    if (filter.test(sEmail)) {
+		        return true;
+		    }
+		    else {
+		        return false;
+		    }
+		    
+
+		}
+
+		function validateEmail(hmail) {
+		    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		    if (filter.test(hmail)) {
+		        return true;
+		    }
+		    else {
+		        return false;
+		    }
+		    
+
+		}
+		function validateEmail(pemail) {
+		    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		    if (filter.test(pemail)) {
+		        return true;
+		    }
+		    else {
+		        return false;
+		    }
+		    
+
+		}
+		$(document).ready(function() {
+		   $('#register').click(function() {
+
+				document.getElementById("spneid").innerHTML="";
+		   		document.getElementById("pemailerr").innerHTML="";
+		   		document.getElementById("ppemailerr").innerHTML="";
+			    var sEmail = document.getElementById('eid').value;		   
+		        var hmail=document.getElementById('id_provider_secondary_email').value;
+		       var pemail=document.getElementById('id_provider_primary_email').value; 
+		      
+		        if ($.trim(sEmail).length == 0) {
+		        	document.getElementById("spneid").innerHTML="Required Field Should not be empty";
+		        }
+		       
+		        if(sEmail!='')
+		        	{
+		        if (validateEmail(sEmail)) {	        
+		        	                
+		        }
+
+		        else{
+		        	document.getElementById("spneid").innerHTML="Invalid EmailId";	          
+		            return false;
+		            e.preventDefault();
+		        }
+		        	}
+		     
+		        if(hmail!='')
+		        	{
+		        
+		        	if (validateEmail(hmail)) {	        
+		                
+			        }
+		        	else
+		        		{
+		        	
+		        	document.getElementById("pemailerr").innerHTML="Invalid EmailId";	        	
+		            return false;
+		         
+		        		}
+		        	}
+		        if(pemail!='')
+		    	{
+		    
+		    	if (validateEmail(pemail)) {	        
+		            
+		        }
+		    	else
+		    		{
+		    	
+		    	document.getElementById("ppemailerr").innerHTML="Invalid EmailId";	        	
+		        return false;
+		     
+		    		}
+		    	}
+
+
+		    });
+
+		});
+
 	 $(function() {
 		 $("#datepicker_weekly_survey").datepicker({minDate: 0});
+		 });
+	 $(function() {
+		 $("#datepicker").datepicker({minDate: 0});
 		 });
 	 
 	 
@@ -108,6 +207,7 @@ $("#city").keyup(function() {
 	
 
 	<script type="text/javascript">
+	
 	
 	
 		function listbox_moveacross(sourceID, destID) {
@@ -211,7 +311,49 @@ $("#city").keyup(function() {
 
 	<script>
 		function validate() {
-		var fld = document.getElementById('group_names1');		
+		
+			var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+
+
+			if (document.getElementById("datepicker_weekly_survey").value !="") {
+			  if (re.test(document.getElementById("datepicker_weekly_survey").value) == false) {
+				// alert("fsdfsd");
+				  document.getElementById("surveyerr").innerHTML="Invalid Date Format.";
+				  return false;
+			  }
+			}
+			if (document.getElementById("datepicker").value !="") {
+				  if (re.test(document.getElementById("datepicker").value) == false) {
+					// alert("fsdfsd");
+					  document.getElementById("startdateerr").innerHTML="Invalid Date Format.";
+					  return false;
+				  }
+				}
+
+			var numbers = $('#mno').val();
+			if(numbers!='')
+			{
+			var result1 = validPhone(numbers);
+			if (result1.valid === false) {
+				
+				document.getElementById("spnmno").innerHTML="invalid phone number";				
+			return false;
+			}
+			}
+			var $zipcode=document.getElementById("city").value;
+			var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
+			if($regex.test($zipcode)||$zipcode=='') 
+				{
+			var $in = $zipcode;		 
+				}
+				
+				else if($zipcode!='')
+					{										
+					$("#spncity").html('Not a valid Zipcode!!');
+					return false;
+					}
+		
+			var fld = document.getElementById('group_names1');		
 if(fld.value=="")
 {
 groupnameerror.innerHTML="Required Field Should not be Empty";
@@ -219,6 +361,7 @@ return false;
 }
 else
 {
+	
 	
 	     
 			var values = [];
@@ -308,6 +451,11 @@ else
 										<p class="quck-txt">Quick Info</p>
 									
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
+											  <tr class="row2">
+                  <td valign="middle" align="left" class="input_txt"><span class="err"></span> ID:</td>
+                
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_id"  value="${participantsDetails.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
+                </tr>
 											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> First Name :</td>
@@ -315,7 +463,7 @@ else
 													value="${participantsDetails.participants_id }"
 													name="participants_id" />
 													
-													 <input type="hidden" class="input_txtbx1" name="id" value="${participantsDetails.id}" />
+													
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="fname" name="fname"
 													value="${participantsDetails.fname }" /><br /> <font
@@ -344,7 +492,7 @@ else
 													onmouseout="hideTooltip('tooltip_id');" name="mobile_num"
 													value="${participantsDetails.mobile_num}" /></br> <c:if test="${mobile_exists ==true}">
 													<font
-													color="Red" size="+1"><span id="spnmno"></span>Mobile name already exists </font>
+													color="Red" size="+1"><span id="spnmno">Mobile name already exists </span></font>
 													</c:if>	
 															
 												<font
@@ -497,7 +645,7 @@ else
 															
 												</select>
 												
-												<select name="time1_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time1_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${participantsDetails.time1_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${participantsDetails.time1_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>				
@@ -525,7 +673,7 @@ else
 															
 												</select>
 												
-												<select name="time2_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time2_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${participantsDetails.time2_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${participantsDetails.time2_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 								   </select>
@@ -552,29 +700,46 @@ else
 															
 												</select>
 												
-												<select name="time3_am_pm" class="input_cmbbx1" style="width:50px;">
+												<select name="time3_am_pm" class="input_cmbbx1" style="width:80px;">
 											<option value="AM" <c:if test="${participantsDetails.time3_am_pm=='AM'}"><c:out value="selected"/></c:if>>AM&nbsp;</option>
 											<option value="PM" <c:if test="${participantsDetails.time3_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 				</select><br /></td>
 											</tr>
+												<tr class="row1">
+												<td valign="middle" align="left" class="input_txt">
+													 Start Date :</td>
+												<td valign="top" align="left" class="input_txt" >
+												<input type="text" name="startdate" id="datepicker" value="${participantsDetails.startdate}" class="input_txtbx1">
+												 <br/> <font
+													color="Red" size="+1"><span id="startdateerr"></span>
+													
+													 </font>			
+												</td>
+											</tr>
 <tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>Weekly Survey Start Date :</td>
-												<td valign="top" align="left" class="input_txt">									
-										<c:choose>
+												<td valign="top" align="left" class="input_txt">	
+												<input type="text" name="weekly_survey_start_date" 	
+										 class="input_txtbx1" id="datepicker_weekly_survey" value="${participantsDetails.weekly_survey_start_date}">
+										  <br/> <font
+													color="Red" size="+1"><span id="surveyerr"></span>
+													
+													 </font>								
+										<%-- <c:choose>
 										<c:when test="${not empty participantsDetails.weekly_survey_start_date}">
 										<input type="hidden" name="weekly_survey_start_date" 	
 										 class="input_txtbx1" value="${participantsDetails.weekly_survey_start_date}">
 										 <label>${participantsDetails.weekly_survey_start_date}</label>
 										</c:when>
-										<c:otherwise>
-										<input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
+										<c:otherwise> --%>
+										<%-- <input type="text" name="weekly_survey_start_date" id="datepicker_weekly_survey"		
 										 class="input_txtbx1" value="${participantsDetails.weekly_survey_start_date}"> <br/> <font
 													color="Red" size="+1"><span id="spnlname"></span>
 													
 													 </font>
 													 </c:otherwise>
-											</c:choose>		 
+											</c:choose>		  --%>
 													 
 													 
 													 </td>
@@ -582,13 +747,13 @@ else
 											
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
-													class="err"></span>Provider Primary Email :</td>
+													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_primary_email"
-										id="id_provider_primary_email" class="input_txtbx1" value="${participantsDetails.provider_primary_email}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"><form:errors
-																path="participant.provider_primary_email"></form:errors></span>
+												<input type="text" name="provider_email1"
+										id="id_provider_primary_email" class="input_txtbx1" value="${participantsDetails.provider_email1}"> <br/> <font
+													color="Red" size="+1"><span id="ppemailerr"><form:errors
+																path="participant.provider_email1"></form:errors></span>
 													
 													 </font></td>
 											</tr>
@@ -597,17 +762,17 @@ else
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
-												<input type="text" name="provider_secondary_email"
-										id="id_provider_secondary_email" class="input_txtbx1" value="${participantsDetails.provider_secondary_email}"> <br/> <font
-													color="Red" size="+1"><span id="spnlname"><form:errors
-																path="participant.provider_secondary_email"></form:errors></span>
+												<input type="text" name="provider_email2"
+										id="id_provider_secondary_email" class="input_txtbx1" value="${participantsDetails.provider_email2}"> <br/> <font
+													color="Red" size="+1"><span id="pemailerr"><form:errors
+																path="participant.provider_email2"></form:errors></span>
 													
 													 </font></td>
 											</tr>
 											
 											
-										 <input type="hidden" class="input_txtbx1" id="username"  name="startdate"
-													 value="${participantsDetails.startdate}" />
+										<%--  <input type="hidden" class="input_txtbx1" id="username"  name="startdate"
+													 value="${participantsDetails.startdate}" /> --%>
 											<tr>
 												<td><p class="quck-txt">Provider & Groups</p></td>
 											</tr>
@@ -704,7 +869,7 @@ else
 								<table align="right" cellspcing="0" border="0" cellpadding="0" >
 								<tr >
 									<td valign="top" align="center">&nbsp;</td>
-									<td valign="top" align="left"><input type="submit"
+									<td valign="top" align="left"><input type="submit" id="register"
 										class="submit_btn2" value="Update Participant"
 										onclick="return validate('this')"></td>
 										<td valign="middle"> <!-- style="padding-left:10px;"  --> <a href="viewregisterparticipants" class="submit_btn" style="color:white ;font-size:14px;text-decoration: none;">Cancel</a></td>

@@ -162,7 +162,62 @@ $("#days_weeks").keyup(function() {
 });
 </script><script>
 function validate()
-{	
+{
+	var datefield=document.getElementById("datepicker").value;
+	
+	var year1=datefield.substring(6,datefield.length);
+	var month1=datefield.substring(0,2);
+	var day1=datefield.substring(3,5);
+	var currentDate = new Date()
+    var day = currentDate.getDate()
+  
+	var month = currentDate.getMonth() + 1
+    var year = currentDate.getFullYear()	 
+	if(datefield!='')
+		{
+    if(year1==year)
+		{			
+		if(month1<month)
+			{			
+			document.getElementById("dateerror").innerHTML="Invalid Date";
+			return false;
+			}
+		else 
+		{		
+	if(month1<month)
+			{	
+		if(day1<day)
+			{
+			document.getElementById("dateerror").innerHTML="Invalid Date";
+			return false;
+			}}
+	if(day1<day)
+	{
+		document.getElementById("dateerror").innerHTML="Invalid Date";
+		return false;
+	}}}
+ if(year1<year)
+		{
+		 document.getElementById("dateerror").innerHTML="Invalid Date";
+		return false;
+		}
+		}
+var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
+
+
+if (document.getElementById("datepicker").value !="") {
+  if (re.test(document.getElementById("datepicker").value) == false) {
+	// alert("fsdfsd");
+	  document.getElementById("dateerror").innerHTML="Invalid Date Format";
+	  return false;
+  }
+}	
+	
+
+	
+	
+	
+
 	document.getElementById("info3").innerHTML="";
 	document.getElementById("err").innerHTML="";
 	document.getElementById("grouperr").innerHTML="";
@@ -668,7 +723,7 @@ function validate()
 									<td valign="top" align="left">
 										<input type="text" name="start_date"
 										id="datepicker" class="input_txtbx1" value="${sendbroadcast.start_date}"></br> <span
-										class="err"><form:errors path="broadCast.start_date"></form:errors></span>
+									id="dateerror"	class="err"><form:errors path="broadCast.start_date"></form:errors></span>
 									</td>
 									</td>
 								</tr>						

@@ -46,6 +46,12 @@ public class MessageStreamController {
 		return "mail";
 	}
 
+	@RequestMapping(value = "/phone", method = RequestMethod.GET)
+	public String phonecreatestream(HttpSession session,ModelMap model) {
+				return "phone";
+	}
+
+	
 	@RequestMapping(value = "/createstream", method = RequestMethod.GET)
 	public String createstream(HttpSession session,ModelMap model) {
 		session.removeAttribute("messagestreamdetails");

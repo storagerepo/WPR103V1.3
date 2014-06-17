@@ -26,34 +26,117 @@
     </c:if>  
       
       </table> 
-  
+      <script>
+       function downloadfn()
+              {
+            	
+            	  document.getElementById("download").style.color="brown";
+            	  
+              }</script>
+  <a href="downloadparticipantsurvey?participantid=${participantid}"  onclick="downloadfn()"  id="download" style="text-decoration:underline;font-size: 15px;color: blue;" >Export To Excel</a>
+  <br>
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				
 								<tr class="title">
-									<td valign="top" align="left" width="10%">Response No</td>
-									<td valign="top" align="left" width="15%">Week No</td>
-									<td valign="top" align="left" width="15%">Date & Time of Submission</td>
+									<td valign="top" align="left" width="10%">participant_id</td>									
+									<td valign="top" align="left" width="15%">q1</td>
+									<td valign="top" align="left" width="15%">q2</td>
 									<!-- <td valign="top" align="left" width="10%">Status</td> -->
-									<td valign="top" align="left" width="10%">Action</td>
+									<td valign="top" align="left" width="10%">q3</td>
+									<td valign="top" align="left" width="10%">q4Audio</td>
+									<td valign="top" align="left" width="10%">q4Text</td>
+									<td valign="top" align="left" width="10%">qm</td>
+									<td valign="top" align="left" width="10%">qs</td>
+									<td valign="top" align="left" width="10%">startDate</td>
+									<td valign="top" align="left" width="10%">weekNumber</td>
+									<td valign="top" align="left" width="10%">modified</td>
+									<td valign="top" align="left" width="10%">appmodified</td>
+									
 							</tr>
 								
-<%int i=1; %>
+
 								<!-- Display Admin Userd here  Suresh--> 
 									<c:forEach items="${responseForm.response}" var="response" varStatus="status">
 									
 							       		<tr class="row1" onmouseover="mouse_event(this,"row_hover");" onmouseout="mouse_event(this,"row1");">
-								          <td valign="top" align="left"  width="10%"><%=i%></td>
-											<td valign="top" align="left" width="15%">${response.week}</td>
-											<td valign="top" align="left" width="15%">${response.date_time}</td>
+								          
+											<td valign="top" align="left" width="15%">${response.participant_id}</td>
+											<td valign="top" align="left" width="15%">${response.q1}</td>
+											<td valign="top" align="left" width="15%">${response.q2}</td>
+											<td valign="top" align="left" width="15%">${response.q3}</td>
+											<td valign="top" align="left" width="15%">
+											<c:choose><c:when test="${response.q4Audio=='.m4a' || response.q4Audio=='.mp4'}"></c:when>
+											<c:otherwise>
+											<%--  <c:set var="string2" value="${fn:substring(audio, 2, string3)}" /> --%>
+                        <c:if test="${fn:contains(response.q4Audio, '.m4a')}">
+                        <a href="http://www.medsmonit.com/adherence/uploadaudio/${response.q4Audio}" id="ccolor" onclick="color()">Download Audio</a>
+                    
+                       <audio controls>
+  <source src="http://www.medsmonit.com/adherence/uploadaudio/${response.q4Audio}" type="audio/ogg">
+  <source src="http://www.medsmonit.com/adherence/uploadaudio/${response.q4Audio}" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+                       
+                       
+                        </c:if>
+                        
+                           <c:if test="${fn:contains(response.q4Audio, '.mp4')}">
+                        <a href="http://www.medsmonit.com/adherenceT/uploadaudio/${response.q4Audio}" id="ccolor" onclick="color()">Download Audio</a>
+                    
+                       <audio controls>
+  <source src="http://www.medsmonit.com/adherenceT/uploadaudio/${response.q4Audio}" type="audio/ogg">
+  <source src="http://www.medsmonit.com/adherenceT/uploadaudio/${response.q4Audio}" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+                       
+                       
+                        </c:if>
+											
+										<%-- ${response.audio}	 --%>
+						<%-- 					 <c:set var="audio" value="${response.audio}"></c:set>
+											 <c:set var="string3" value="${(fn:length(audio))}" />
+                      <c:set var="string2" value="${fn:substring(audio, 2, string3)}" />
+                        <c:if test="${fn:contains(audio, '.m4a')}">
+                        <a href="http://192.168.1.106:8888/paservice${string2}" id="ccolor" onclick="color()">Download Audio</a>
+                    
+                       <audio controls>
+  <source src="http://192.168.1.106:8888/paservice${string2}" type="audio/ogg">
+  <source src="http://192.168.1.106:8888/paservice${string2}" type="audio/mp4">
+  Your browser does not support the audio element.
+</audio>
+                       
+                       
+                        </c:if>
+                         <c:if test="${fn:contains(string2, '.mp4')}">
+
+                  <a href="http://192.168.1.71:8080/bcreasearchT${string2}" id="bcolor" onclick="color1()">Download Audio</a>
+                
+                <audio controls>
+  <source src="http://192.168.1.71:8080/bcreasearchT${string2}" type="audio/ogg">
+  <source src="http://192.168.1.71:8080/bcreasearchT${string2}" type="audio/mp4">
+  <source src="http://192.168.1.71:8080/bcreasearchT${string2}" type="video/mp4">
+  Your browser does not support the audio element.
+</audio>
+                </c:if> --%> </c:otherwise></c:choose>
+											
+											</td>											
+											<td valign="top" align="left" width="15%">${response.q4Text}</td> 	
+											<td valign="top" align="left" width="15%">${response.qm}</td> 	
+											<td valign="top" align="left" width="15%">${response.qs}</td> 											
+											<td valign="top" align="left" width="15%">${response.startDate}</td> 
+											<td valign="top" align="left" width="15%">${response.weekNumber}</td> 
+											<td valign="top" align="left" width="15%">${response.modified}</td> 
+											<td valign="top" align="left" width="15%">${response.appmodified}</td> 
+												
 										<%-- 	<td valign="top" align="left" width="10%">${response.status}</td> --%>
-											<td valign="top" align="left"  width="10%"><a href="viewanswers?id=${response.log_id}">View Details</a></td>
+										<%-- 	<td valign="top" align="left"  width="10%"><a href="viewanswers?id=${response.log_id}">View Details</a></td> --%>
 										<%--<td valign="top" align="left" width="15%">${participantsDetails.education}</td> --%>
 										
 										</tr>
-										<%i++; %>
+									
 							    	</c:forEach>
 						    	
-<tr><td colspan="7">  <div class="extrabottom">
+<tr><td colspan="10">  <div class="extrabottom">
               <ul class="pagination">
          <%--      <% int i=1;int j=0;%> 
               
@@ -92,7 +175,20 @@
 							
 
 								</table>
-
+<script>
+              function color()
+              {
+            	
+            	  document.getElementById("ccolor").style.color="brown";
+            	  
+              }
+              function color1()
+              {
+            	
+            	  document.getElementById("bcolor").style.color="brown";
+            	  
+              }
+              </script>
 								<div style="clear: both;"></div>
 								</div>
 								</div>
