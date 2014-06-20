@@ -83,7 +83,7 @@ else {
 		    var sEmail = $('#admin_email').val();
 	        var hmail=$('#secondary_email').val();
 	        if ($.trim(sEmail).length == 0) {
-	        	document.getElementById("padminerr").innerHTML="Required Field Should not be empty";
+	        	document.getElementById("padminerr").innerHTML="";
 	        }
 	       
 	        if(sEmail!='')
@@ -131,7 +131,7 @@ else {
             		return false;
             		}
               } 
-            	var numbers = $('#admin_mobile').val();
+            /* 	var numbers = $('#admin_mobile').val();
             	if(numbers!='')
             	{
             	var result1 = validPhone(numbers);
@@ -141,7 +141,7 @@ else {
             		
             	return false;
             	}
-            	}	
+            	}	 */
             	
             	
               }      </script>
@@ -208,7 +208,7 @@ else {
                 </tr> --%>
 		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx" maxlength="10"  id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="adminmobileerr" class="err"></span><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx" maxlength="10"  id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="adminmobileerr" ><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Primary E-mail id :</td>
@@ -260,7 +260,7 @@ else {
                 </tr> --%>
 		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"  maxlength="10"  class="input_txtbx" id="admin_mobile" value="${admin.admin_mobile}" /><br><font color="Red" size="+1"><span id="adminmobileerr" class="err"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"  maxlength="10"  class="input_txtbx" id="admin_mobile" value="${admin.admin_mobile}" /><br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span id="adminmobileerr"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Primary E-mail id :</td>

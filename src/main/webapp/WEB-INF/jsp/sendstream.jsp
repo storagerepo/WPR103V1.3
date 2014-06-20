@@ -163,6 +163,18 @@ $("#days_weeks").keyup(function() {
 </script><script>
 function validate()
 {
+	
+	document.getElementById("weekerr").innerHTML="";
+	
+if(document.getElementById("days_weeks").value==0)
+	{
+	
+	document.getElementById("weekerr").innerHTML="Must Be greater than 0";
+	return false;
+	
+	}
+	
+	
 	var datefield=document.getElementById("datepicker").value;
 	
 	var year1=datefield.substring(6,datefield.length);

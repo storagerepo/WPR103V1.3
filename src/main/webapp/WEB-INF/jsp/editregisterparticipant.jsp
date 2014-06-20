@@ -18,6 +18,24 @@
 <link rel="stylesheet" url="resources/js/jquery.js" />
 	
 	 <script type="text/javascript">
+	 $(document).ready(function () {
+		 	
+	     $("#id").bind('keypress', function (event) {
+	     	
+	     	
+	         var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+	       
+	         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+	       
+	      
+	        if (!regex.test(key)) {
+	         	
+	             event.preventDefault();
+	             return false;
+	         }
+	     });
+	 			
+	 });
 	 function validateEmail(sEmail) {
 		    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		    if (filter.test(sEmail)) {
@@ -330,7 +348,7 @@ $("#city").keyup(function() {
 				  }
 				}
 
-			var numbers = $('#mno').val();
+			/* var numbers = $('#mno').val();
 			if(numbers!='')
 			{
 			var result1 = validPhone(numbers);
@@ -339,7 +357,7 @@ $("#city").keyup(function() {
 				document.getElementById("spnmno").innerHTML="invalid phone number";				
 			return false;
 			}
-			}
+			} */
 			var $zipcode=document.getElementById("city").value;
 			var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
 			if($regex.test($zipcode)||$zipcode=='') 
@@ -454,7 +472,7 @@ else
 											  <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err"></span> ID:</td>
                 
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_id"  value="${participantsDetails.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="id"  value="${participantsDetails.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
                 </tr>
 											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
@@ -490,9 +508,9 @@ else
 													type="text" min="10" maxlength="10" class="input_txtbx1" id="mno"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="mobile_num"
-													value="${participantsDetails.mobile_num}" /></br> <c:if test="${mobile_exists ==true}">
-													<font
-													color="Red" size="+1"><span id="spnmno">Mobile name already exists </span></font>
+													value="${participantsDetails.mobile_num}" /></br><font
+													color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if> <c:if test="${mobile_exists ==true}">
+													<span id="spnmno">Mobile name already exists </span></font>
 													</c:if>	
 															
 												<font

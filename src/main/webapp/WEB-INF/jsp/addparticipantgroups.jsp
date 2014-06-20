@@ -64,6 +64,42 @@
       </tr>
       </c:if>
       <tr>
+      <script>
+    /*   function validate()
+      {
+
+    	  document.getElementById("error").innerHTML="";
+ 		 
+    	  var regex="^[a-zA-Z0-9]+$";
+    	  var group_name=document.getElementById("group_name").value;
+    	
+    	  if(!regex.match(group_name))
+    		  {
+    		
+    		  document.getElementById("error").innerHTML="Invalid Data";
+    		  return false;
+    		  }
+      } */
+      $(document).ready(function () {
+		 	
+ 	     $("#group_name").bind('keypress', function (event) {
+ 	     	
+ 	     	
+ 	         var regex = new RegExp("^[a-zA-Z0-9]+$");
+ 	       
+ 	         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+ 	       
+ 	      
+ 	        if (!regex.test(key)) {
+ 	         	
+ 	             event.preventDefault();
+ 	             return false;
+ 	         }
+ 	     });
+ 	 			
+ 	 });
+      
+      </script>
         <td valign="top" align="left">
         	<div>
 	            <div class="headings altheading">
@@ -76,7 +112,7 @@
 	                
 	                <tr class="row1">
 	                  <td valign="middle" align="right" class="input_txt" width=30% ><span class="err">*</span> Group Name :</td>
-	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
+	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" onclick="return validate()" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><font color="red" size="+1"><span id="error"></span></font><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
 	                </tr>
 	                <tr class="row1">
 	                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Group Description :</td>
@@ -86,7 +122,7 @@
 	              <table align="center" class="row2" cellpadding="0" cellspacing="0" border="0" width="100%">           
 	                 <tr class="row2">
 	                  <td valign="top" align="right">&nbsp;</td>
-	                  <td valign="top" align="right" width="42%"><input type="submit" class="submit_btn1" value="Add Group" style="color:white;"><td >
+	                  <td valign="top" align="right" width="42%"><input type="submit" onclick="return validate()" class="submit_btn1" value="Add Group" style="color:white;"><td >
 	                  <input type="reset" class="submit_btn1" value="Reset" style="color:white;"></td>
 	                  <td><strong><b> <a href="viewparticipantgroups" class="submit_btn1" style="color:white;text-decoration: none; font-size:14px;">Cancel</a></b></strong></td><td width="40%"></td>
 	                </tr>	                
@@ -98,7 +134,7 @@
 	                <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	                 <tr class="row1">
 	                  <td valign="middle" align="right" class="input_txt" width=30% ><span class="err">*</span> Group Name :</td>
-	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantgroup.group_name}"/><br/><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
+	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantgroup.group_name}"/><br/><font color="red" size="+1"><span id="error"></span></font><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
 	                </tr>
 	               <tr class="row1">
 	                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Group Description :</td>
@@ -109,7 +145,7 @@
 	                 <table align="center" class="row2" cellpadding="0" cellspacing="0" border="0" width="100%">           
 	                 <tr class="row2">
 	                  <td valign="top" align="right">&nbsp;</td>
-	                  <td valign="top" align="right" width="42%"><input type="submit" class="submit_btn1" value="Add Group" style="color:white;"><td></form>
+	                  <td valign="top" align="right" width="42%"><input type="submit" onclick="return validate() " class="submit_btn1" value="Add Group" style="color:white;"><td></form>
 	                 <form method=get action="showaddparticipantgroups"> <input type="submit" class="submit_btn1"  value="Reset" style="color:white;"></td></form>
 	                  <td> <a href="viewparticipantgroups" class="submit_btn1" style="color:white; text-decoration: none;font-size:14px;">Cancel</a></td><td width="40%"></td>
 	                </tr>	                

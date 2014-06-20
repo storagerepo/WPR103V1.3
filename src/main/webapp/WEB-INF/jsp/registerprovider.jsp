@@ -48,6 +48,7 @@ $("#inp_id3").keyup(function() {
 <script type="text/javascript">
  function checkmail()
               {
+	 document.getElementById("adminmobileerr").innerHTML="";
               var p=document.getElementById("admin_email").value; 
               var s=document.getElementById("secondary_email").value;         	
            
@@ -61,7 +62,7 @@ $("#inp_id3").keyup(function() {
               
               
               }
-              var numbers = $('#admin_mobile').val();
+             /*  var numbers = $('#admin_mobile').val();
               if(numbers!='')
               {
               var result1 = validPhone(numbers);
@@ -70,7 +71,7 @@ $("#inp_id3").keyup(function() {
               	document.getElementById("adminmobileerr").innerHTML="invalid phone number";
               	
               return false;
-              }
+              } */
               }
            
               }   
@@ -224,11 +225,11 @@ function validateEmail(hmail) {
                 </tr> --%>
 		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"  maxlength="10"  class="input_txtbx" id="admin_mobile" value="" /><br><font color="Red" size="+1"><span id="adminmobileerr"></span><span id="err"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"    class="input_txtbx" id="admin_mobile" value="" /><br><font color="Red" size="+1"><span id="adminmobileerr"></span><span id="err"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Primary E-mail id :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" value="" /><br><font color="Red" size="+1"><span id="padminerr"><c:if test="${email_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.admin_email"></form:errors></span></font></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" value="" /><br><font color="Red" size="+1"><span id="padminerr"><c:out value="${invalid}"></c:out><c:if test="${invalid=='error'}"><c:out value="Email Id  already exist"/></c:if><c:if test="${email_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.admin_email"></form:errors></span></font></td>
                 </tr> 
                   <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id :</td>
@@ -268,7 +269,7 @@ function validateEmail(hmail) {
                 </tr> --%>
 		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx"  maxlength="10"  id="admin_mobile" value="${admin.admin_mobile}" /><br>  <span class="err"><font color="Red" size="+1"><span id="adminmobileerr"><c:if test="${mobile_exists==true}"><c:out value="Mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx"   id="admin_mobile" value="${admin.admin_mobile}" /><br>  <span class="err"><font color="Red" size="+1"><span id="adminmobileerr"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><c:if test="${mobile_exists==true}"><c:out value="Mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Primary E-mail id:</td>

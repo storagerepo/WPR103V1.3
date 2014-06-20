@@ -26,6 +26,24 @@ $(function() {
 });
 </script>
 <script>
+$(document).ready(function () {
+	 	
+     $("#id").bind('keypress', function (event) {
+     	
+     	
+         var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+       
+         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+       
+      
+        if (!regex.test(key)) {
+         	
+             event.preventDefault();
+             return false;
+         }
+     });
+ 			
+ });
 function validateEmail(sEmail) {
     var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
     if (filter.test(sEmail)) {
@@ -396,7 +414,7 @@ function validate(){
 		}
 		}	
 
-var numbers = $('#mno').val();
+/* var numbers = $('#mno').val();
 if(numbers!='')
 {
 var result1 = validPhone(numbers);
@@ -406,7 +424,7 @@ if (result1.valid === false) {
 	
 return false;
 }
-}
+} */
 var re = /^(0[1-9]|1[0-2])\/(0[1-9]|1\d|2\d|3[01])\/(19|20)\d{2}$/ ;
 
 
@@ -1006,7 +1024,7 @@ function empty()
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');"
 													name="mobile_num" value="${participants.mobile_num}" /></br> <font
-													color="Red" size="+1"><span id="spnmno"><c:if test="${mobile_exists ==true}">Mobile number already exists</c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><form:errors
+													color="Red" size="+1"><span id="spnmno"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><c:if test="${mobile_exists ==true}">Mobile number already exists</c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><form:errors
 																path="participant.mobile_num"></form:errors> </span></font></td>
 											</tr>
 											<tr class="row2">

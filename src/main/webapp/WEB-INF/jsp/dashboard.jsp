@@ -27,7 +27,7 @@
       
       </table> 
   
-							<table cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed; width="90%">
+							<table cellpadding="0" cellspacing="0" border="0" style="table-layout: fixed; width="100%">
 				
 								<tr class="title">
 									<td valign="top" align="left" width="2%">SystemID</td>

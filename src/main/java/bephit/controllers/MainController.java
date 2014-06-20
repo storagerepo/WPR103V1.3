@@ -537,11 +537,11 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
         
         		
 	*/	int a=mainDAO.setParticipants(participant,principal.getName(),groups,1);
-	/*if(a==1)
+	if(a==1)
 	{
-		model.addAttribute("merror",true);
+		model.addAttribute("invalid","error");
 		return "addparticipants";
-	}*/
+	}
 	String participantid=mainDAO.getmaxparticipantid();	
 		 
 		 messagelogdao.getMessageLog(participantid);		
@@ -680,11 +680,11 @@ public String showRegisterParticipants(HttpSession session,HttpServletRequest re
 				model.put("errmsg",errmsges[0]);					
 
 		int a=mainDAO.setregisterParticipants(participant,providername,groups,0);
-		/*if(a==1)
+		if(a==1)
 		{
-			model.addAttribute("merror",true);
+			model.addAttribute("invalid","error");
 			return "registerparticipants";
-		} */
+		} 
 		String participantid=mainDAO.getmaxparticipantid();
 		
 		 messagelogdao.getMessageLog(participantid);
@@ -1176,6 +1176,11 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
 		
 		String groups[]=request.getParameterValues("group_name");
 		int status=mainDAO.updateParticipants(participant, participant.getParticipants_id(),principal.getName(),groups,1);
+		if(status==1)
+		{
+			model.addAttribute("invalid","error");
+			return "edit_participants";
+		}
 		String participantid=participant.getParticipants_id();
 		messagelogdao.getMessageLog(participantid);
 	
@@ -1298,7 +1303,11 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
         String[] groups=request.getParameterValues("group_name");
         
 		int status=mainDAO.updateregisterParticipants(participant, participant.getParticipants_id(),providername,groups,0);
-		
+		if(status==1)
+		{
+			model.addAttribute("invalid","error");
+			return "editregisterparticipant";
+		}
 		 String participantid=participant.getParticipants_id();
 		 messagelogdao.getMessageLog(participantid);		
 		model.addAttribute("adminuserform",adminuserform);	  

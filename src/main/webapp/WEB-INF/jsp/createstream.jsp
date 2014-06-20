@@ -98,7 +98,7 @@ $(document).ready(function(){
 			for($i=1;$i<=$in;$i++)
 				{
 				
-			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols=""></textarea><br><font color="Red" size="+1"><span id="msgerr'+$i+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
+			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row1"><td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols=""></textarea><br><font color="Red" size="+1"><span id="msgerr'+$i+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
 			// alert("newdiv"+newdiv);
 			
 				}

@@ -79,7 +79,7 @@ $(document).ready(function() {
 	        var hmail=document.getElementById('id_provider_secondary_email').value;
 	       var pemail=document.getElementById('id_provider_primary_email').value; 
 	        if ($.trim(sEmail).length == 0) {
-	        	document.getElementById("spneid").innerHTML="Required Field Should not be empty";
+	        	document.getElementById("spneid").innerHTML="";
 	        }
 	       
 	        if(sEmail!='')
@@ -464,7 +464,7 @@ if (document.getElementById("datepicker_weekly_survey").value !="") {
 			  return false;
 		  }
 		}
-		var numbers = $('#mno').val();
+		/* var numbers = $('#mno').val();
 		if(numbers!='')
 		{
 		var result1 = validPhone(numbers);
@@ -473,7 +473,7 @@ if (document.getElementById("datepicker_weekly_survey").value !="") {
 			document.getElementById("spnmno").innerHTML="invalid phone number";				
 		return false;
 		}
-		}
+		} */
 	
 		var $zipcode=document.getElementById("city").value;
 		var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
@@ -639,7 +639,7 @@ var $in = $zipcode;
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="email_id" /></br>
 													<font color="Red" size="+1"><span id="spneid">
-																			 <c:if test="${email_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font>	<br/></c:if>
+																			 <c:if test="${email_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font></c:if>
 																				
 													<form:errors
 																path="participant.email_id"></form:errors> </span></font></td>
@@ -913,7 +913,7 @@ var $in = $zipcode;
      <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err"></span> ID:</td>
                 
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_id"  value="${addparticipants.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="id"  value="${addparticipants.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
                 </tr>
                         <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name / Initials:</td>
@@ -930,7 +930,7 @@ var $in = $zipcode;
                 </tr>
 		<tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Mobile No :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="10" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
+                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="10" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
                   Mobile Number already exists</span> </font>	<br/></c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><font color="Red" size="+1"><span id="spnmno"><form:errors path="participant.mobile_num"></form:errors></span> </font></td>
                 </tr> 
 		<tr class="row1">
@@ -942,8 +942,7 @@ var $in = $zipcode;
                   
                   </c:when>
                   <c:otherwise><font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font></c:otherwise>
-                  </c:choose>
-                  	<br/>
+                  </c:choose>                  
                   </c:if><form:errors path="participant.email_id"></form:errors></span> </font></td>
                 </tr> 
 

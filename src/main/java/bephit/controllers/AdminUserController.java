@@ -48,7 +48,12 @@ public class AdminUserController
 		session.setAttribute("admin",adminuser);
 		int user_count=mainDAO.checkuser(adminuser.getAdmin_username());
 		int email_count=mainDAO.checkemail(adminuser.getAdmin_email(),0,null);
-		int secondary_email=mainDAO.checksecondaryemail(adminuser.getSecondary_email(),0,null);
+		int secondary_email=1;
+	if(adminuser.getSecondary_email()!="")
+	{
+	secondary_email=mainDAO.checksecondaryemail(adminuser.getSecondary_email(),0,null);
+	}
+		
 		int mobile_count=adminuserDAO.checkmobile(adminuser.getAdmin_mobile(),0,null);
 		if (result.hasErrors())
 		{
@@ -123,13 +128,19 @@ public class AdminUserController
 						
 		}
 
-		session.removeAttribute("admin");
+		
 		
 		AdminUserForm adminuserForm = new AdminUserForm();
 		adminuserForm.setAdminuser(adminuserDAO.getAdminUser());
         model.addAttribute("adminuserForm", adminuserForm);	
 		model.addAttribute("currentuser",request.getSession().getAttribute("currentuser"));
-		adminuserDAO.setAdminUser(adminuser,principal.getName());
+	int error=adminuserDAO.setAdminUser(adminuser,principal.getName());
+	if(error==1)
+	{
+		model.addAttribute("invalid","error");
+		return "addadminuser";
+	}
+		session.removeAttribute("admin");
 	    model.addAttribute("providerregsuccess","true");
 		model.addAttribute("menu","adminuser");
 		return "viewadminuser";
@@ -318,6 +329,11 @@ model.addAttribute("noofpages",1);
 		}*/
 		
 		int status=adminuserDAO.updateAdminUser(adminuser,principal.getName());
+		if(status==1)
+		{
+			model.addAttribute("invalid","error");
+			return "editadminuser";
+		}
 		//AdminUserForm adminuserForm = new AdminUserForm();
 		adminuserForm.setAdminuser(adminuserDAO.getAdminUser());
         model.addAttribute("adminuserForm",adminuserForm);
@@ -495,7 +511,13 @@ adminuserForm.setAdminuser(adminuserDAO.getlimitedadminuser(page));
 			}
 			if(flag==0)
 			{
-				adminuserDAO.setAdminUser(adminuser,"personal");
+				int validerror=adminuserDAO.setAdminUser(adminuser,"personal");
+				System.out.println("valid error"+validerror);
+				if(validerror==1)
+				{
+					model.addAttribute("invalid","error");
+					return "registerprovider";
+				}
 				model.addAttribute("providerRegsuccess","true");
 				return "/login";
 			}

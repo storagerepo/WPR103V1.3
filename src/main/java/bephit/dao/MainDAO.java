@@ -405,8 +405,30 @@ public class MainDAO {
 			int index = (int) (RANDOM.nextDouble() * letters.length());
 			pw += letters.substring(index, index + 1);
 		}
+		
+		try {
+			String body = "Welcome to the adherence project!  Your UserID is '"
+					+ participant.getUsername()
+					+ "' and Your Password is '" + pw + "'.";
+
+			messageSender.sendSMS(participant.getMobile_num(),
+					"Adherence Project Password :" + body);
+		} catch (Exception e) {
+			logger.info(e.toString());
+			e.printStackTrace();
+			merror = 1;
+
+		if(merror==1)
+		{
+			return merror;
+		}
+
 
 		// ArrayList<ParticipantsDetails>();
+		else
+		
+			
+		
 		try {
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			Date date = new Date();
@@ -532,20 +554,7 @@ public class MainDAO {
 
 				logger.info("--After Sent--");
 
-				try {
-					String body = "Welcome to the adherence project!  Your UserID is '"
-							+ participant.getUsername()
-							+ "' and Your Password is '" + pw + "'.";
-
-					messageSender.sendSMS(participant.getMobile_num(),
-							"Adherence Project Password :" + body);
-				} catch (Exception e) {
-					logger.info(e.toString());
-					e.printStackTrace();
-					merror = 1;
-
-				}
-
+				
 			} catch (Exception ex) {
 				logger.info(ex.toString());
 			}
@@ -636,8 +645,9 @@ public class MainDAO {
 			 */
 			flag = 1;
 
-		} catch (Exception e) {
-			logger.info(e.toString());
+		
+		} catch (Exception ex) {
+			logger.info(ex.toString());
 			releaseStatement(statement);
 			releaseConnection(con);
 			flag = 0;
@@ -646,7 +656,7 @@ public class MainDAO {
 			releaseStatement(statement);
 			releaseConnection(con);
 
-		}
+		}}
 		return merror;
 	}
 
@@ -684,6 +694,29 @@ public class MainDAO {
 			Date date = new Date();
 			// System.out.println("providername"+participant.getProvider_name());
 			// System.out.println(dateFormat.format(date));
+		
+			try {
+				String body = "Welcome to the adherence project!  Your UserID is '"
+						+ participant.getUsername()
+						+ "' and Your Password is '"
+						+ participant.getPassword() + "'.";
+
+				messageSender.sendSMS(participant.getMobile_num(),
+						"Adherence Project Password :" + body);
+			} catch (Exception e) {
+
+				logger.info(e.toString());
+				e.printStackTrace();
+				merror = 1;
+			}
+			if(merror==1)
+			{
+				return merror;
+			}else
+			{
+				
+			
+			
 			String cmd = "INSERT INTO `participants_table` (id,`fname`,`username`,password,`mobile_num`,`gender`,`city`,`education`,`medical_details`,`time1`,`time1_am_pm`,`time2`,`time2_am_pm`,`time3`,`time3_am_pm`,startdate,weekly_survey_start_date,provider_email1,provider_email2,`Provider_name`,`group_name`,`age`,`date_of_join`,`email_id`,`created_by`) VALUES ('"
 					+ participant.getId()
 					+ "','"
@@ -794,20 +827,7 @@ public class MainDAO {
 
 				logger.info("--After Sent--");
 
-				try {
-					String body = "Welcome to the adherence project!  Your UserID is '"
-							+ participant.getUsername()
-							+ "' and Your Password is '"
-							+ participant.getPassword() + "'.";
-
-					messageSender.sendSMS(participant.getMobile_num(),
-							"Adherence Project Password :" + body);
-				} catch (Exception e) {
-
-					logger.info(e.toString());
-					e.printStackTrace();
-					merror = 1;
-				}
+				
 
 			} catch (Exception ex) {
 				logger.info(ex.toString());
@@ -916,7 +936,7 @@ public class MainDAO {
 			 * statement.execute(cmd_activity);
 			 */
 			flag = 1;
-
+			}
 		} catch (Exception e) {
 			logger.info(e.toString());
 			releaseStatement(statement);
@@ -1033,8 +1053,9 @@ public class MainDAO {
 			int from) {
 		Connection con = null;
 		Statement statement = null;
-		ResultSet resultSet;
+		ResultSet resultSet,mobileresultset;
 		int flag = 0;
+		int merror=0;
 		try {
 			con = dataSource.getConnection();
 			statement = con.createStatement();
@@ -1059,6 +1080,31 @@ public class MainDAO {
 			// System.out.println(dateFormat.format(date));
 			// Generate random password
 
+			String mobilenumber="";
+			mobileresultset=statement.executeQuery("select mobile_num from participants_table where mobile_num='"+participant.getMobile_num()+"'");
+			while(mobileresultset.next())
+			{
+				mobilenumber=mobileresultset.getString("mobile_num");
+			}
+			System.out.println("mobilelength"+mobilenumber.length());			
+			if(mobilenumber.length()==0)
+			{
+				System.out.println("errorblock");
+			try {
+								String body = "Welcome to the adherence project! Your Mobile Number has been succesfully added.";
+
+								messageSender.sendSMS(participant.getMobile_num(),
+										"Adherence Project:" + body);
+							} catch (Exception e) {
+
+								logger.info(e.toString());
+								e.printStackTrace();
+								merror = 1;
+								System.out.println("m......."+merror);
+							}
+			}
+			if(mobilenumber.length()!=0 ||merror!=1)
+			{
 			String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789+@";
 
 			String pw = "";
@@ -1199,7 +1245,7 @@ public class MainDAO {
 			statement.execute(cmd_login);
 			logger.info(cmd_login);
 			flag = 1;
-		} catch (Exception e) {
+		} }catch (Exception e) {
 			logger.info(e.toString());
 			releaseStatement(statement);
 			releaseConnection(con);
@@ -1210,10 +1256,7 @@ public class MainDAO {
 			releaseConnection(con);
 
 		}
-		if (flag == 1)
-			return 1;
-		else
-			return 0;
+		return merror;
 
 	}
 
@@ -1222,7 +1265,8 @@ public class MainDAO {
 			int from) {
 		Connection con = null;
 		Statement statement = null;
-		ResultSet resultSet;
+		ResultSet resultSet,mobileresultset;
+		int merror=0;
 		int flag = 0;
 		try {
 			con = dataSource.getConnection();
@@ -1247,6 +1291,31 @@ public class MainDAO {
 
 			// System.out.println(dateFormat.format(date));
 			// Generate random password
+			String mobilenumber="";
+mobileresultset=statement.executeQuery("select mobile_num from participants_table where mobile_num='"+participant.getMobile_num()+"'");
+while(mobileresultset.next())
+{
+	mobilenumber=mobileresultset.getString("mobile_num");
+}
+			System.out.println("mobilelength"+mobilenumber.length());
+if(mobilenumber.length()==0 || merror!=1)
+{
+	System.out.println("errorblock");
+try {
+					String body = "Welcome to the adherence project! Your Mobile Number has been succesfully added.";
+
+					messageSender.sendSMS(participant.getMobile_num(),
+							"Adherence Project:" + body);
+				} catch (Exception e) {
+
+					logger.info(e.toString());
+					e.printStackTrace();
+					merror = 1;
+				}
+}
+if(mobilenumber.length()!=0)
+{
+	
 
 			String letters = "abcdefghjkmnpqrstuvwxyzABCDEFGHJKMNPQRSTUVWXYZ23456789+@";
 
@@ -1389,7 +1458,7 @@ public class MainDAO {
 			
 			logger.info(cmd_login);
 			flag = 1;
-		} catch (Exception e) {
+}		} catch (Exception e) {
 			logger.info(e.toString());
 			releaseStatement(statement);
 			releaseConnection(con);
@@ -1400,11 +1469,7 @@ public class MainDAO {
 			releaseConnection(con);
 
 		}
-		if (flag == 1)
-			return 1;
-		else
-			return 0;
-
+	return merror;
 	}
 
 	public String getproviders(String participantid) {

@@ -120,7 +120,7 @@
                   
                   </td>
                 </tr>
-                <tr class="row2">
+                <tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id:</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.secondary_email}" />
                   </br><font color="Red" size="+1"><span id="sadminerr">
@@ -140,9 +140,9 @@
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Retype password :</td>
                   <td valign="top" align="left" class="input_txt"> --><input type="hidden" name="repassword" class="input_txtbx" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"></span></td>
                <!--  </tr> -->
-		<tr class="row1">
+		<tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" maxlength="10" name="admin_mobile" class="input_txtbx" id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_mobile }" /></br><font color="Red" size="+1"><span id="adminmobileerr"><form:errors path="adminuser.admin_mobile"></form:errors></span></font></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" maxlength="18" name="admin_mobile" class="input_txtbx" id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_mobile }" /></br><font color="Red" size="+1"><span id="adminmobileerr"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></font></td>
                 </tr>
                 </table><table cellspacing="0" cellpadding="0" border="0" width="100%">
                  <tr class="row1">  
@@ -163,7 +163,7 @@
              
               function checkmail()
               {    
-            	  var numbers = $('#admin_mobile').val();
+            	 /*  var numbers = $('#admin_mobile').val();
               	if(numbers!='')
               	{
               	var result1 = validPhone(numbers);
@@ -173,7 +173,7 @@
               		
               	return false;
               	}
-              	}	
+              	}	 */
             	  
             	var p=document.getElementById("admin_email").value; 
             	var s=document.getElementById("secondary_email").value;           	

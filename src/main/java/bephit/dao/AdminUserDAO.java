@@ -89,23 +89,46 @@ public class AdminUserDAO {
 			 //end generate random password
 			 
 			 
+			 try{
+		    	  String body="Welcome to the adherence project!  Your UserID is '"+adminuser.getAdmin_username()+"' and Your Password is '"+pw+"'.";
+		    	 
+		      	messageSender.sendSMS(adminuser.getAdmin_mobile(), "Adherence Project Password :"+body);
+		     }catch(Exception e){e.printStackTrace();
+		     merror=1;
+		     
+		     }		 
+			 if(merror==1)
+			 {System.out.println("error block");
+				 return merror;
+			 }
+			 else
+			 {
+					String cmd="INSERT INTO admin_log_table(admin_firstname,admin_username,admin_password,admin_mobile,admin_email,secondary_email,date,status) VALUES('"+adminuser.getAdmin_firstname()+"','"+adminuser.getAdmin_username()+"','"+pw+"','"+adminuser.getAdmin_mobile()+"','"+adminuser.getAdmin_email()+"','"+adminuser.getSecondary_email()+"','"+dateFormat.format(date)+"',0)";
+					String cmd_login="insert into login(username,password,email_id,secondary_email,role,status) values('"+adminuser.getAdmin_username()+"','"+pw+"','"+adminuser.getAdmin_email()+"','"+adminuser.getSecondary_email()+"',1,0)";
+					String cmd_getid="SELECT LAST_INSERT_ID() as lastid";
+					logger.info(cmd);	
+					statement.execute(cmd);
+					statement.execute(cmd_login);
+					resultSet=statement.executeQuery(cmd_getid);
+					resultSet.next();
+					int lastinsertedid=Integer.parseInt(resultSet.getString("lastid"));
+					String cmd_role="insert into user_roles(user_id,authority) values('"+lastinsertedid+"','ROLE_USER')";
+					statement.execute(cmd_role);
+
+					logger.info("--Before Sending--"); //Logger Test
+				    //Email Test
+				    emailSender.password_sendEmail(adminuser.getAdmin_email(),"adherencemedicationproject@gmail.com","Adherence Project Registration",adminuser.getAdmin_firstname(),adminuser.getAdmin_username(),pw);
+				    System.out.println("secondaryemail"+adminuser.getSecondary_email());
+				    emailSender.password_sendEmail(adminuser.getSecondary_email(),"adherencemedicationproject@gmail.com","Adherence Project Registration",adminuser.getAdmin_firstname(),adminuser.getAdmin_username(),pw);
+				    logger.info("--After Sent--");
+				    
+			 }
 			 
-			 
-			 
-	String cmd="INSERT INTO admin_log_table(admin_firstname,admin_username,admin_password,admin_mobile,admin_email,secondary_email,date,status) VALUES('"+adminuser.getAdmin_firstname()+"','"+adminuser.getAdmin_username()+"','"+pw+"','"+adminuser.getAdmin_mobile()+"','"+adminuser.getAdmin_email()+"','"+adminuser.getSecondary_email()+"','"+dateFormat.format(date)+"',0)";
-	String cmd_login="insert into login(username,password,email_id,secondary_email,role,status) values('"+adminuser.getAdmin_username()+"','"+pw+"','"+adminuser.getAdmin_email()+"','"+adminuser.getSecondary_email()+"',1,0)";
-	String cmd_getid="SELECT LAST_INSERT_ID() as lastid";
-	logger.info(cmd);	
-	statement.execute(cmd);
-	statement.execute(cmd_login);
+
 	/*String Desc="added adminuser";*/
 	/*String cmd_activity="insert into admin_log_activity_table(admin_id,ip_address,admin_date_time,admin_desc,done_by) values('"+admin_id+"','127.0.0.1','"+dateFormat.format(date)+"','"+Desc+"','"+admin_id+"')";
 	System.out.println(cmd_activity);*/
-	resultSet=statement.executeQuery(cmd_getid);
-	resultSet.next();
-	int lastinsertedid=Integer.parseInt(resultSet.getString("lastid"));
-	String cmd_role="insert into user_roles(user_id,authority) values('"+lastinsertedid+"','ROLE_USER')";
-	statement.execute(cmd_role);	
+	
 	//Send password
 	
 	//System.out.println(adminuser.getAdmin_email());
@@ -114,26 +137,12 @@ public class AdminUserDAO {
 	//System.out.println("password:"+adminuser.getAdmin_password());
 	//System.out.println("password:"+pw);
 	
-	logger.info("--Before Sending--"); //Logger Test
-    //Email Test
-    emailSender.password_sendEmail(adminuser.getAdmin_email(),"adherencemedicationproject@gmail.com","Adherence Project Registration",adminuser.getAdmin_firstname(),adminuser.getAdmin_username(),pw);
-    System.out.println("secondaryemail"+adminuser.getSecondary_email());
-    emailSender.password_sendEmail(adminuser.getSecondary_email(),"adherencemedicationproject@gmail.com","Adherence Project Registration",adminuser.getAdmin_firstname(),adminuser.getAdmin_username(),pw);
-    logger.info("--After Sent--");
-    
   /*  model.addAttribute("success","true");
    */
     /*  model.addAttribute("success","true");
      */ 
    
-    try{
-    	  String body="Welcome to the adherence project!  Your UserID is '"+adminuser.getAdmin_username()+"' and Your Password is '"+pw+"'.";
-    	 
-      	messageSender.sendSMS(adminuser.getAdmin_mobile(), "Adherence Project Password :"+body);
-     }catch(Exception e){e.printStackTrace();
-     merror=1;
-     
-     }
+   
     
 	//End Send Passwordlcvbnm,./,nbvcc                                                                                                                                                                  
 		}
@@ -151,7 +160,7 @@ public class AdminUserDAO {
 	    	releaseStatement(statement);
 	    	releaseConnection(con);	   
 		}
-		return 1;
+		return merror;
 	}
 	
 	public int setPermission_adminUser(String admin_id,String Status)
@@ -762,6 +771,7 @@ public class AdminUserDAO {
 		Statement statement = null;
 		ResultSet resultSet = null;
 		int flag=0;
+		int merror=0;
 		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		UserDetails userDetails = null;
 		if (principal instanceof UserDetails) {
@@ -776,15 +786,36 @@ public class AdminUserDAO {
 		}
 		try
 		{
-			
+			String admin_mobile="";
 			DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 			 Date date = new Date();
-			 		 
+			 resultSet=statement.executeQuery("select admin_mobile from admin_log_table where admin_mobile='"+adminuser.getAdmin_mobile()+"'");
+			while(resultSet.next())
+			{
+				admin_mobile=resultSet.getString("admin_mobile");
+			}
+			System.out.println("mobilelength"+admin_mobile.length());
+			if(admin_mobile.length()==0){
+			 try {
+					String body = "Welcome to the adherence project! Your Mobile Number has been succesfully added.";
+
+					messageSender.sendSMS(adminuser.getAdmin_mobile(),
+							"Adherence Project:" + body);
+				} catch (Exception e) {
+
+					logger.info(e.toString());
+					e.printStackTrace();
+					merror = 1;
+				}
+			}
+			if(admin_mobile.length()!=0 || merror!=1){
+			 
 			String cmd="UPDATE admin_log_table SET admin_firstname='"+adminuser.getAdmin_firstname()+"',admin_username= '"+adminuser.getAdmin_username()+"',admin_password='"+adminuser.getAdmin_password()+"',admin_email='"+adminuser.getAdmin_email()+"',secondary_email='"+adminuser.getSecondary_email()+"',admin_mobile='"+adminuser.getAdmin_mobile()+"' where admin_id='"+adminuser.getAdmin_id()+"'";
 			String cmd_login="UPDATE login SET email_id='"+adminuser.getAdmin_email()+"',secondary_email='"+adminuser.getSecondary_email()+"' where username= '"+adminuser.getAdmin_username()+"'";
 			statement.execute(cmd);
 			statement.execute(cmd_login);
 			logger.info(cmd);
+			}
            
             /*String Desc="Update adminuser";
             String cmd_activity="insert into admin_log_activity_table(admin_id,ip_address,admin_date_time,admin_desc,done_by) values('"+admin_id+"','127.0.0.1','"+dateFormat.format(date)+"','"+Desc+"','"+userName+"')";
@@ -810,10 +841,7 @@ public class AdminUserDAO {
 	    	
 		}
 
-		if(flag==1)
-			return 1;
-		else
-			return 0;
+	return merror;
 	}
 	
 		
