@@ -71,8 +71,8 @@ $("#inp_id3").keyup(function() {
               	document.getElementById("adminmobileerr").innerHTML="invalid phone number";
               	
               return false;
-              } */
-              }
+              } 
+              }*/
            
               }   
 function clear()
@@ -208,12 +208,12 @@ function validateEmail(hmail) {
               
                              <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>First Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_firstname" class="input_txtbx" id="inp_id1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" min="4" maxlength="32" name="admin_firstname" class="input_txtbx" id="inp_id1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
                 </tr>
 		
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>User Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" class="input_txtbx" id="inp_id2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><c:if test="${user_exists==true}"><c:out value="user already exist"/></c:if><form:errors path="adminuser.admin_username"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username"  min="4" maxlength="32" class="input_txtbx" id="inp_id2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><c:if test="${user_exists==true}"><c:out value="user already exist"/></c:if><form:errors path="adminuser.admin_username"></form:errors></span></td>
                 </tr>
                 <%-- <tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Password :</td>
@@ -252,12 +252,12 @@ function validateEmail(hmail) {
               
                              <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>First Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_firstname" class="input_txtbx" id="inp_id1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_firstname}" /></br><span class="err"><font color="Red" size="+1"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_firstname" min="4" maxlength="32"  class="input_txtbx" id="inp_id1" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_firstname}" /></br><span class="err"><font color="Red" size="+1"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
                 </tr>
 		
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>User Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" class="input_txtbx" id="inp_id2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_username}" /></br><span class="err"><font color="Red" size="+1"><c:if test="${user_exists==true}"><c:out value="User already exist"/></c:if><form:errors path="adminuser.admin_username"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" min="4" maxlength="32" class="input_txtbx" id="inp_id2" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_username}" /></br><span class="err"><font color="Red" size="+1"><c:if test="${user_exists==true}"><c:out value="User already exist"/></c:if><form:errors path="adminuser.admin_username"></form:errors></span></td>
                 </tr>
                 <%-- <tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Password :</td>
@@ -318,5 +318,8 @@ function validateEmail(hmail) {
       </div>
       
 </form>
+<%-- <form method="get" action="emailsend">
+<input type="submit" value="EMAIL">
+</form> --%>
 </html>
       <jsp:include page="footer.jsp"></jsp:include>

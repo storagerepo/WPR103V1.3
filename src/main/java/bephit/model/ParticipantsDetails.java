@@ -22,18 +22,21 @@ public class ParticipantsDetails {
 	
 	private String id;
 	
+	
+	//@NotEmpty	
+	//@Length(min=4,max=32,message="First Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String fname;
 	
-		 
 	@NotEmpty
+//	@Length(min=4,max=32,message="User Name should between 4 to 32 characters!!!")	
 	private String username;
 	
 	@NotEmpty
 	private String password;
 	
 	@NotEmpty
-	@Length(max=10,min=10,message="Mobile number is not valid. Should be of length 10.",groups=ParticipantsDetails.class)
+	//@Length(max=10,min=10,message="Mobile number is not valid. Should be of length 10.",groups=ParticipantsDetails.class)
 	//@Pattern(regexp="^[+][1][4-6]\\d{2}\\d{3}\\d{4}",message="Mobile number is not valid and also Should be like +1XXXXXXXXXX")
 	private String mobile_num;
 

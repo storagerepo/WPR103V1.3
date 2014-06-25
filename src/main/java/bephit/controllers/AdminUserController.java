@@ -232,9 +232,20 @@ model.addAttribute("noofpages",1);
 		return "viewadminuser";
 	}	
 	
+	
+	@RequestMapping(value="/editprovideruser", method=RequestMethod.GET)
+	public String editprovideruser(HttpServletRequest request,@RequestParam("id") String admin_id,ModelMap model, Principal principal) {
+	System.out.println("edit");
+		AdminUserForm adminuserForm = new AdminUserForm();
+		adminuserForm.setAdminuser(adminuserDAO.getAdminUser(admin_id));
+        model.addAttribute("adminuserForm",adminuserForm);
+        model.addAttribute("menu","adminuser");
+       
+        return "editadminuser";
+	}
 	@RequestMapping(value="/editadminuser", method=RequestMethod.GET)
 	public String editadminuser(HttpServletRequest request,@RequestParam("id") String admin_id,ModelMap model, Principal principal) {
-	
+	System.out.println("edit");
 		AdminUserForm adminuserForm = new AdminUserForm();
 		adminuserForm.setAdminuser(adminuserDAO.getAdminUser(admin_id));
         model.addAttribute("adminuserForm",adminuserForm);

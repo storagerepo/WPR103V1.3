@@ -2,6 +2,7 @@ package bephit.model;
 
 import javax.validation.GroupSequence;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
@@ -10,10 +11,14 @@ import org.hibernate.validator.constraints.NotEmpty;
 @GroupSequence({AdminUser.class})
 public class AdminUser
 {
+	//@Size(min=4,max=32,message="First Name should between 4 to 32 characters!!!",groups=AdminUser.class)
+	//@Length(min=4,max=32,message="First Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String admin_firstname;
 	
 	
+	//@Length(min=4,max=32,message="User Name should between 4 to 32 characters!!!",groups=AdminUser.class)
+	//@Length(min=4,max=32,message="User Name should between 4 to 32 characters!!!")
 	@NotEmpty
 	private String admin_username;
 	
@@ -29,7 +34,7 @@ public class AdminUser
 	private String secondary_email;
 	
 	@NotEmpty
-	@Length(max=10,min=10,message="Mobile number is not valid. Should be of length 10.",groups=AdminUser.class)
+	//@Length(max=10,min=10,message="Mobile number is not valid. Should be of length 10.",groups=AdminUser.class)
 	//@Pattern(regexp="^[+][1][4-6]\\d{2}\\d{3}\\d{4}",message="Mobile number is not valid and also Should be like +1XXXXXXXXXX")
 	private String admin_mobile;
 

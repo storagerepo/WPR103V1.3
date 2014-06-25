@@ -64,7 +64,7 @@
 											
 											<td valign="top" align="left" width="15%">
 											
-											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editadminuser?id=${adminuser.admin_id}"/>" style="padding-right:10px;">Edit</a>
+											<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editprovideruser?id=${adminuser.admin_id}"/>" style="padding-right:10px;">Edit</a>
 									    
 										 	<a href="#" title=""><img src="resources/images/icons/icon_delete.png" alt="Delete" /></a><a  href="<c:out value="deleteadminuser?id=${adminuser.admin_id}"/>"  style="padding-right:10px;" onclick="return confirmation()">Remove</a>
 										 	</td>

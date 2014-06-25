@@ -15,7 +15,7 @@ $(document).ready(function(){
 	{
 if(tc>1000)
  {
- document.getElementById("tc").innerHTML="Length is too long";
+ document.getElementById("tc").innerHTML="Must be less than or equal 1000";
  return false;
  }
 	}
@@ -168,7 +168,7 @@ var $in = xx+1;
 			}
 		 if(tc>1000)
 		 {
-		 document.getElementById("tc").innerHTML="Length is too long";
+		 document.getElementById("tc").innerHTML="Must be less than or equal 1000";
 		 return false;
 		 }
 			}
@@ -220,7 +220,8 @@ var $in = xx+1;
 			}
 		if(tc<xx)
 		{
-		document.getElementById("tc").innerHTML="Invalid Data";
+			var err="Must be Greater than or equal "+xx;
+		document.getElementById("tc").innerHTML=err;
 		return false;
 		}
 		

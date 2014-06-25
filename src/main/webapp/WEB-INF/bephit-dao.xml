@@ -41,6 +41,9 @@
 	<bean id="responseDAO" class="bephit.dao.ResponseDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+	<bean id="email" class="bephit.dao.Email">
+	
+	</bean>
 	<bean id="participantAnswersDAO" class="bephit.dao.ParticipantAnswersDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>

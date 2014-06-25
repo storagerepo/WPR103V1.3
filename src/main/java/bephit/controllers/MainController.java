@@ -1691,7 +1691,7 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
 	
 	@RequestMapping(value = "/downloadsurvey", method = RequestMethod.GET)
 	public ModelAndView generateAudit_Report(HttpServletRequest request,ModelMap model) {
-		
+		 model.addAttribute("menu","dashboard");
 	
 		String[] fields={"participant_id","q1","q2","q3","q4Audio","q4Text","qm","qs","startDate","weekNumber","modified","appmodified"};	
 		String title = "Weekly_Survey_Report";
@@ -1705,7 +1705,7 @@ public String saveSettings(HttpServletRequest request,@ModelAttribute("textMsgSe
 	}
 	@RequestMapping(value = "/downloadparticipantsurvey", method = RequestMethod.GET)
 	public ModelAndView generateparticipantAudit_Report(@RequestParam("participantid") String participantid,HttpServletRequest request,ModelMap model) {
-		
+		 model.addAttribute("menu","dashboard");
 	String[] fields={"participant_id","q1","q2","q3","q4Audio","q4Text","qm","qs","startDate","weekNumber","modified","appmodified"};	
 		String title = "Weekly_Survey_Report";
 		java.util.List<Response> response=new ArrayList<Response>();

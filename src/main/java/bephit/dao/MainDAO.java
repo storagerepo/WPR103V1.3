@@ -417,7 +417,7 @@ public class MainDAO {
 			logger.info(e.toString());
 			e.printStackTrace();
 			merror = 1;
-
+		}
 		if(merror==1)
 		{
 			return merror;
@@ -656,7 +656,7 @@ public class MainDAO {
 			releaseStatement(statement);
 			releaseConnection(con);
 
-		}}
+		}
 		return merror;
 	}
 

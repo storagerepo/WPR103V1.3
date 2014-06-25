@@ -1,15 +1,18 @@
 package bephit.model;
 
 
+import javax.validation.GroupSequence;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
+@GroupSequence({ParticipantGroups.class})
 public class ParticipantGroups {
+	
 	private String group_id;
 	
 	
 	@NotEmpty
+	@Pattern(regexp="^[a-zA-Z0-9]+$",message="Invalid Groupname",groups=ParticipantGroups.class)
 	private String group_name;
 	
 	

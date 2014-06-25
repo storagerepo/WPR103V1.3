@@ -197,10 +197,10 @@ $("#mno").keyup(function() {
 		var $in = $(this).val();
 		var $newdiv="";
 	  var $i=0;
-	  if($in.length>10)
+	 /*  if($in.length>10)
 		  {
 		  $("#spnmno").html('Mobile number is not valid. Should be of length 10!!');		
-		   }	
+		   }	 */
 			
 	}
 	else if($(this).val()!='')
@@ -585,7 +585,7 @@ var $in = $zipcode;
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> First Name / Initials:</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="fname" name="fname" /><br />
+													type="text" class="input_txtbx1" id="fname" name="fname" min="4" maxlength="32"/><br />
 													<font color="Red" size="+1"> <span id="spnfname">
 															<form:errors path="participant.fname"></form:errors>
 													</span></font></td>
@@ -598,7 +598,7 @@ var $in = $zipcode;
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="username"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
-													onmouseout="hideTooltip('tooltip_id');" name="username" /> </br> <font
+													onmouseout="hideTooltip('tooltip_id');" name="username" min="4" maxlength="32"/> </br> <font
 													color="Red" size="+1"><span id="spnlname"></span>
 													 <c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>User name already exists </font>	<br/></c:if>
 													 <form:errors
@@ -621,7 +621,7 @@ var $in = $zipcode;
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Mobile No :</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" min="10" maxlength="10" id="mno"
+													type="text" class="input_txtbx1" min="10" maxlength="17" id="mno"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');"
 													value="${mobile_num}" name="mobile_num" /></br> <font
@@ -917,12 +917,12 @@ var $in = $zipcode;
                 </tr>
                         <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name / Initials:</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.fname }" name="fname" /></br><span class="err"><form:errors path="participant.fname"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text"  min="4" maxlength="32" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.fname }" name="fname" /></br><span class="err"><form:errors path="participant.fname"></form:errors></span></td>
                 </tr>
 
 		 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> User Name :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.username }" name="username"/></br><font color="Red" size="+1"><span class="err"><c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Username already exists </font>	<br/></c:if><form:errors path="participant.username"></form:errors></font></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text"  min="4" maxlength="32" class="input_txtbx1" id="username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.username }" name="username"/></br><font color="Red" size="+1"><span class="err"><c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Username already exists </font>	<br/></c:if><form:errors path="participant.username"></form:errors></font></td>
                 </tr> 
                 <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Password:</td>
@@ -930,7 +930,7 @@ var $in = $zipcode;
                 </tr>
 		<tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Mobile No :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="10" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
+                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="17" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
                   Mobile Number already exists</span> </font>	<br/></c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><font color="Red" size="+1"><span id="spnmno"><form:errors path="participant.mobile_num"></form:errors></span> </font></td>
                 </tr> 
 		<tr class="row1">

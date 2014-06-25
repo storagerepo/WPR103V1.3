@@ -174,6 +174,14 @@ if(document.getElementById("days_weeks").value==0)
 	
 	}
 	
+if(document.getElementById("days_weeks").value>999)
+{
+
+document.getElementById("weekerr").innerHTML="Must Be Less than 1000";
+return false;
+
+}
+	
 	
 	var datefield=document.getElementById("datepicker").value;
 	
@@ -434,8 +442,7 @@ if (document.getElementById("datepicker").value !="") {
 									<td valign="middle" align="right" class="input_txt1" id="weeks"><span class="err">*&nbsp;</span>No of Weeks :</td>
 									<td valign="middle" align="right" class="input_txt1" id="days"><span class="err">*&nbsp;</span>No of Days :</td>
 									<td valign="top" align="left" id="daystext">
-										<input type="text" name="days_weeks"
-										id="days_weeks" class="input_txtbx1" value=""><span style="margin-left:10px;color:red;" id="info3"></span></br> <span
+										<input type="text" name="days_weeks" maxlength="4" id="days_weeks" class="input_txtbx1" value=""><span style="margin-left:10px;color:red;" id="info3"></span></br> <span
 									id="weekerr" style="font-size: 12px"	class="err"><form:errors path="broadCast.days_weeks"></form:errors></span>
 									</td>
 									</td>

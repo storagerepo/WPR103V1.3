@@ -483,7 +483,7 @@ else
 													
 													
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="fname" name="fname"
+													type="text" class="input_txtbx1" id="fname" min="4" maxlength="32" name="fname"
 													value="${participantsDetails.fname }" /><br /> <font
 													color="Red" size="+1"> <span id="spnfname"> <form:errors
 																path="participant.fname"></form:errors>
@@ -505,7 +505,7 @@ else
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Mobile No :</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" min="10" maxlength="10" class="input_txtbx1" id="mno"
+													type="text" min="10" maxlength="17" class="input_txtbx1" id="mno"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="mobile_num"
 													value="${participantsDetails.mobile_num}" /></br><font

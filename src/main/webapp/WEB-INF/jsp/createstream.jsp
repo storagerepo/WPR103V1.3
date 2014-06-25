@@ -84,7 +84,7 @@ $(document).ready(function(){
 		{
 	if(tc>1000)
 	 {
-	 document.getElementById("tc").innerHTML="Length is too long";
+	 document.getElementById("tc").innerHTML="Must be less than or equal 1000";
 	 return false;
 	 }
 		}

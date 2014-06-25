@@ -37,6 +37,7 @@ public class EmailSender {
 			final String fromEmailAddress, final String subject) {
 		
 		sendEmail(toEmailAddresses, fromEmailAddress, subject, null, null);
+	
 	}
 
 	public void sendEmailWithAttachment(final String toEmailAddresses,

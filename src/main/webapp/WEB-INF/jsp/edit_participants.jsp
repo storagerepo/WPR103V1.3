@@ -138,7 +138,7 @@ $("#mno").keyup(function() {
 	  if($in.length>10)
 		  {
 		  $("#spnmno").html('');
-		  $("#spnmno").html('Mobile number is not valid. Should be of length 10!!');		
+		 // $("#spnmno").html('Mobile number is not valid. Should be of length 10!!');		
 		   }	
 			
 	}
@@ -412,7 +412,7 @@ $(document).ready(function () {
                         <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name :</td>
                   <input type="hidden" class="input_txtbx1" id="inp_id" value="${participantsDetails.participants_id }" name="participants_id" />
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantsDetails.fname }" name="fname" /></br><span class="err"><form:errors path="participant.fname"></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" min="4" maxlength="32" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantsDetails.fname }" name="fname" /></br><span class="err"><form:errors path="participant.fname"></form:errors></span></td>
                 </tr>
                   <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> User Name:</td>
@@ -430,7 +430,7 @@ $(document).ready(function () {
                
 		<tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Mobile No :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" min="10" maxlength="10" id="mno" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantsDetails.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><span><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number already exists </font>	<br/></c:if> <font
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" min="10" maxlength="17" id="mno" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantsDetails.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><span><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number already exists </font>	<br/></c:if> <font
 													color="Red" size="+1"><span id="spnmno">   <form:errors path="participant.mobile_num"></form:errors></span> </font></td>
                 </tr> 
 		<tr class="row1">

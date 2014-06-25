@@ -161,10 +161,7 @@ $("#mno").keyup(function() {
 		var $in = $(this).val();
 		var $newdiv="";
 	  var $i=0;
-	  if($in.length>10)
-		  {
-		  $("#spnmno").html('Mobile number is not valid. Should be of length 10!!');		
-		   }	
+	  
 			
 	}
 	
@@ -643,7 +640,7 @@ function empty()
 										
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name :</td>
-												<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');"
+												<td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="fname" min="4" maxlength="32" onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="fname" /><br />
 													<font color="Red" size="+1"> <span id="spnfname">
 															<form:errors path="participant.fname"></form:errors>
@@ -662,7 +659,7 @@ function empty()
 												<input
 													type="text" class="input_txtbx1" id="username"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
-													onmouseout="hideTooltip('tooltip_id');" name="username" /> </br>
+													onmouseout="hideTooltip('tooltip_id');" min="4" maxlength="32"  name="username" /> </br>
 													 <c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>User name already exists  <form:errors
 															path="participant.username"></form:errors></c:if> </font></td>
 											</tr>
@@ -671,7 +668,7 @@ function empty()
 											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Mobile No :</td>
-												<td valign="top" align="left" class="input_txt"><input min="10" maxlength="10"
+												<td valign="top" align="left" class="input_txt"><input min="10" maxlength="17"
 													type="text" class="input_txtbx1" id="mno"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');"
@@ -999,7 +996,7 @@ function empty()
 													class="err">*</span> First Name :</td>
 													<input type="hidden" class="input_txtbx1" id="inp_id" value="${participants.participants_id }" name="participants_id" />
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="fname" name="fname" value="${participants.fname }"/><br />
+													type="text" class="input_txtbx1" min="4" maxlength="32"  id="fname" name="fname" value="${participants.fname }"/><br />
 													<font color="Red" size="+1"> <span id="spnfname">
 															<form:errors path="participant.fname"></form:errors>
 													</span></font></td>
@@ -1012,7 +1009,7 @@ function empty()
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="username"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
-													onmouseout="hideTooltip('tooltip_id');" name="username"  value="${participants.username}"/> </br><font color="Red" size="+1"> <c:if test="${user_exists ==true}"><span id="spnlname"></span>User name already exists </c:if> <form:errors
+													onmouseout="hideTooltip('tooltip_id');" min="4" maxlength="32" name="username"  value="${participants.username}"/> </br><font color="Red" size="+1"> <c:if test="${user_exists ==true}"><span id="spnlname"></span>User name already exists </c:if> <form:errors
 															path="participant.username"></form:errors></font></td>
 											</tr>
 											<input type="hidden" name="password" value="sa"/>
@@ -1020,7 +1017,7 @@ function empty()
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span> Mobile No :</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="mno" min="10" maxlength="10"
+													type="text" class="input_txtbx1" id="mno" min="10" maxlength="17"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');"
 													name="mobile_num" value="${participants.mobile_num}" /></br> <font
