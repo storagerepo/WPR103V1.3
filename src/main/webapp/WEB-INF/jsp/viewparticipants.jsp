@@ -62,23 +62,23 @@
 							<tr class="title1">
 								
 								<td valign="center" align="center" width="2%"><input type="checkbox" value="" name="chkAll"></td>
-         						<td valign="top" align="left" width="4%">SystemID</td>
-								    <td valign="top" align="left" width="3%">ID</td>
-									<td valign="top" align="left" width="5%">First&nbsp;Name</td>
-									<td valign="top" align="left" width="5%">User&nbsp;Name</td>
-									<td valign="top" align="left" width="7%">Mobile&nbsp;Number</td>
-									<td valign="top" align="left" width="6%">Preferred&nbsp;Time</td>
-								<td valign="top" align="left" width="7%">Email</td>
-									<td valign="top" align="left" width="5%">Start&nbsp;Date</td>									
-									<td valign="top" align="left" width="10%" >Provider&nbsp;Primary&nbsp;Email</td>
-									<td valign="top" align="left" width="10%" >Provider&nbsp;Secondary&nbsp;Email</td>							
+         						<td valign="center" align="left" width="4%">SystemID</td>
+								    <td valign="top" align="left" width="2%">&nbsp;&nbsp;ID</td>
+									<td valign="top" align="left" width="5%">&nbsp;&nbsp;Name</td>
+									<td valign="top" align="left" width="5%">&nbsp;&nbsp;UserName</td>
+									<td valign="top" align="left" width="7%">&nbsp;&nbsp;Mobile&nbsp;Number</td>
+									<td valign="top" align="left" width="7%">&nbsp;&nbsp;Preferred&nbsp;Time</td>
+								<td valign="top" align="left" width="7%">&nbsp;&nbsp;Email&nbsp;Id</td>
+									<td valign="top" align="left" width="5%">&nbsp;&nbsp;Start&nbsp;Date</td>									
+									<td valign="top" align="left" width="10%" >&nbsp;&nbsp;Provider&nbsp;Primary&nbsp;Email</td>
+									<td valign="top" align="left" width="10%" >&nbsp;&nbsp;Provider&nbsp;Secondary&nbsp;Email</td>							
 									
 									<!-- <td valign="top" align="left" width="15%">Education</td> -->
-									<td valign="top" align="left" width="5%">Join&nbsp;Date</td>
+									<td valign="top" align="right" width="5%">&nbsp;&nbsp;&nbsp;&nbsp;Join&nbsp;Date</td>
           						
           						
           						
-          						<td valign="top" align="left" width="5%">Action</td>
+          						<td valign="top" align="left" width="8%">&nbsp;&nbsp;Action</td>
           						
 				
 		
@@ -87,22 +87,22 @@
         					<c:if test="${fn:length(participantsDetailsForm.participantsDetails) gt 0}">
         					<c:forEach items="${participantsDetailsForm.participantsDetails}" var="participantsDetails" varStatus="status">
         				       					<tr class="row<%=i%>">
-							       		<td valign="center" align="center" ><input type="checkbox" value="${participantsDetails.participants_id}" name="chkUser"></td>
-					     		     	<td valign="center" align="left">${participantsDetails.participants_id}</td>
-					     		     	<td valign="center" align="left" >${participantsDetails.id}</td>					     		     					     		     	
-					     		     	<td valign="center" align="left" ><a href="participantdetails?id=${participantsDetails.participants_id}&back=viewparticipant">${participantsDetails.fname}</a></td>
-										<td valign="center" align="left" >${participantsDetails.username}</td>
-											<td valign="center" align="left">${participantsDetails.mobile_num}</td>						
+							       		<td valign="top" align="center" ><input type="checkbox" value="${participantsDetails.participants_id}" name="chkUser"></td>
+					     		     	<td valign="top" align="left" width="4%" style="overflow:hidden" title="${participantsDetails.participants_id}">${participantsDetails.participants_id}</td>
+					     		     	<td valign="top" align="left"   width="2%" style="overflow:hidden" title="${participantsDetails.id}">${participantsDetails.id}</td>					     		     					     		     	
+					     		     	<td valign="top" align="left" width="5%"  style="overflow:hidden" title="${participantsDetails.fname}"><a href="participantdetails?id=${participantsDetails.participants_id}&back=viewparticipant">${participantsDetails.fname}</a></td>
+										<td valign="top" align="left" width="5%" style="overflow:hidden" title="${participantsDetails.username}">${participantsDetails.username}</td>
+											<td valign="top" align="left" width="7%"  style="overflow:hidden" title="${participantsDetails.mobile_num}">${participantsDetails.mobile_num}</td>						
 																				
-											<td valign="center" align="left" ><c:if test="${participantsDetails.time1 ne 'null'}">${participantsDetails.time1}<c:out value="${participantsDetails.time1_am_pm }"></c:out></c:if>
+											<td valign="top" align="left" width="7%"><c:if test="${participantsDetails.time1 ne 'null'}">${participantsDetails.time1}<c:out value="${participantsDetails.time1_am_pm }"></c:out></c:if>
 											<c:if test="${participantsDetails.time2 ne 'null'}">${participantsDetails.time2}<c:out value="${participantsDetails.time2_am_pm }"></c:out></c:if>
 											<c:if test="${participantsDetails.time3 ne 'null'}">${participantsDetails.time3}<c:out value="${participantsDetails.time3_am_pm }"></c:out></c:if></td>
-											<td valign="center" align="left"  style="overflow:hidden" title="${participantsDetails.email_id}"> ${participantsDetails.email_id}</td> 
-											<td valign="center" align="left" >${participantsDetails.weekly_survey_start_date}</td>
-											<td valign="center" align="left" >${participantsDetails.provider_email1}</td>
-											<td valign="center" align="left" >${participantsDetails.provider_email2}</td>
-											<td valign="center" align="left" >${participantsDetails.date_of_join}</td>
-											<td valign="top" align="left">
+											<td valign="top" align="left" width="7%" style="overflow:hidden" title="${participantsDetails.email_id}"> ${participantsDetails.email_id}</td> 
+											<td valign="top" align="left" width="5%" style="overflow:hidden" title="${participantsDetails.weekly_survey_start_date}" >${participantsDetails.weekly_survey_start_date}</td>
+											<td valign="top" align="left" width="10%" style="overflow:hidden" title="${participantsDetails.provider_email1}">${participantsDetails.provider_email1}</td>
+											<td valign="top" align="left"  width="10%" style="overflow:hidden" title="${participantsDetails.provider_email2}">${participantsDetails.provider_email2}</td>
+											<td valign="top" align="left"  width="4%" height="2" style="overflow:hidden;" title="${participantsDetails.date_of_join}">&nbsp;${participantsDetails.date_of_join}</td>
+											<td valign="top" align="left" width="8%">
 											<%-- <c:if test="${currentuser.adminuser[0].editparticipant==1}"> --%>
 												<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="editparticipant?id=${participantsDetails.participants_id}"/>" style="padding-right:10px;">Edit</a>
 												<%-- </c:if> --%>
@@ -117,8 +117,9 @@
 							    	</c:if>
 							    <c:if test="${fn:length(participantsDetailsForm.participantsDetails) == 0}">	
 							    	<tr class="row1">
-							    	<td colspan="7" width="100%"><center><b>No Participants Found!!!</b></center></td>
+							    	<td colspan="13" width="100%"><center><b>No Participants Found!!!</b></center></td>
 							    	</tr>
+							    	<tr width="100%"><Td></Td></tr>
 							    	</c:if>
 							    	
 							    	</table>

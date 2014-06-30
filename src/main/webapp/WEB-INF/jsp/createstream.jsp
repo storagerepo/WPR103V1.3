@@ -152,7 +152,7 @@ $(document).ready(function(){
                 <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>No of Messages:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">   
-<input id="textingcontacts" name="textingcontacts" maxlength="4" class="input_txtbx" width="70%" type="text" onblur="message()"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> 
+<input id="textingcontacts" name="textingcontacts" maxlength="4" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" width="70%" type="text" onblur="message()"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> 
 <br>
 	<span id="tc"  style="color:red;font-size: 12px" class="err"><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></td>
                 </tr>
@@ -186,7 +186,7 @@ $(document).ready(function(){
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>No of Messages:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">   
-<input id="textingcontacts" maxlength="4" name="textingcontacts" class="input_txtbx" width="70%" type="text" value="${messagestreamdetails.textingcontacts}"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> <span id="tc" class="err"><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></td>
+<input id="textingcontacts" maxlength="4" name="textingcontacts" class="input_txtbx" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" width="70%" type="text" value="${messagestreamdetails.textingcontacts}"/><!-- <input type="text" name="textingcontacts" class="input_txtbx" id="textingcontacts"/></br> --> <span id="tc" class="err"><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></td>
                 </tr>
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Description :</td>

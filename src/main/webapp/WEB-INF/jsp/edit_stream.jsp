@@ -32,7 +32,7 @@ if(tc>1000)
 			for($i=$cnt;$i<=$in;$i++)
 				{
 				
-			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row2"><td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols="" ></textarea><br><font color="Red" size="+1"><span id="msgerr'+$i+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
+			newdiv =newdiv+'<table width="100%" border="0" cellspacing="0" cellpadding="0" id="newtbl'+$i+'"><tr class="row1"><td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Message '+$i+' :</td><td valign="top" align="left"  class="input_txt" width="70%"><textarea id="message'+$i+'"  class="input_txtarea" name="message[]" rows="5" cols="" ></textarea><br><font color="Red" size="+1"><span id="msgerr'+$i+'"></span></font></td></tr><tr class="row1"><td align="right" valign="top">&nbsp;</td><td align="left" valign="top"></td></tr></table>';
 			 
 			
 				}
@@ -80,15 +80,15 @@ if(tc>1000)
                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>No of Messages:</td>
                   <td valign="top" align="left" class="input_txt" width="70%">   
-<input id="textingcontacts" name="textingcontacts" maxlength="4" class="input_txtbx" width="70%" type="text" value="${streamDetails.textingcontacts}"/><font color="Red" size="+1"><span id="tc" ><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></font></td>
+<input id="textingcontacts" name="textingcontacts" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" maxlength="4" class="input_txtbx" width="70%" type="text" value="${streamDetails.textingcontacts}"/><font color="Red" size="+1"><span id="tc" ><br><form:errors path="streamDetails.textingcontacts"></form:errors></span></font></td>
                 </tr>
-                 <tr class="row1">
+                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Description :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><textarea name="description" class="input_txtarea"  rows="5" cols="" id="description"/>${streamDetails.description}</textarea></br><font color="Red" size="+1"><span  id="des"><Form:errors path="streamDetails.description"></Form:errors></span></font></td>
                 </tr>
                 <% int i=1;%>
                  <c:forEach items="${messages}" var="message" varStatus="status">
-                  <tr class="row2">
+                  <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Message <%=i%> :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><textarea class="input_txtarea" name="message[]" id="message<%=i%>" rows="5" cols="" />${message}</textarea>
                   </br><font color="Red" size="+1"><span id="msgerr<%=i%>" class="err"></span></font>

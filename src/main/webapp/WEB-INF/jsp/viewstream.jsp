@@ -36,13 +36,13 @@
              
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                 <tr class="title">
-		          <td valign="center" align="left" width="5%"><input type="checkbox"  value="" name="chkAll"></td>
+		          <td valign="center" align="left" width="5%">&nbsp;<input type="checkbox"  value="" name="chkAll"></td>
                   <td valign="top" align="left" width="10%">Stream ID</td>
 		          <td valign="top" align="left" width="15%">Name</td>
 		          <td valign="top" align="left" width="15%">Description</td>
                   <td valign="top" align="left" width="15%">No of Messages</td>
                   <td valign="top" align="left" width="15%">Created By</td>
-		          <td valign="top" align="center" width="25%">Action</td>
+		          <td valign="top" align="left" width="25%">Action</td>
 
 
                 </tr>
@@ -55,9 +55,9 @@
         <td valign="top" align="left" width="10%"><a href="streamdetails?id=${streamDetails.streamId}">${streamDetails.streamId}</a></td>
 		<td valign="top" align="left" width="15%">${streamDetails.streamName}</td>
 		<td valign="top" align="left" width="15%">${streamDetails.description}</td>
-        <td valign="top" align="center" width="15%">${streamDetails.message_count}</td>
+        <td valign="top" align="left" width="15%">${streamDetails.message_count}</td>
         <td valign="top" align="left" width="15%">${streamDetails.admin_username}</td>
-		<td valign="top" align="center" width="25%">
+		<td valign="top" align="left" width="25%">
 		
 		
 		<a href="#" title="" ><img src="resources/images/icons/icon_edit.png" alt="Edit" /></a><a href="<c:out value="edit_stream?id=${streamDetails.streamId}"/>" style="padding-right:10px;">Edit</a>

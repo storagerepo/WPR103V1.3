@@ -38,19 +38,19 @@
 							<table cellpadding="0" cellspacing="0" border="0" width="100%">
 				
 								<tr class="title">
-									<td valign="top" align="left" width="10%">participant_id</td>									
-									<td valign="top" align="left" width="15%">q1</td>
-									<td valign="top" align="left" width="15%">q2</td>
+									<td valign="top" align="left" width="10%">Participantid</td>									
+									<td valign="top" align="left" width="15%">Q1</td>
+									<td valign="top" align="left" width="15%">Q2</td>
 									<!-- <td valign="top" align="left" width="10%">Status</td> -->
-									<td valign="top" align="left" width="10%">q3</td>
-									<td valign="top" align="left" width="10%">q4Audio</td>
-									<td valign="top" align="left" width="10%">q4Text</td>
-									<td valign="top" align="left" width="10%">qm</td>
-									<td valign="top" align="left" width="10%">qs</td>
-									<td valign="top" align="left" width="10%">startDate</td>
-									<td valign="top" align="left" width="10%">weekNumber</td>
-									<td valign="top" align="left" width="10%">modified</td>
-									<td valign="top" align="left" width="10%">appmodified</td>
+									<td valign="top" align="left" width="10%">Q3</td>
+									<td valign="top" align="left" width="10%">Q4Audio</td>
+									<td valign="top" align="left" width="10%">Q4Text</td>
+									<td valign="top" align="left" width="10%">Qm</td>
+									<td valign="top" align="left" width="10%">Qs</td>
+									<td valign="top" align="left" width="10%">StartDate</td>
+									<td valign="top" align="left" width="10%">WeekNumber</td>
+									<td valign="top" align="left" width="10%">Modified</td>
+									<td valign="top" align="left" width="10%">AppModified</td>
 									
 							</tr>
 								

@@ -112,15 +112,15 @@
 	                
 	                <tr class="row1">
 	                  <td valign="middle" align="right" class="input_txt" width=30% ><span class="err">*</span> Group Name :</td>
-	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" onclick="return validate()" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><font color="red" size="+1"><span id="error"></span></font><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
+	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" onclick="return validate()" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /><br/><font color="red" size="+1"><span id="error"></span></font><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
 	                </tr>
-	                <tr class="row1">
+	                <tr class="row2">
 	                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Group Description :</td>
 	                  <td valign="top" align="left" class="input_txt" width="70%"><textarea style="width:200px; height:100px;" name="group_decs" id="group_decs" class="input_txtbx" style="width: 301px; height: 109px;"></textarea></br><span class="err"><form:errors path="pgroups.group_decs"></form:errors></span></td>
 	                </tr>
 	               </table>
-	              <table align="center" class="row2" cellpadding="0" cellspacing="0" border="0" width="100%">           
-	                 <tr class="row2">
+	              <table align="center" class="row1" cellpadding="0" cellspacing="0" border="0" width="100%">           
+	                 <tr class="row1">
 	                  <td valign="top" align="right">&nbsp;</td>
 	                  <td valign="top" align="right" width="42%"><input type="submit" onclick="return validate()" class="submit_btn1" value="Add Group" style="color:white;"><td >
 	                  <input type="reset" class="submit_btn1" value="Reset" style="color:white;"></td>
@@ -134,16 +134,16 @@
 	                <table cellpadding="0" cellspacing="0" border="0" width="100%">
 	                 <tr class="row1">
 	                  <td valign="middle" align="right" class="input_txt" width=30% ><span class="err">*</span> Group Name :</td>
-	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantgroup.group_name}"/><br/><font color="red" size="+1"><span id="error"></span></font><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
+	                  <td valign="top" align="left" class="input_txt" width=70%><input type="text" name="group_name" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" style="width:200px;"  id="group_name" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantgroup.group_name}"/><br/><font color="red" size="+1"><span id="error"></span></font><span class="err"> <c:if test="${Group_exists==true}"><c:out value="Group Name already exist"/></c:if><form:errors path="pgroups.group_name"></form:errors> </span></td>
 	                </tr>
-	               <tr class="row1">
+	               <tr class="row2">
 	                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Group Description :</td>
 	                  <td valign="top" align="left" class="input_txt" width="70%"><textarea style="width:200px; height:100px;" name="group_decs" id="group_decs" class="input_txtbx" style="width: 301px; height: 109px;">${participantgroup.group_decs}</textarea></br><span class="err"><form:errors path="pgroups.group_decs"></form:errors></span></td>
 	                </tr>
 	                
 	                </table>
-	                 <table align="center" class="row2" cellpadding="0" cellspacing="0" border="0" width="100%">           
-	                 <tr class="row2">
+	                 <table align="center" class="row1" cellpadding="0" cellspacing="0" border="0" width="100%">           
+	                 <tr class="row1">
 	                  <td valign="top" align="right">&nbsp;</td>
 	                  <td valign="top" align="right" width="42%"><input type="submit" onclick="return validate() " class="submit_btn1" value="Add Group" style="color:white;"><td></form>
 	                 <form method=get action="showaddparticipantgroups"> <input type="submit" class="submit_btn1"  value="Reset" style="color:white;"></td></form>

@@ -45,15 +45,15 @@ else {
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
                
 									
-                <tr class="row2">
+                <tr class="row1">
                   <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> Old Password :</td>
                   <td valign="top" align="left" class="input_txt" width="70%"><input type="password" name="current_pwd" class="input_txtbx" id="inp_id3" value=""/></br><span class="err"><c:if test="${password_mismatch=='true'}"><c:out value="Incorrect Password"></c:out></c:if><form:errors path="updatePwds.current_pwd" ></form:errors></span></td>
                 </tr>
-                     <tr class="row1">
+                     <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> New Password :</td>
                   <td valign="top" align="left" class="input_txt"><input type="password" name="new_pwd" class="input_txtbx" id="pass1" value="" /></br><span class="err"><c:if test="${retype_mismatch=='true' }"><c:out value="Password mismatch with retype password"></c:out></c:if><form:errors path="updatePwds.new_pwd"></form:errors></span></td>
                 </tr>
-		<tr class="row2">
+		<tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Retype Password :</td>
                   <td valign="top" align="left" class="input_txt"><input type="password" name="retype_new_pwd" class="input_txtbx" id="pass2" value=""/></br><span class="err"><form:errors path="updatePwds.retype_new_pwd"></form:errors></span></td>
                 </tr>

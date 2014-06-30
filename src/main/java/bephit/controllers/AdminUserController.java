@@ -29,7 +29,7 @@ import bephit.forms.*;
 import bephit.model.*;
 
 @Controller
-@SessionAttributes({"currentuser","admin"})
+@SessionAttributes({"currentuser","admin","semail"})
 public class AdminUserController
 
 {
@@ -46,12 +46,13 @@ public class AdminUserController
 			BindingResult result,ModelMap model,Principal principal)
 	{
 		session.setAttribute("admin",adminuser);
+		  model.addAttribute("menu","adminuser");
 		int user_count=mainDAO.checkuser(adminuser.getAdmin_username());
 		int email_count=mainDAO.checkemail(adminuser.getAdmin_email(),0,null);
 		int secondary_email=1;
 	if(adminuser.getSecondary_email()!="")
 	{
-	secondary_email=mainDAO.checksecondaryemail(adminuser.getSecondary_email(),0,null);
+	secondary_email=mainDAO.checkemail(adminuser.getSecondary_email(),0,null);
 	}
 		
 		int mobile_count=adminuserDAO.checkmobile(adminuser.getAdmin_mobile(),0,null);
@@ -73,7 +74,7 @@ public class AdminUserController
 				}
 				else if(secondary_email==0)
 				{
-					logger.info("email exists");
+					logger.info("email existsss");
 					model.addAttribute("semail_exist","true");
 					
 				}
@@ -130,9 +131,7 @@ public class AdminUserController
 
 		
 		
-		AdminUserForm adminuserForm = new AdminUserForm();
-		adminuserForm.setAdminuser(adminuserDAO.getAdminUser());
-        model.addAttribute("adminuserForm", adminuserForm);	
+		
 		model.addAttribute("currentuser",request.getSession().getAttribute("currentuser"));
 	int error=adminuserDAO.setAdminUser(adminuser,principal.getName());
 	if(error==1)
@@ -143,6 +142,9 @@ public class AdminUserController
 		session.removeAttribute("admin");
 	    model.addAttribute("providerregsuccess","true");
 		model.addAttribute("menu","adminuser");
+		AdminUserForm adminuserForm = new AdminUserForm();
+		adminuserForm.setAdminuser(adminuserDAO.getAdminUser());
+        model.addAttribute("adminuserForm", adminuserForm);	
 		return "viewadminuser";
 	}
 	
@@ -256,8 +258,9 @@ model.addAttribute("noofpages",1);
 	
 	
 	@RequestMapping(value="/updateadminuser", method=RequestMethod.POST)
-	public String updateParticipants(@ModelAttribute("adminuser") @Valid AdminUser adminuser,BindingResult result,ModelMap model, Principal principal) {
+	public String updateParticipants(HttpSession session,@ModelAttribute("adminuser") @Valid AdminUser adminuser,BindingResult result,ModelMap model, Principal principal) {
 		model.addAttribute("adminuser", adminuser);	
+		session.setAttribute("semail",adminuser.getSecondary_email());
 		AdminUserForm adminuserForm = new AdminUserForm();
 		adminuserForm.setAdminuser(adminuserDAO.getAdminUser(adminuser.getAdmin_id()));
         model.addAttribute("adminuserForm",adminuserForm);
@@ -291,7 +294,8 @@ model.addAttribute("noofpages",1);
 				logger.info("email exists");
 				
 				model.addAttribute("semail_exist","true");
-				 return "editadminuser";
+				model.addAttribute("serror","true");
+				return "editadminuser";
 				
 			}
 			if(mobile_count==0)
@@ -322,6 +326,7 @@ model.addAttribute("noofpages",1);
 		{
 			logger.info("semail exists");
 			model.addAttribute("semail_exist","true");
+			model.addAttribute("serror","true");
 			 return "editadminuser";
 		}
 		if(mobile_count==0)
@@ -340,6 +345,7 @@ model.addAttribute("noofpages",1);
 		}*/
 		
 		int status=adminuserDAO.updateAdminUser(adminuser,principal.getName());
+	session.removeAttribute("semail");
 		if(status==1)
 		{
 			model.addAttribute("invalid","error");
@@ -466,11 +472,23 @@ adminuserForm.setAdminuser(adminuserDAO.getlimitedadminuser(page));
 		model.addAttribute("user_exists","false");
 		int user_count=mainDAO.checkuser(adminuser.getAdmin_username());
 		int email_count=mainDAO.checkemail(adminuser.getAdmin_email(),0,null);		
+		int secondary_email=1;
+		if(adminuser.getSecondary_email()!="")	
+		{
+			secondary_email=mainDAO.checkemail(adminuser.getSecondary_email(),0,null);	
+		}	
 		int mobile_count=adminuserDAO.checkmobile(adminuser.getAdmin_mobile(),0,null);
 		if (result.hasErrors())
 		{		
 			
 			
+			if(secondary_email==0)
+			{
+				System.out.println("error");
+				logger.info("email exists");
+				model.addAttribute("semail_exist","true");
+			return "registerprovider";	
+			}
 			if(email_count==0)
 			{
 				logger.info("email exists");
@@ -502,7 +520,7 @@ adminuserForm.setAdminuser(adminuserDAO.getlimitedadminuser(page));
 				model.addAttribute("email_exist","true");
 				model.addAttribute("adminuser", adminuser);
 				flag=1;
-				
+				return "registerprovider";
 			}
 			if(mobile_count==0)
 			{ 
@@ -510,6 +528,7 @@ adminuserForm.setAdminuser(adminuserDAO.getlimitedadminuser(page));
 				model.addAttribute("mobile_exists","true");
 				model.addAttribute("adminuser", adminuser);
 				flag=1;
+				return "registerprovider";
 							
 			}
 			if(user_count==0)
@@ -518,7 +537,15 @@ adminuserForm.setAdminuser(adminuserDAO.getlimitedadminuser(page));
 				model.addAttribute("user_exists","true");
 				model.addAttribute("adminuser", adminuser);
 				flag=1;
+				return "registerprovider";
 							
+			}
+			if(secondary_email==0)
+			{
+				logger.info("email exists");
+				model.addAttribute("semail_exist","true");
+				return "registerprovider";
+				
 			}
 			if(flag==0)
 			{

@@ -13,16 +13,16 @@ public class AdminUser
 {
 	//@Size(min=4,max=32,message="First Name should between 4 to 32 characters!!!",groups=AdminUser.class)
 	//@Length(min=4,max=32,message="First Name should between 4 to 32 characters!!!")
-	@NotEmpty
+	
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String admin_firstname;
 	
 	
 	//@Length(min=4,max=32,message="User Name should between 4 to 32 characters!!!",groups=AdminUser.class)
-	//@Length(min=4,max=32,message="User Name should between 4 to 32 characters!!!")
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")	
 	private String admin_username;
 	
-	
+	@Length(min=3,max=32,message="Required & must be of length 3 to 32.")	
 	private String admin_password;
 	
 	@NotEmpty

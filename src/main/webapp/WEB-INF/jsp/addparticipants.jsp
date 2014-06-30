@@ -4,6 +4,7 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <jsp:include page="header.jsp"></jsp:include>
+<script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/jquery-1.3.2.js"></script>
 <script type="text/javascript" src="resources/js/jquery-2.0.3.js"></script>
 <script type="text/javascript" src="resources/js/phone-number-validation.js"></script>
@@ -129,17 +130,24 @@ $(document).ready(function() {
 
 	});
 
- 
-
- $(document).ready(function () {
+/*  
+$("fname").on("keypress", function(e) {
+    if (e.which === 32 && !this.value.length)
+        e.preventDefault();
+}); */
+  $(document).ready(function () {
         	
             $("#fname").bind('keypress', function (event) {
             	
             	
-                var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+                var regex = new RegExp("^[a-zA-Z ]+$");
               
                 var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-              
+             //  alert("subs"+key.substring(0,1));
+               if (event.which === 32 && !this.value.length)
+            	   {
+                   event.preventDefault();
+            	   }
              
                if (!regex.test(key)) {
                 	
@@ -148,7 +156,7 @@ $(document).ready(function() {
                 }
             });
         			
-        });
+        }); 
  $(document).ready(function () {
  	
      $("#username").bind('keypress', function (event) {
@@ -167,12 +175,19 @@ $(document).ready(function() {
      });
  			
  });
+
+ $(function() {
+	    $("#password").keydown(function(e) {
+	        if (e.keyCode == 32) // 32 is the ASCII value for a space
+	            e.preventDefault();
+	    });
+	});
  $(document).ready(function () {
 	 	
      $("#id").bind('keypress', function (event) {
      	
      	
-         var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+         var regex = new RegExp("^[A-Z0-9]+$");
        
          var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
        
@@ -185,6 +200,25 @@ $(document).ready(function() {
      });
  			
  });
+/*  $(document).ready(function () {
+	 	
+     $("#mno").bind('keypress', function (event) {
+     	
+     	
+         var regex = new RegExp("^[0-9+]+$");
+       
+         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+       
+      
+        if (!regex.test(key)) {
+         	
+             event.preventDefault();
+             return false;
+         }
+     });
+ 			
+ }); */
+ 
     </script>
 <script type="text/javascript">
 $(window).load(function(){
@@ -206,7 +240,7 @@ $("#mno").keyup(function() {
 	else if($(this).val()!='')
 		{
 		
-		$("#spnmno").html('Kindly give numbers only!!');
+		$("#spnmno").html('');
 		}
 }).keydown(function() {
     oldValue = $(this).val();
@@ -346,6 +380,15 @@ if (document.getElementById("datepicker_weekly_survey").value !="") {
 
 
    function validate(){
+	  /*  var fname=document.getElementById("fname").value;
+	   alert("fnameerror"+fname.substring(1,1));
+	    if(fname.substring(0,1)=='' || fname.substring(2,3)=='' )
+	   {
+	   alert("error123");
+	   document.getElementById("ferror").innerHTML="Initial space not allowed";
+	   return false;
+	   } */
+	  
 	   document.getElementById("surveyerr").innerHTML="";	
 		document.getElementById("startdateerr").innerHTML="";	
 		var datefield=document.getElementById("datepicker_weekly_survey").value;
@@ -464,7 +507,7 @@ if (document.getElementById("datepicker_weekly_survey").value !="") {
 			  return false;
 		  }
 		}
-		/* var numbers = $('#mno').val();
+	 var numbers = $('#mno').val();
 		if(numbers!='')
 		{
 		var result1 = validPhone(numbers);
@@ -473,9 +516,16 @@ if (document.getElementById("datepicker_weekly_survey").value !="") {
 			document.getElementById("spnmno").innerHTML="invalid phone number";				
 		return false;
 		}
-		} */
+		} 
 	
 		var $zipcode=document.getElementById("city").value;
+		var zipcodesub=$zipcode;
+	//	alert("sub"+zipcodesub.substring(0,3));
+	if(zipcodesub.substring(0,3)=='000')
+		{
+		$("#spncity").html('Not a valid Zipcode!!');
+		return false;
+		}
 		var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
 		if($regex.test($zipcode)||$zipcode=='') 
 			{
@@ -571,68 +621,68 @@ var $in = $zipcode;
 										style="padding-right: 25px;">
 										<h2 class="quck-txt">Quick Info</h2>
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
-										<tr class="row2">
+										<tr class="row1" height="35px">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>ID:</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="id" name="id" /><br />
+													type="text" class="input_txtbx1" id="id" name="id" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" /><br />
 													<font color="Red" size="+1"> <span id="spnfname">
 															<form:errors path="participant.fname"></form:errors>
 													</span></font></td>
 
 											</tr>
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span> First Name / Initials:</td>
-												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="fname" name="fname" min="4" maxlength="32"/><br />
-													<font color="Red" size="+1"> <span id="spnfname">
-															<form:errors path="participant.fname"></form:errors>
-													</span></font></td>
-
-											</tr>
-
 											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span> User Name :</td>
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
+													class="err">*</span>Name :</td>
+												<td valign="top" align="left" class="input_txt"><input
+													type="text" class="input_txtbx1" id="fname" name="fname" min="4" maxlength="32" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"/><br />
+													<font color="Red" size="+1"><span id="ferror"> <span id="spnfname">
+															<form:errors path="participant.fname"></form:errors>
+													</span></span></font></td>
+
+											</tr>
+
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
+													class="err">*</span> UserName :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="username"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
-													onmouseout="hideTooltip('tooltip_id');" name="username" min="4" maxlength="32"/> </br> <font
+													onmouseout="hideTooltip('tooltip_id');" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" name="username" min="4" maxlength="32"/> </br> <font
 													color="Red" size="+1"><span id="spnlname"></span>
 													 <c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>User name already exists </font>	<br/></c:if>
 													 <form:errors
 															path="participant.username"></form:errors> </font></td>
 											</tr>
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err">*</span> Password:</td>
 												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" id="username"
+													type="text" class="input_txtbx1" id="password"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
-													onmouseout="hideTooltip('tooltip_id');" name="password" /> </br> <font
+													onmouseout="hideTooltip('tooltip_id');" name="password" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" /> </br> <font
 													color="Red" size="+1"><span id="spnlname"></span>
 													
 													 <form:errors
 															path="participant.password"></form:errors> </font></td>
 											</tr>
 											
-											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err">*</span> Mobile No :</td>
-												<td valign="top" align="left" class="input_txt"><input
-													type="text" class="input_txtbx1" min="10" maxlength="17" id="mno"
+												<td valign="top" align="left" class="input_txt">+1<input
+													type="text" class="input_txtbx1" min="10" maxlength="10" id="mno" style="width: 155px"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');"
-													value="${mobile_num}" name="mobile_num" /></br> <font
+													value="${mobile_num}" name="mobile_num" placeholder="0000000000"/></br> <font
 													color="Red" size="+1"><span id="spnmno">
 													 <c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number already exists </font>	<br/></c:if>
 												<%--  <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if> --%>
 													<font color="Red" size="+1"><span id="spnmno">
 													<form:errors path="participant.mobile_num"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err">*</span> Email-Id :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="eid"
@@ -644,16 +694,16 @@ var $in = $zipcode;
 													<form:errors
 																path="participant.email_id"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> Gender :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="radio" name="gender" value="0" class="input_txt"
 													checked="true">Male&nbsp;&nbsp;&nbsp;<input
 													type="radio" name="gender" value="1" class="input_txt">Female&nbsp;&nbsp;&nbsp;</td>
 											</tr>
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> <%--  Age :<c:forEach begin="1" end="100" var="i">
                                  <option value="${i}" <c:if test ="${participantsDetails.age == i}">select</c:if>>${i}</option>
                                                        </c:forEach>   --%>
@@ -663,14 +713,14 @@ var $in = $zipcode;
 													<option value="null">--Select--</option>
 														<option value="Below 12" id="age">Below 12</option>
 														<option value="12-20 years" id="age">12-20 &#160 years</option>
-														<option value="20-30 years" id="age">21-30 &#160 years</option>
-														<option value="30-40 years" id="age">31-40 &#160 years</option>
-														<option value="40-50 years" id="age">41-50 &#160 years</option>
-														<option value="50-60 years" id="age">51-60 &#160 years</option>
-														<option value="60-70 years" id="age">61-70 &#160 years</option>
-														<option value="70-80 years" id="age">71-80 &#160 years</option>
-														<option value="80-90 years" id="age">81-90 &#160 years</option>
-														<option value="90-100 years" id="age">91-100
+														<option value="21-30 years" id="age">21-30 &#160 years</option>
+														<option value="31-40 years" id="age">31-40 &#160 years</option>
+														<option value="41-50 years" id="age">41-50 &#160 years</option>
+														<option value="51-60 years" id="age">51-60 &#160 years</option>
+														<option value="61-70 years" id="age">61-70 &#160 years</option>
+														<option value="71-80 years" id="age">71-80 &#160 years</option>
+														<option value="81-90 years" id="age">81-90 &#160 years</option>
+														<option value="91-100 years" id="age">91-100
 															years</option>
 														
 														<span id="spnage"><form:errors
@@ -678,7 +728,7 @@ var $in = $zipcode;
 														</font></td>
 											</tr>
 
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Zipcode :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -688,7 +738,7 @@ var $in = $zipcode;
 													color="Red" size="+1"><span id="spncity"><form:errors
 																path="participant.city"></form:errors> </span></font></td>
 											</tr>
-											<tr class="row1">
+											<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Education :</td>
 												<td valign="top" align="left" class="input_txt"><select
@@ -704,7 +754,7 @@ var $in = $zipcode;
 																path="participant.education"></form:errors> </span></font></td>
 
 											</tr>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="top" align="left" class="input_txt"><span
 													class="err"></span> Medical
 													Details :</td>
@@ -731,8 +781,8 @@ var $in = $zipcode;
 												<td><p class="quck-txt">Preferred&nbsp;Timings</p></td>
 											</tr>
 
-                                            <tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+                                            <tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> Time1 :</td>
 												<td valign="top" align="left" class="input_txt">
 												<select name="time1" class="input_cmbbx1" id="msg">
@@ -756,8 +806,8 @@ var $in = $zipcode;
 								   </select><br/>
 												</td>
 											</tr>
-                                               <tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+                                               <tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> Time2 :</td>
 												<td valign="top" align="left" class="input_txt">
 												<select name="time2" class="input_cmbbx1" id="msg">
@@ -782,8 +832,8 @@ var $in = $zipcode;
 											<br/>
 												</td>
 											</tr>
-											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> Time3 :</td>
 												<td valign="top" align="left" class="input_txt">
 												<select name="time3" class="input_cmbbx1" id="msg">
@@ -808,8 +858,8 @@ var $in = $zipcode;
 												</td>
 											</tr>
 
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span>Start Date :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
@@ -819,8 +869,8 @@ var $in = $zipcode;
 													
 													 </font></td>
 											</tr>
-											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span>Weekly Survey Start Date :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
@@ -830,7 +880,7 @@ var $in = $zipcode;
 													
 													 </font></td>
 											</tr>
-											<tr class="row1">
+											<tr class="row2" height="35px">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
@@ -842,7 +892,7 @@ var $in = $zipcode;
 													
 													 </font></td>
 											</tr>
-											<tr class="row2">
+											<tr class="row1" height="35px">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
@@ -854,10 +904,11 @@ var $in = $zipcode;
 													
 													 </font></td>
 											</tr>
-											<tr>
+											<tr height="10px">
 												<td><p class="quck-txt">Group</p></td>
 											</tr>
-											<tr class="row1">
+											<tr height="5px"></tr>
+											<tr class="row2">
 												<td colspan="2"><p
 														style="line-height: 18px; padding: 1px 0pt; text-align: justify;color:#3D3D5C;">
 														Group is the internal classification for the better
@@ -868,7 +919,7 @@ var $in = $zipcode;
 											</tr>
 											<tr><td><input type="hidden" id="Provider_name" name="Provider_name" value="<sec:authentication property="principal.username"/>"/></tr>
 											
-											<tr class="row2">
+											<tr class="row1" height="110px">
 												<td valign="top" align="left" class="input_txt"><span
 													class="err">*</span> Select
 													Group :</td>
@@ -910,30 +961,30 @@ var $in = $zipcode;
     
    
      <table cellpadding="0" cellspacing="0" border="0" width="100%">
-     <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt"><span class="err"></span> ID:</td>
+     <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" height="35px"><span class="err" ></span> ID:</td>
                 
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="id"  value="${addparticipants.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" id="id"  value="${addparticipants.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
                 </tr>
-                        <tr class="row1">
-                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span> First Name / Initials:</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text"  min="4" maxlength="32" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.fname }" name="fname" /></br><span class="err"><form:errors path="participant.fname"></form:errors></span></td>
+                        <tr class="row2">
+                  <td valign="middle" align="left" class="input_txt" height="35px"><span class="err">*</span>Name:</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  min="4" maxlength="32" class="input_txtbx1" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.fname }" name="fname" /></br><span id="ferror"><span class="err"><form:errors path="participant.fname"></form:errors></span></span></td>
                 </tr>
 
-		 <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt"><span class="err">*</span> User Name :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text"  min="4" maxlength="32" class="input_txtbx1" id="username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.username }" name="username"/></br><font color="Red" size="+1"><span class="err"><c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Username already exists </font>	<br/></c:if><form:errors path="participant.username"></form:errors></font></td>
+		 <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" height="35px"><span class="err">*</span> UserName :</td>
+                  <td valign="top" align="left" class="input_txt"><input type="text"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  min="4" maxlength="32" class="input_txtbx1" id="username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.username }" name="username"/></br><font color="Red" size="+1"><span class="err"><c:if test="${user_exists ==true}"> <font color="Red" size="+1"><span id="spnlname"></span>Username already exists </font>	<br/></c:if><form:errors path="participant.username"></form:errors></font></td>
                 </tr> 
-                <tr class="row1">
+                <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span>Password:</td>
-                <td valign="top" align="left" class="input_txt"><input type="text" name="password" class="input_txtbx1" value="${addparticipants.password}"><br><font color="Red" size="+1"><form:errors path="participant.password"></form:errors></font></td>
+                <td valign="top" align="left" class="input_txt"><input type="text" name="password" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" id="password" class="input_txtbx1" value="${addparticipants.password}"><br><font color="Red" size="+1"><span class="err"><form:errors path="participant.password"></form:errors></span></font></td>
                 </tr>
-		<tr class="row2">
+		<tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Mobile No :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" min="10" maxlength="17" id="mno" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
+                  <td valign="top" align="left" class="input_txt">+1<input type="text" placeholder="0000000000" min="10" maxlength="10" id="mno" style="width:155px" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.mobile_num}" name="mobile_num" /></br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span class="err"><c:if test="${mobile_exists ==true}"> <font color="Red" size="+1"><span id="spnmno">
                   Mobile Number already exists</span> </font>	<br/></c:if> <c:if test="${merror==true}"> <font color="Red" size="+1"><span id="spnmno"></span>Mobile Number Not Valid</font>	<br/></c:if><font color="Red" size="+1"><span id="spnmno"><form:errors path="participant.mobile_num"></form:errors></span> </font></td>
                 </tr> 
-		<tr class="row1">
+		<tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err">*</span> Email-Id :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="eid" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.email_id}" name="email_id" /></br><font color="Red" size="+1"><span id="spneid">
                   <c:if test="${email_exists ==true}"> 
@@ -943,38 +994,38 @@ var $in = $zipcode;
                   </c:when>
                   <c:otherwise><font color="Red" size="+1"><span id="spnlname"></span>Email already exists </font></c:otherwise>
                   </c:choose>                  
-                  </c:if><form:errors path="participant.email_id"></form:errors></span> </font></td>
+                  </c:if><span class="err"><form:errors path="participant.email_id"></form:errors></span></span> </font></td>
                 </tr> 
 
-		<tr class="row2">
+		<tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err"></span> Gender :</td>
                   <td valign="top" align="left" class="input_txt">
                   <input type="radio" name="gender" value="0"  class="input_txt" <c:if test="${addparticipants.gender=='0'}"><c:out value="checked=checked"/></c:if>>Male
                   <input type="radio" name="gender" value="1"  class="input_txt" <c:if test="${addparticipants.gender=='1'}"><c:out value="checked=checked"/></c:if>> Female</td>
                 </tr>
-		 <tr class="row1">
+		 <tr class="row2">
                  <td valign="middle" align="left" class="input_txt"><span class="err"></span> Age :</td>
                  <td valign="top" align="left" class="input_txt"><select name="age" class="input_cmbbx1">
                  <option value="null" <c:if test="${addparticipants.age=='null'}"><c:out value="selected"/></c:if>>--Select--</option> 
                  <option value="Below 12" <c:if test="${addparticipants.age=='Below 12'}"><c:out value="selected"/></c:if>>Below 12</option>
                  <option value="12-20 years" <c:if test="${addparticipants.age=='12-20 years'}"><c:out value="selected"/></c:if>>12-20 &#160 years</option>
-                 <option value="20-30 years" <c:if test="${addparticipants.age=='21-30 years'}"><c:out value="selected"/></c:if>>21-30 &#160 years</option>
-                 <option value="30-40 years" <c:if test="${addparticipants.age=='31-40 years'}"><c:out value="selected"/></c:if>>31-40 &#160 years</</option>                  
-                 <option value="40-50 years" <c:if test="${addparticipants.age=='41-50 years'}"><c:out value="selected"/></c:if>>41-50 &#160 years</option>
-                 <option value="50-60 years"  <c:if test="${addparticipants.age=='51-60 years'}"><c:out value="selected"/></c:if>>51-60 &#160 years</option>
-                 <option value="60-70 years" <c:if test="${addparticipants.age=='61-70 years'}"><c:out value="selected"/></c:if>>61-70 &#160 years</option>
-                 <option value="70-80 years" <c:if test="${addparticipants.age=='71-80 years'}"><c:out value="selected"/></c:if>>71-80 &#160 years</option>
-                 <option value="80-90 years" <c:if test="${addparticipants.age=='81-90 years'}"><c:out value="selected"/></c:if>>81-90 &#160 years</option>
-                   <option value="90-100 years" <c:if test="${addparticipants.age=='91-100 years'}"><c:out value="selected"/></c:if>>91-100 years</option>
+                 <option value="21-30 years" <c:if test="${addparticipants.age=='21-30 years'}"><c:out value="selected"/></c:if>>21-30 &#160 years</option>
+                 <option value="31-40 years" <c:if test="${addparticipants.age=='31-40 years'}"><c:out value="selected"/></c:if>>31-40 &#160 years</</option>                  
+                 <option value="41-50 years" <c:if test="${addparticipants.age=='41-50 years'}"><c:out value="selected"/></c:if>>41-50 &#160 years</option>
+                 <option value="51-60 years"  <c:if test="${addparticipants.age=='51-60 years'}"><c:out value="selected"/></c:if>>51-60 &#160 years</option>
+                 <option value="61-70 years" <c:if test="${addparticipants.age=='61-70 years'}"><c:out value="selected"/></c:if>>61-70 &#160 years</option>
+                 <option value="71-80 years" <c:if test="${addparticipants.age=='71-80 years'}"><c:out value="selected"/></c:if>>71-80 &#160 years</option>
+                 <option value="81-90 years" <c:if test="${addparticipants.age=='81-90 years'}"><c:out value="selected"/></c:if>>81-90 &#160 years</option>
+                   <option value="91-100 years" <c:if test="${addparticipants.age=='91-100 years'}"><c:out value="selected"/></c:if>>91-100 years</option>
                   
                   </select><%-- <input type="text" class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${participantsDetails.age}" name="age" /></br><span class="err"><form:errors path="participant.age"></form:errors></span> --%></td>
                 </tr>
 		
-                <tr class="row2">
+                <tr class="row1">
                   <td valign="middle" align="left" class="input_txt"><span class="err"></span>Zipcode :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="city" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${addparticipants.city}" name="city"/></br><font color="Red" size="+1"><span id="spncity"><form:errors path="participant.city"></form:errors></span> </font></td>
                 </tr>
-		 <tr class="row1">
+		 <tr class="row2">
                   <td valign="middle" align="left" class="input_txt"><span class="err"></span> Education :</td>
                   <td valign="top" align="left" class="input_txt"><select name="education" class="input_cmbbx1">
                           <option value="" <c:if test="${addparticipants.education==''}"><c:out value="selected"/></c:if>>--Select--</option>
@@ -986,7 +1037,7 @@ var $in = $zipcode;
                    </select></td>
                 </tr>
 
-                <tr class="row2">
+                <tr class="row1">
                   <td valign="top" align="left" class="input_txt"><span class="err"></span> Medical Details :</td>
                   <td valign="top" align="left" class="input_txt"><textarea class="input_txtbx1" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');"  style="width: 220px; height: 89px;" name="medical_details"/>${addparticipants.medical_details }</textarea></br><font color="Red" size="+1"><span class="err"><form:errors path="participant.medical_details"></form:errors></span></font></td>
                 </tr>
@@ -1003,7 +1054,7 @@ var $in = $zipcode;
 
 
 
-		<tr class="row2">
+		<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Time1 :</td>
 												<td valign="top" align="left" class="input_txt">
@@ -1033,7 +1084,7 @@ var $in = $zipcode;
 					<br/>
 												</td>
 											</tr>
-                                               <tr class="row1">
+                                               <tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Time2 :</td>
 												<td valign="top" align="left" class="input_txt" >
@@ -1060,7 +1111,7 @@ var $in = $zipcode;
 								   </select><br/>
 												</td>
 											</tr>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span> Time3 :</td>
 												<td valign="top" align="left" class="input_txt">
@@ -1088,8 +1139,8 @@ var $in = $zipcode;
 					<br/>
 												</td>
 											</tr>
-<tr class="row1">
-												<td valign="middle" align="left" class="input_txt">
+<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px">
 													 Start Date :</td>
 												<td valign="top" align="left" class="input_txt" >
 												<input type="text" name="startdate" id="datepicker" value="${addparticipants.startdate}" class="input_txtbx1" onblur="checkdate()">
@@ -1100,7 +1151,7 @@ var $in = $zipcode;
 												</td>
 											</tr>	
 											
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>Weekly Survey Start Date :</td>
 												<td valign="top" align="left" class="input_txt">									
@@ -1111,19 +1162,19 @@ var $in = $zipcode;
 													
 													 </font></td>
 											</tr>
-														<tr class="row1">
+														<tr class="row2">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
 												<input type="text" name="provider_email1"
 										id="id_provider_primary_email" class="input_txtbx1" value="${addparticipants.provider_email1}"> <br/> <font
-													color="Red" size="+1"><span id="ppemailerr"><form:errors
-																path="participant.provider_email1"></form:errors></span>
+													color="Red" size="+1"><span id="ppemailerr" ><span class="err"><form:errors
+																path="participant.provider_email1"></form:errors></span></span>
 													
 													 </font></td>
 											</tr>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
@@ -1139,11 +1190,11 @@ var $in = $zipcode;
                 <tr><td><input type="hidden" id="Provider_name" name="Provider_name" value="<sec:authentication property="principal.username" />"></tr>
 
 <tr><td><p class="quck-txt">Group</p></td></tr>
-<tr class="row1"><td colspan="2"><p style=" line-height: 18px; padding: 1px 0pt; text-align: justify; color:#3D3D5C;" >Group is the internal classification for the better understanding of Participant's Demographics.<!-- <a href="addparticipantgroups" onclick="javascript:CreateGroup()">[Create New Group]</a> --></p></td></tr>
+<tr class="row2"><td colspan="2"><p style=" line-height: 18px; padding: 1px 0pt; text-align: justify; color:#3D3D5C;" >Group is the internal classification for the better understanding of Participant's Demographics.<!-- <a href="addparticipantgroups" onclick="javascript:CreateGroup()">[Create New Group]</a> --></p></td></tr>
 
 
 
-    <tr class="row2">
+    <tr class="row1">
                   <td valign="top" align="left" class="input_txt"><span class="err">*</span>Select Group :</td>
                   <td valign="top" align="left" class="input_txt">
                   <select name="group_name" multiple="multiple" class="input_cmbbx1" id="group_name">
@@ -1156,7 +1207,7 @@ var $in = $zipcode;
                   </select>
                   
                   
-                  </br><font color="Red" size="+1"><span id="spngrp"><form:errors
+                  </br><font color="Red" size="+1"><span id="spngrp" class="err"><form:errors
 																path="participant.group_name"></form:errors> </span></font><br>Note: To Select Multiple Groups use ctrl+click.	</td>
                 </tr>            
  </table>

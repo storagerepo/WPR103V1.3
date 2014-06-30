@@ -3,6 +3,7 @@
 <jsp:include page="header.jsp"></jsp:include>
 <script type="text/javascript" src="resources/js/jquery-2.0.3.js"></script>
 <script type="text/javascript" src="resources/js/phone-number-validation.js"></script>
+<script src="resources/js/jquery-1.9.1.js" type="text/javascript"></script>
 <form method="POST" action="updateadminuser">
   <div id="right_content">
     <table cellpadding="0" cellspacing="0" border="0" width="98%" class="margin_table">
@@ -10,6 +11,30 @@
         <td valign="top" align="left" style="padding:5px 0 10px 0;">
             
            <script>
+
+
+           $(document).ready(function () {
+                  	
+                      $("#admin_firstname").bind('keypress', function (event) {
+                      	
+                      	
+                          var regex = new RegExp("^[a-zA-Z ]+$");
+                        
+                          var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+                       //  alert("subs"+key.substring(0,1));
+                         if (event.which === 32 && !this.value.length)
+                      	   {
+                             event.preventDefault();
+                      	   }
+                       
+                         if (!regex.test(key)) {
+                          	
+                              event.preventDefault();
+                              return false;
+                          }
+                      });
+                  			
+                  });
            function validateEmail(sEmail) {
        	    var filter = /^([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
        	    if (filter.test(sEmail)) {
@@ -103,8 +128,8 @@
                 
                 <tr class="row1">
                 <input type="hidden" name="admin_id" class="input_txtbx" id="inp_id3"  value="${adminuser.admin_id}" />
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span> First Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="admin_username" class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_username }" /><input type="text" name="admin_firstname"  min="4" maxlength="32" class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_firstname }" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="hidden" name="admin_username" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="admin_username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_username }" /><input type="text" name="admin_firstname" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" id="admin_firstname" min="4" maxlength="32" class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_firstname }" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
                 </tr>
 		<tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Primary E-mail id:</td>
@@ -124,12 +149,13 @@
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id:</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.secondary_email}" />
                   </br><font color="Red" size="+1"><span id="sadminerr">
-                  <c:choose>
+                <c:if test="${serror=='true'}"><c:out value="Email Id  already exist"/></c:if>
+                <%--   <c:choose>
                   <c:when test="${empty adminuser.secondary_email}"></c:when>
                   <c:otherwise>
-                  <c:if test="${semail_exist==true}"><c:out value="Email Id  already exist"/></c:if>
+                
                   </c:otherwise>
-                  </c:choose>
+                  </c:choose> --%>
                  <form:errors path="adminuser.secondary_email"></form:errors></span></td>
                 </tr>
                <!-- <tr class="row2">
@@ -141,8 +167,8 @@
                   <td valign="top" align="left" class="input_txt"> --><input type="hidden" name="repassword" class="input_txtbx" id="inp_id" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"></span></td>
                <!--  </tr> -->
 		<tr class="row2">
-                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" maxlength="18" name="admin_mobile" class="input_txtbx" id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_mobile }" /></br><font color="Red" size="+1"><span id="adminmobileerr"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></font></td>
+                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile No:</td>
+                  <td valign="top" align="left" class="input_txt">+1<input type="text" maxlength="10" style="width: 285px" placeholder="0000000000" name="admin_mobile" class="input_txtbx" id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${adminuser.admin_mobile }" /></br><font color="Red" size="+1"><span id="adminmobileerr"><c:if test="${mobile_exists=='true'}"><c:out value="Mobile Number Already Exist"/></c:if><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></font></td>
                 </tr>
                 </table><table cellspacing="0" cellpadding="0" border="0" width="100%">
                  <tr class="row1">  
@@ -163,7 +189,7 @@
              
               function checkmail()
               {    
-            	 /*  var numbers = $('#admin_mobile').val();
+            	  var numbers = $('#admin_mobile').val();
               	if(numbers!='')
               	{
               	var result1 = validPhone(numbers);
@@ -173,7 +199,7 @@
               		
               	return false;
               	}
-              	}	 */
+              	}	 
             	  
             	var p=document.getElementById("admin_email").value; 
             	var s=document.getElementById("secondary_email").value;           	

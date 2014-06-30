@@ -131,7 +131,7 @@ else {
             		return false;
             		}
               } 
-            /* 	var numbers = $('#admin_mobile').val();
+            	var numbers = $('#admin_mobile').val();
             	if(numbers!='')
             	{
             	var result1 = validPhone(numbers);
@@ -141,12 +141,61 @@ else {
             		
             	return false;
             	}
-            	}	 */
+            	}	 
             	
             	
-              }      </script>
+              }    
+              
+              
+              </script>
                  
+<script>
 
+$(document).ready(function () {
+ 	
+    $("#admin_username").bind('keypress', function (event) {
+    	
+    	
+        var regex = new RegExp("^[a-zA-Z0-9-.@_]+$");
+      
+        var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+      
+     
+       if (!regex.test(key)) {
+        	
+            event.preventDefault();
+            return false;
+        }
+    });
+			
+});
+
+
+
+$(document).ready(function () {
+       	
+           $("#fname").bind('keypress', function (event) {
+           	
+           	
+               var regex = new RegExp("^[a-zA-Z ]+$");
+             
+               var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+            //  alert("subs"+key.substring(0,1));
+              if (event.which === 32 && !this.value.length)
+           	   {
+                  event.preventDefault();
+           	   }
+            
+              if (!regex.test(key)) {
+               	
+                   event.preventDefault();
+                   return false;
+               }
+           });
+       			
+       });
+
+</script>
 
 
 <form method="POST" action="addadminuser"  onSubmit="validate();">
@@ -190,13 +239,13 @@ else {
               <table cellpadding="0" cellspacing="0" border="0" width="100%">
               
                              <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>First Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" min="4" maxlength="32"  name="admin_firstname" class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" min="4" maxlength="32"  name="admin_firstname" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
                 </tr>
 		
                 <tr class="row2">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>User Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" min="4" maxlength="32"  class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_username"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>UserName :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" min="4" maxlength="32" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="admin_username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><span class="err"><form:errors path="adminuser.admin_username"></form:errors></span></td>
                 </tr>
               <%--   <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Password :</td>
@@ -207,14 +256,14 @@ else {
                   <td valign="top" align="left" class="input_txt"><input type="password" name="repassword" class="input_txtbx" id="pass2" value="" /></br><span class="err" id="spnsub_pass"></span></td>
                 </tr> --%>
 		<tr class="row1">
-                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile" class="input_txtbx" maxlength="17"  id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="adminmobileerr" ><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
+                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile No:</td>
+                  <td valign="top" align="left" class="input_txt">+1<input type="text" name="admin_mobile"  style="width:285px" placeholder="0000000000" class="input_txtbx" maxlength="10"  id="admin_mobile" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="adminmobileerr" ><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Primary E-mail id :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="admin_email" class="input_txtbx" id="admin_email" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="" /></br><font color="Red" size="+1"><span id="padminerr" ><form:errors path="adminuser.admin_email"></form:errors></span></font></td>
                 </tr>
-                   <tr class="row2">
+                   <tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" value="" /><br></br><font color="Red" size="+1"><span id="sadminerr"><c:if test="${semail_exist==true}"><c:out value="Email Id  already exist"/></c:if><form:errors path="adminuser.secondary_email"></form:errors></span></font></td>
                 </tr> 
@@ -242,13 +291,13 @@ else {
                <table cellpadding="0" cellspacing="0" border="0" width="100%">
               
                              <tr class="row1">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>First Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text"  min="4" maxlength="32" name="admin_firstname" class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_firstname}" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>Name :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text"  min="4" maxlength="32" name="admin_firstname" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" class="input_txtbx" id="fname" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_firstname}" /></br><span class="err"><form:errors path="adminuser.admin_firstname"></form:errors></span></td>
                 </tr>
 		
                 <tr class="row2">
-                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>User Name :</td>
-                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" min="4" maxlength="32"  class="input_txtbx" id="inp_id3" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_username}" /></br><span class="err"><font color="Red" size="+1"><c:if test="${user_exists==true}"><c:out value="user already exist"/></c:if><form:errors path="adminuser.admin_username"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt" width="30%"><span class="err">*</span>UserName :</td>
+                  <td valign="top" align="left" class="input_txt" width="70%"><input type="text" name="admin_username" min="4" maxlength="32" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"  class="input_txtbx" id="admin_username" onmouseover="showTooltip('tooltip_id','inp_id3');" onmouseout="hideTooltip('tooltip_id');" value="${admin.admin_username}" /></br><span class="err"><font color="Red" size="+1"><c:if test="${user_exists==true}"><c:out value="user already exist"/></c:if><form:errors path="adminuser.admin_username"></form:errors></span></td>
                 </tr>
                 <%-- <tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Password :</td>
@@ -259,8 +308,8 @@ else {
                   <td valign="top" align="left" class="input_txt"><input type="password" name="repassword" class="input_txtbx" id="pass2" value="" /></br><span class="err" id="spnsub_pass"></span></td>
                 </tr> --%>
 		<tr class="row1">
-                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile :</td>
-                  <td valign="top" align="left" class="input_txt"><input type="text" name="admin_mobile"  maxlength="17"  class="input_txtbx" id="admin_mobile" value="${admin.admin_mobile}" /><br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span id="adminmobileerr"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
+                  <td valign="middle" align="right" class="input_txt"><span class="err">*</span> Mobile No:</td>
+                  <td valign="top" align="left" class="input_txt">+1<input type="text" name="admin_mobile" placeholder="0000000000" style="width:285px" maxlength="10"  class="input_txtbx" id="admin_mobile" value="${admin.admin_mobile}" /><br><font color="Red" size="+1"><c:if test="${invalid=='error'}"><c:out value="Invalid Mobile Number"/></c:if><span id="adminmobileerr"><c:if test="${mobile_exists==true}"><c:out value="mobile number  already exist"/></c:if><form:errors path="adminuser.admin_mobile"></form:errors></span></td>
                 </tr>
                 <tr class="row2">
                   <td valign="middle" align="right" class="input_txt"><span class="err">*</span>Primary E-mail id :</td>
@@ -271,7 +320,7 @@ else {
                   </c:otherwise>  </c:choose>                  
               <form:errors path="adminuser.admin_email"></form:errors></span></td>
                 </tr>
-		   <tr class="row2">
+		   <tr class="row1">
                   <td valign="middle" align="right" class="input_txt"><span class="err"></span>Secondary E-mail id :</td>
                   <td valign="top" align="left" class="input_txt"><input type="text" name="secondary_email" class="input_txtbx" id="secondary_email" value="${admin.secondary_email}" /><br><font color="Red" size="+1"><span id="sadminerr">
                    <c:choose><c:when test="${empty admin.secondary_email}"></c:when><c:otherwise>

@@ -1298,7 +1298,7 @@ while(mobileresultset.next())
 	mobilenumber=mobileresultset.getString("mobile_num");
 }
 			System.out.println("mobilelength"+mobilenumber.length());
-if(mobilenumber.length()==0 || merror!=1)
+if(mobilenumber.length()==0 )
 {
 	System.out.println("errorblock");
 try {
@@ -1313,7 +1313,7 @@ try {
 					merror = 1;
 				}
 }
-if(mobilenumber.length()!=0)
+if(mobilenumber.length()!=0 || merror!=1)
 {
 	
 

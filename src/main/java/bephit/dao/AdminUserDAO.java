@@ -374,7 +374,7 @@ public class AdminUserDAO {
 		try
 		{
 			resultSet = statement.
-					executeQuery("select * from admin_log_table order by admin_firstname asc");
+					executeQuery("select * from admin_log_table where admin_username!='superadmin' order by admin_firstname asc");
 			while (resultSet.next()) {
 				adminuser.add(new AdminUser(resultSet.getString("admin_id"),
 						resultSet.getString("admin_firstname"),
@@ -548,6 +548,9 @@ public class AdminUserDAO {
 			
 			statement.execute("delete from login where username='"+adminusername+"'");
 			
+			statement.execute("delete from participant_group_table where created_by='"+adminusername+"'");
+			statement.execute("delete from stream where created_by='"+adminusername+"'");
+			
 			statement.execute("delete from admin_log_table where admin_id='"+admin_id+"'");
 			
 			
@@ -696,7 +699,7 @@ public class AdminUserDAO {
 			int limit = 20;
 			
 				
-					cmd = "select * from admin_log_table order by admin_firstname asc limit " + offset + ","+ limit+"" ;
+					cmd = "select * from admin_log_table where admin_username!='superadmin' order by admin_firstname asc limit " + offset + ","+ limit+"" ;
 							
 				logger.info(cmd);
 			resultSet = statement.executeQuery(cmd);

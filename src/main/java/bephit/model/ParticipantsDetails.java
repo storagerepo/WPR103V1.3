@@ -24,15 +24,15 @@ public class ParticipantsDetails {
 	
 	
 	//@NotEmpty	
-	//@Length(min=4,max=32,message="First Name should between 4 to 32 characters!!!")
-	@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")
 	private String fname;
 	
-	@NotEmpty
-//	@Length(min=4,max=32,message="User Name should between 4 to 32 characters!!!")	
+	//@NotEmpty
+	@Length(min=4,max=32,message="Required & must be of length 4 to 32.")	
 	private String username;
 	
-	@NotEmpty
+	//@NotEmpty
+	@Length(min=3,max=32,message="Required & must be of length 3 to 32.")	
 	private String password;
 	
 	@NotEmpty

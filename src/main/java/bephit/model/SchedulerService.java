@@ -51,12 +51,12 @@ public class SchedulerService {
 				System.out.println("Start sending..!!");
 			//messageSender.sendSMS("6315896007","Test Message");
 				List<MessageList> message_details=new ArrayList<MessageList>();
-				//message_details=messagescheduleDAO.Tosend_message();
+				message_details=messagescheduleDAO.Tosend_message();
 				int group_num=0;			 
                 for(int j=0;j<message_details.size();j++)
                 {
                 	//System.out.println(j+":"+message_details.get(j).getBroad_id()+"--"+message_details.get(j).getStartdate()+"--"+message_details.get(j).getParticipant_id()+"--"+message_details.get(j).getStream_message());
-                	//messageSender.sendSMS("6315896007","Test Message");
+                //	messageSender.sendSMS("6315896007","Test Message");
                 	
                 	
                 }

@@ -44,36 +44,36 @@
 									<td valign="top" align="left" width="15%">Send &nbsp;to&nbsp; Group</td>
 									<td valign="top" align="left" width="15%">No of Days/Weeks</td>
 									<td valign="top" align="left" width="10%">Frequency</td>
-									<td valign="top" align="center" width="15%">Start &nbsp;Date</td>								
+									<td valign="top" align="left" width="15%">Start &nbsp;Date</td>								
 									<td valign="top" align="left" width="15%">No&nbsp;Of&nbsp;messages</td>
-								    <td valign="top" align="center" width="10%">Status</td>				
+								    <td valign="top" align="left" width="10%">Status</td>				
 								   <td valign="top" align="left" width="10%">Enable/Disable</td>
 								   
 								</tr>
 
-
+<!-- 
 							</table>
-							<table cellpadding="0" cellspacing="0" border="0" width="100%"
-								id="user_ajax">
+							<table cellpadding="0" cellspacing="0" border="1" width="100%"
+								id="user_ajax"> -->
 								<%int i=1; %>
 								<c:forEach items="${broadCastReportsForm.broadCastReports}"
 									var="broadCastReports" varStatus="status">
 									<tr class="row<%=i%>">
 										
 										<td valign="top" align="left" width="10%"><a href="<c:out value="message_status?id=${broadCastReports.broad_id}"/>">${broadCastReports.broad_id}</a></td>
-										<td valign="top" align="left" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;${broadCastReports.stream_name}</td>
-										<td valign="top" align="center" width="15%">${broadCastReports.group_name}</td>
-										<td valign="top" align="center" width="5%">${broadCastReports.days_weeks}</td>
-										<td valign="top" align="center" width="25%"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<td valign="top" align="left" width="15%">${broadCastReports.stream_name}</td>
+										<td valign="top" align="left" width="15%">${broadCastReports.group_name}</td>
+										<td valign="top" align="left" width="15%">${broadCastReports.days_weeks}</td>
+										<td valign="top" align="left" width="10%">
 										 <c:if test="${broadCastReports.frequency=='0'}"><c:out value="One per Day"></c:out></c:if>
 										 <c:if test="${broadCastReports.frequency=='1'}"><c:out value="Two per Day"></c:out></c:if>
 										 <c:if test="${broadCastReports.frequency=='2'}"><c:out value="Weekly Once"></c:out></c:if>
 										 <c:if test="${broadCastReports.frequency=='3'}"><c:out value="Three Per Day"></c:out></c:if>
 										</td>
 										
-										<td valign="top" align="center">&nbsp;&nbsp;&nbsp;&nbsp;${broadCastReports.start_date}</td>
-										<td valign="top" align="center" width="20%">${broadCastReports.message_count}</td>	
-										<td valign="top" align="center" width="20%">
+										<td valign="top" align="left" width="15%">${broadCastReports.start_date}</td>
+										<td valign="top" align="left" width="10%">${broadCastReports.message_count}</td>	
+										<td valign="top" align="left" width="10%">
 										<%-- <c:choose>
 										<c:when test="${broadCastReports.start_date<=todaydate}">
 										<c:out value="Started"/>
@@ -102,7 +102,7 @@
 																	
 																	
 										
-										<td valign="top" align="center" width="10%">
+										<td valign="top" align="left" width="10%">
 										<c:choose>
 									     	<c:when test="${broadCastReports.enable==0}">
 									     	<a href="viewreports" title=""><img src="resources/images/icons/icon_unapprove.png" alt="Enable" /></a><a href="#"  style="padding-right:20px;" onclick="myActive(${broadCastReports.broad_id},1)">Enable</a>

@@ -35,7 +35,7 @@
 								<c:set value="${form.textMsgSettings[0]}" var="textMsgSettings"> </c:set>
 								<%-- <c:forEach items="${form.textMsgSettings}" var="textMsgSettings"
 									varStatus="status"> --%>
-									<tr class="row2">
+									<tr class="row1">
 										<td valign="middle" align="right" class="input_txt"
 											width="30%"><span class="err">*</span> ACCOUNT SID :</td>
 										<td valign="top" align="left" class="input_txt" width="70%">
@@ -44,7 +44,7 @@
 										<span class="err"><form:errors path="textMsgSettings.account_sid"></form:errors></span>
 										</td>
 									</tr>
-									<tr class="row1">
+									<tr class="row2">
 										<td valign="middle" align="right" class="input_txt"><span
 											class="err">*</span> AUTH TOKEN :</td>
 										<td valign="top" align="left" class="input_txt"><input
@@ -52,7 +52,7 @@
 											value="${textMsgSettings.auth_token}" /></br>
 										<span class="err"><form:errors path="textMsgSettings.auth_token"></form:errors></span></td>
 									</tr>
-									<tr class="row2">
+									<tr class="row1">
 										<td valign="middle" align="right" class="input_txt"><span
 											class="err">*</span> NUMBER :</td>
 										<td valign="top" align="left" class="input_txt"><input

@@ -40,7 +40,7 @@
 	              		<h2>View Groups</h2>
 	            	</div>
 	            	<div class="contentbox">
-	            		<table cellpadding="0" cellspacing="0" border="0" width="100%">
+	            		<table cellpadding="0" cellspacing="0" border="0" width="98%" >
 	                		<tr class="title">
 								<td valign="center" align="left" width="5%" style="padding-left:200px;"><input type="checkbox" onclick="selectall(this.form)" value="" name="chkAll"></td>
 	                  			<td valign="top" align="left" width="10%">Group&nbsp;Name</td>

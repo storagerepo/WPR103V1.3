@@ -23,7 +23,7 @@
 	     $("#id").bind('keypress', function (event) {
 	     	
 	     	
-	         var regex = new RegExp("^[a-zA-Z0-9 ]+$");
+	         var regex = new RegExp("^[A-Z0-9]+$");
 	       
 	         var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
 	       
@@ -139,24 +139,28 @@
 		 });
 	 
 	 
- $(document).ready(function () {
-        	
-            $("#fname").bind('keypress', function (event) {
-            	
-            	
-                var regex = new RegExp("^[a-zA-Z0-9 ]+$");
-              
-                var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
-              
-             
-               if (!regex.test(key)) {
-                	
-                    event.preventDefault();
-                    return false;
-                }
-            });
-        			
-        });
+	 $(document).ready(function () {
+     	
+         $("#fname").bind('keypress', function (event) {
+         	
+         	
+             var regex = new RegExp("^[a-zA-Z ]+$");
+           
+             var key = String.fromCharCode(!event.charCode ? event.which : event.charCode);
+          //  alert("subs"+key.substring(0,1));
+            if (event.which === 32 && !this.value.length)
+         	   {
+                event.preventDefault();
+         	   }
+          
+            if (!regex.test(key)) {
+             	
+                 event.preventDefault();
+                 return false;
+             }
+         });
+     			
+     }); 
  $(document).ready(function () {
  	
      $("#username").bind('keypress', function (event) {
@@ -348,7 +352,7 @@ $("#city").keyup(function() {
 				  }
 				}
 
-			/* var numbers = $('#mno').val();
+			var numbers = $('#mno').val();
 			if(numbers!='')
 			{
 			var result1 = validPhone(numbers);
@@ -357,8 +361,16 @@ $("#city").keyup(function() {
 				document.getElementById("spnmno").innerHTML="invalid phone number";				
 			return false;
 			}
-			} */
+			} 
 			var $zipcode=document.getElementById("city").value;
+			var zipcodesub=$zipcode;
+			//	alert("sub"+zipcodesub.substring(0,3));
+			if(zipcodesub.substring(0,3)=='000')
+				{
+				$("#spncity").html('Not a valid Zipcode!!');
+				return false;
+				}
+			
 			var $regex=/(^\d{5}$)|(^\d{5}-\d{4}$)/;
 			if($regex.test($zipcode)||$zipcode=='') 
 				{
@@ -469,22 +481,22 @@ else
 										<p class="quck-txt">Quick Info</p>
 									
 										<table cellpadding="0" cellspacing="0" border="0" width="100%">
-											  <tr class="row2">
-                  <td valign="middle" align="left" class="input_txt"><span class="err"></span> ID:</td>
+											  <tr class="row1">
+                  <td valign="middle" align="left" class="input_txt" height="35px"><span class="err"></span> ID:</td>
                 
-                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="id"  value="${participantsDetails.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
+                  <td valign="top" align="left" class="input_txt"><input type="text" class="input_txtbx1" id="id" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" value="${participantsDetails.id}" name="id" /></br><span class="err"><form:errors path=""></form:errors></span></td>
                 </tr>
 											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
-													class="err">*</span> First Name :</td>
+												<td valign="middle" align="left" class="input_txt" height="38px"><span
+													class="err">*</span>Name :</td>
 												<input type="hidden" class="input_txtbx1" id="inp_id"
-													value="${participantsDetails.participants_id }"
+													value="${participantsDetails.participants_id }" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}"
 													name="participants_id" />
 													
 													
-												<td valign="top" align="left" class="input_txt"><input
+												<td valign="top" align="left" class="input_txt"><input height="35px"
 													type="text" class="input_txtbx1" id="fname" min="4" maxlength="32" name="fname"
-													value="${participantsDetails.fname }" /><br /> <font
+													value="${participantsDetails.fname }"  onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" /><br /> <font
 													color="Red" size="+1"> <span id="spnfname"> <form:errors
 																path="participant.fname"></form:errors>
 													</span></font></td>
@@ -497,15 +509,15 @@ else
 													 
 													 <input 	type="hidden" class="input_txtbx1" id="username"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
-													onmouseout="hideTooltip('tooltip_id');" name="password"
+													onmouseout="hideTooltip('tooltip_id');" name="password" id="password"
 													 value="${participantsDetails.password}" />
 												
 														
 											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err">*</span> Mobile No :</td>
-												<td valign="top" align="left" class="input_txt"><input
-													type="text" min="10" maxlength="17" class="input_txtbx1" id="mno"
+												<td valign="top" align="left" class="input_txt">+1<input
+													type="text" min="10" maxlength="10" placeholder="0000000000" style="width:155px"  class="input_txtbx1" id="mno"
 													onmouseover="showTooltip('tooltip_id','inp_id3');"
 													onmouseout="hideTooltip('tooltip_id');" name="mobile_num"
 													value="${participantsDetails.mobile_num}" /></br><font
@@ -518,7 +530,7 @@ else
 																path="participant.mobile_num"></form:errors> </span></font></td>
 											</tr>
 											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err">*</span> Email-Id :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="text" class="input_txtbx1" id="eid"
@@ -532,7 +544,7 @@ else
 																path="participant.email_id"></form:errors> </span></font></td>
 											</tr>
 											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> Gender :</td>
 												<td valign="top" align="left" class="input_txt"><input
 													type="radio" name="gender" value="0" class="input_txt"
@@ -543,7 +555,7 @@ else
 													Female</td>
 											</tr>
 											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> <%--  Age :<c:forEach begin="1" end="100" var="i">
                                  <option value="${i}" <c:if test ="${participantsDetails.age == i}">select</c:if>>${i}</option>
                                                        </c:forEach>   --%>
@@ -589,7 +601,7 @@ else
 														</font></td>
 											</tr>
 
-											<tr class="row1">
+											<tr class="row1" height="35px">
 												<td valign="middle" align="left" class="input_txt"><span
 													class="err"></span>Zipcode :</td>
 												<td valign="top" align="left" class="input_txt"><input
@@ -601,7 +613,7 @@ else
 																path="participant.city"></form:errors> </span></font></td>
 											</tr>
 											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span> Education :</td>
 												<td valign="top" align="left" class="input_txt"><select
 													name="education" class="input_cmbbx1">
@@ -616,7 +628,7 @@ else
 																path="participant.education"></form:errors> </span></font></td>
 
 											</tr>
-											<tr class="row1" height="128">
+											<tr class="row1" height="188">
 												<td valign="top" align="left" class="input_txt"><span
 													class="err"></span> Medical
 													Details :</td>
@@ -643,8 +655,8 @@ else
 												<td><p class="quck-txt">Preferred&nbsp;Timings</p></td>
 											</tr>
                                 
-											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt">Time1 :</td>
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="30px">Time1 :</td>
 												<td valign="top" align="left" class="input_txt"><select
 													name="time1" class="input_cmbbx1" id="msg">
 													<option value="null" <c:if test="${participantsDetails.time1=='null'}"><c:out value="selected"/></c:if>> --Select--</option>
@@ -670,8 +682,8 @@ else
 												
 					<br /></td>
 											</tr>
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"> Time2 :</td>
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" > Time2 :</td>
 												<td valign="top" align="left" class="input_txt"><select
 													name="time2" class="input_cmbbx1" id="msg">
 													<option value="null" <c:if test="${participantsDetails.time2=='null'}"><c:out value="selected"/></c:if>>--Select--</option>
@@ -697,7 +709,7 @@ else
 								   </select>
 					<br /></td>
 											</tr>
-											<tr class="row2">
+											<tr class="row1">
 												<td valign="middle" align="left" class="input_txt"> Time3 :</td>
 												<td valign="top" align="left" class="input_txt"><select
 													name="time3" class="input_cmbbx1" id="msg">
@@ -723,7 +735,7 @@ else
 											<option value="PM" <c:if test="${participantsDetails.time3_am_pm=='PM'}"><c:out value="selected"/></c:if>>PM&nbsp;</option>
 				</select><br /></td>
 											</tr>
-												<tr class="row1">
+												<tr class="row2" height="35px">
 												<td valign="middle" align="left" class="input_txt">
 													 Start Date :</td>
 												<td valign="top" align="left" class="input_txt" >
@@ -734,8 +746,8 @@ else
 													 </font>			
 												</td>
 											</tr>
-<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span>Weekly Survey Start Date :</td>
 												<td valign="top" align="left" class="input_txt">	
 												<input type="text" name="weekly_survey_start_date" 	
@@ -763,8 +775,8 @@ else
 													 </td>
 											</tr>
 											
-											<tr class="row1">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row2">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err">*</span>Provider Primary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
@@ -775,8 +787,8 @@ else
 													
 													 </font></td>
 											</tr>
-											<tr class="row2">
-												<td valign="middle" align="left" class="input_txt"><span
+											<tr class="row1">
+												<td valign="middle" align="left" class="input_txt" height="35px"><span
 													class="err"></span>Provider Secondary Email :</td>
 												<td valign="top" align="left" class="input_txt">									
 										
@@ -816,7 +828,7 @@ else
 										</table>
 										<table border="0" cellspacing="0" cellpadding="0" width="100%">
 										
-											<tr class="row2">
+											<tr class="row1">
 												<td width="85" ><span class="err">*</span> Select
 													Group:
 													</td>

@@ -46,7 +46,7 @@
 	            		<div class="contentbox">
 	              			<table cellpadding="0" cellspacing="0" border="0" width="100%">
 	                			<tr class="title">
-									<td valign="center" align="left" width="5%"><input type="checkbox" value="" name="chkAll"></td>
+									<td valign="center" " align="left" width="5%">&nbsp;<input type="checkbox" value="" name="chkAll"></td>
 	                  				<td valign="top" align="left" width="16%">Name</td>
 	                  				<td valign="top" align="left" width="20%">E-Mail</td>
 	                  				<td valign="top" align="left" width="24%">Mobile</td>

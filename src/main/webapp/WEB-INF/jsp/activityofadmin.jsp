@@ -39,7 +39,7 @@
 	                	 
 	                	<c:forEach items="${adminactivityForm.adminActivity}" var="adminActivity" varStatus="status"> 	
 	                		<tr class="row<%=i%>">
-	                  			<td valign="top" align="center" width="15%">${adminActivity.admin_date_time}</td>
+	                  			<td valign="top" align="center" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${adminActivity.admin_date_time}</td>
 	                  			<td valign="top" align="left" width="15%">&nbsp;&nbsp;&nbsp;&nbsp;${adminActivity.ip_address}</td>
 	                  			<td valign="top" align="left" width="15%">${adminActivity.admin_desc}</td>
 	                		<td valign="top" align="left" width="20%">${adminActivity.done_by}</td>

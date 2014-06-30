@@ -26,13 +26,13 @@
              
              
              
-                   <tr class="row2">
-                  <td width="15%" valign="middle" align="left" > First Name </td>
+                   <tr class="row1">
+                  <td width="15%" valign="middle" align="left" >Name </td>
                     <td width="1%" valign="middle" align="left" >  :</td>
                   <td width="84%" valign="top" align="left" >${adminuser.admin_firstname}</td>
                 </tr>
                 
-                <tr class="row1">
+                <tr class="row2">
                   <td width="15%" valign="middle" align="left" > UserName </td>
                     <td width="1%" valign="middle" align="left" >  :</td>
                   <td width="84%" valign="top" align="left" >${adminuser.admin_username}</td>
@@ -40,13 +40,13 @@
                 
                 
                 
-              <tr class="row2">
+              <tr class="row1">
                   <td width="15%" valign="middle" align="left" >E-Mail</td>
                     <td width="1%" valign="middle" align="left" >  :</td>
                   <td width="84%" valign="top" align="left" >${adminuser.admin_email}</td>
                 </tr>
 		
-		<tr class="row1">
+		<tr class="row2">
                   <td width="15%" valign="middle" align="left" > Mobile</td>
                     <td width="1%" valign="middle" align="left" >  :</td>
                   <td width="84%" valign="top" align="left" >${adminuser.admin_mobile}</td>

@@ -442,7 +442,7 @@ if (document.getElementById("datepicker").value !="") {
 									<td valign="middle" align="right" class="input_txt1" id="weeks"><span class="err">*&nbsp;</span>No of Weeks :</td>
 									<td valign="middle" align="right" class="input_txt1" id="days"><span class="err">*&nbsp;</span>No of Days :</td>
 									<td valign="top" align="left" id="daystext">
-										<input type="text" name="days_weeks" maxlength="4" id="days_weeks" class="input_txtbx1" value=""><span style="margin-left:10px;color:red;" id="info3"></span></br> <span
+										<input type="text" name="days_weeks" maxlength="4" onkeydown="if(event.ctrlKey && event.keyCode==86){return false;}" id="days_weeks" class="input_txtbx1" value=""><span style="margin-left:10px;color:red;" id="info3"></span></br> <span
 									id="weekerr" style="font-size: 12px"	class="err"><form:errors path="broadCast.days_weeks"></form:errors></span>
 									</td>
 									</td>
@@ -456,7 +456,7 @@ if (document.getElementById("datepicker").value !="") {
 									</td>
 									</td>
 								</tr>
-							 --%>	<tr class="row1">
+							 --%>	<tr class="row2">
 									<td valign="middle" align="right" class="input_txt1"><span class="err">*&nbsp;</span>Start
 										Date :</td>
 									<td valign="top" align="left">
@@ -475,7 +475,7 @@ if (document.getElementById("datepicker").value !="") {
 
 							<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"
 								id="one" style="display: block;" style="display: none;">
-								<tr class="row2">
+								<tr class="row1">
 									<td valign="middle" align="right" class="input_txt" width="200"><span class="err">*&nbsp;</span>Message Sending Time :</td>
 									<td valign="top" align="left" class="input_txt">
 									<select name="fstream_time" class="input_cmbbx1">
@@ -502,7 +502,7 @@ if (document.getElementById("datepicker").value !="") {
 
 							<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"
 								id="two" style="display: block;" style="display: none;">
-								<tr class="row2">
+								<tr class="row1">
 									<td valign="middle" align="right" class="input_txt" width="200"><span class="err">*&nbsp;</span>First
 										Message Sending Time :</td>
 									<td valign="top" align="left" class="input_txt">
@@ -525,7 +525,7 @@ if (document.getElementById("datepicker").value !="") {
 											<option value="PM">PM&nbsp;</option>
 								   </select></td>
 								</tr>
-								<tr class="row1">
+								<tr class="row2">
 									<td valign="middle" align="right" class="input_txt"><span class="err">*&nbsp;</span>Second
 										Message sending Time :</td>
 									<td valign="top" align="left" class="input_txt">
@@ -555,7 +555,7 @@ if (document.getElementById("datepicker").value !="") {
 							
 							<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"
 								id="third" style="display: block;" style="display: none;">
-								<tr class="row2">
+								<tr class="row1">
 									<td valign="middle" align="right" class="input_txt" width="200"><span class="err">*&nbsp;</span>First
 										Message Sending Time :</td>
 									<td valign="top" align="left" class="input_txt">
@@ -578,7 +578,7 @@ if (document.getElementById("datepicker").value !="") {
 											<option value="PM">PM&nbsp;</option>
 								   </select></td>
 								</tr>
-								<tr class="row1">
+								<tr class="row2">
 									<td valign="middle" align="right" class="input_txt"><span class="err">*&nbsp;</span>Second
 										Message sending Time :</td>
 									<td valign="top" align="left" class="input_txt">
@@ -631,7 +631,7 @@ if (document.getElementById("datepicker").value !="") {
 
 							<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"
 								id="three" style="display: block;" style="display: none;">
-								<tr class="row2">
+								<tr class="row1">
 									<td valign="middle" align="right" class="input_txt" width="200"><span class="err">*&nbsp;</span>
 										Message Sending Day :</td>
 									<td valign="top" align="left" class="input_txt"><select
@@ -650,7 +650,7 @@ if (document.getElementById("datepicker").value !="") {
 							</table>
 							<table cellpadding="0" cellspacing="0" border="0" width="100%" class="margin_table"
 								id="four" style="display: block;" style="display: none;">
-								<tr class="row1">
+								<tr class="row2">
 									<td valign="middle" align="right" class="input_txt" width="200"><span class="err">*</span>Message Sending
 										Time :</td>
 									<td valign="top" align="left" class="input_txt"><select name="fstream_time" class="input_cmbbx1">
